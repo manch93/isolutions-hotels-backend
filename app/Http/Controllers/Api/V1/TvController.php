@@ -3,10 +3,22 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
 
 class TvController extends Controller
 {
     public function get() {
+        $result = Cache::get('tv');
+
+        if(empty($result)) {
+            $result = $this->getFromCableNet();
+            Cache::put('tv', $result, 3600);
+        }
+
+        return $this->respondWithSuccess($result);
+    }
+
+    public function getFromCableNet() {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'http://xcust.cablenet.asia/get.php?username=dammpsca&password=c1r3b0rnca&type=m3u&output=mpegts');
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -41,6 +53,6 @@ class TvController extends Controller
             }
         }
 
-        return $this->respondWithSuccess($result);
+        return $result;
     }
 }
