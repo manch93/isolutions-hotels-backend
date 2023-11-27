@@ -22,6 +22,39 @@ class MenuSeeder extends Seeder
                 'route' => 'cms.dashboard',
                 'ordering' => '1',
             ],
+            // Master Data
+            [
+                'name' => 'Master',
+                'on' => 'cms',
+                'type' => 'header',
+                'icon' => '#',
+                'route' => '#',
+                'ordering' => '10',
+            ],
+            [
+                'name' => 'Hotel',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'briefcase',
+                'route' => 'cms.master.hotel',
+                'ordering' => '11',
+            ],
+            [
+                'name' => 'Room Type',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'tag',
+                'route' => 'cms.master.room-type',
+                'ordering' => '12',
+            ],
+            [
+                'name' => 'Room',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'save',
+                'route' => 'cms.master.room',
+                'ordering' => '13',
+            ],
             // Settings
             [
                 'name' => 'Settings',
