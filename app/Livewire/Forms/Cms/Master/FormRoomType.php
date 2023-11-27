@@ -52,7 +52,7 @@ class FormRoomType extends Form
 
     // Store data
     public function store() {
-        $save_path = 'room_type';
+        $save_path = RoomType::$FILE_PATH;
 
         // Save image
         if($this->image) {
@@ -72,7 +72,7 @@ class FormRoomType extends Form
     // Update data
     public function update() {
         $old = RoomType::find($this->id);
-        $save_path = 'room_type';
+        $save_path = RoomType::$FILE_PATH;
 
         // Save image
         if($this->image) {

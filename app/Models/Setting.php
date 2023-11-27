@@ -9,6 +9,7 @@ class Setting extends Model
 {
     use HasFactory;
 
+    public static $FILE_PATH = 'settings';
     protected $fillable = [
         'name',
         'logo',

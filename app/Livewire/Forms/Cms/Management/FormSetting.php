@@ -89,7 +89,7 @@ class FormSetting extends Form
     public function save() {
         $this->validate();
 
-        $save_path = 'settings';
+        $save_path = Setting::$FILE_PATH;
 
         // Save logo
         if($this->logo) {
