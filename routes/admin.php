@@ -10,6 +10,9 @@ Route::group([
 
     Route::get('/', App\Livewire\Dashboard::class)->name('dashboard');
 
+    // Master Data
+    Route::get('/master/hotel', App\Livewire\Cms\Master\Hotel::class)->name('master.hotel');
+
     // Management
     Route::get('/management/menu', App\Livewire\Cms\Management\Menu::class)->name('management.menu');
     Route::get('/management/role', App\Livewire\Cms\Management\Role::class)->name('management.role');
