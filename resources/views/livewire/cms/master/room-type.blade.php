@@ -91,6 +91,7 @@
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">Image</label>
+                    <x-acc-image-preview :$image :form_image="$form->image"  />
                     <input type="file" wire:model="image" class="form-control">
                     <x-acc-input-error for="image" />
                 </div>

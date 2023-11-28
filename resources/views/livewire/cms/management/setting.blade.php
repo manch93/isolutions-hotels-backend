@@ -26,15 +26,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label class="form-label">App Logo</label>
-                        @if ($form->logo)
-                            <div class="mb-3">
-                                <img src="{{ $logo ? $logo->temporaryUrl() : url('storage/settings/' . $form->old_data->logo) }}" alt="logo" class="img-fluid">
-                            </div>
-                        @else
-                            <div class="mb-3">
-                                <img src="{{ url('storage/settings/' . $form->old_data->logo) }}" alt="logo" class="img-fluid">
-                            </div>
-                        @endif
+                        <x-acc-image-preview :image="$logo" :form_image="asset('storage/settings/' . $form->old_data->logo)"  />
                         <input type="file" wire:model="logo" class="form-control">
                         <x-acc-input-error for="logo" />
                     </div>
@@ -42,15 +34,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label class="form-label">App Icon</label>
-                        @if ($form->favicon)
-                            <div class="mb-3">
-                                <img src="{{ $favicon ? $favicon->temporaryUrl() : url('storage/settings/' . $form->old_data->favicon) }}" alt="favicon" class="img-fluid">
-                            </div>
-                        @else
-                            <div class="mb-3">
-                                <img src="{{ url('storage/settings/' . $form->old_data->favicon) }}" alt="logo" class="img-fluid">
-                            </div>
-                        @endif
+                        <x-acc-image-preview :image="$favicon" :form_image="asset('storage/settings/' . $form->old_data->favicon)"  />
                         <input type="file" wire:model="favicon" class="form-control">
                         <x-acc-input-error for="favicon" />
                     </div>
@@ -171,15 +155,7 @@
                 <div class="col-md-6">
                     <div class="mb-3">
                         <label class="form-label">Image</label>
-                        @if ($opengraph_image)
-                            <div class="mb-3">
-                                <img src="{{ $opengraph_image ? $opengraph_image->temporaryUrl() : url('storage/settings/' . $form->opengraph['image']) }}" alt="open graph image" class="img-fluid">
-                            </div>
-                        @else
-                            <div class="mb-3">
-                                <img src="{{ url('storage/settings/' . $form->opengraph_image) }}" alt="logo" class="img-fluid">
-                            </div>
-                        @endif
+                        <x-acc-image-preview :image="$opengraph_image" :form_image="asset('storage/settings/' . $form->old_data->opengraph_image)"  />
                         <input type="file" wire:model="opengraph_image" class="form-control">
                         <x-acc-input-error for="opengraph_image" />
                     </div>

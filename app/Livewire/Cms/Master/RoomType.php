@@ -70,6 +70,7 @@ class RoomType extends BaseComponent
 
     public function saveWithUpload() {
         $this->form->image = $this->image;
+        $this->image = null;
         $this->save();
     }
 }

@@ -30,6 +30,9 @@
                                 <td>{{ $d->website }}</td>
                                 <td>{{ $d->default_greeting }}</td>
                                 <td>
+                                    <a href="{{ route('cms.master.hotel') }}" class="btn btn-primary" wire:navigate>
+                                        <i class="align-middle" data-feather="edit"></i> Profile
+                                    </a>
                                     <button
                                         class="btn btn-warning"
                                         wire:click="edit({{ $d->id }})"

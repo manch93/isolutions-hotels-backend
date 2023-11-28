@@ -12,8 +12,11 @@ trait WithDeleteAction {
 
     #[On('delete')]
     public function delete($id) {
-        $this->form->delete($id);
-
-        $this->dispatch('alert', type: Alert::success, message: 'Data deleted successfully');
+        try {
+            $this->form->delete($id);
+            $this->dispatch('alert', type: Alert::success, message: 'Data deleted successfully');
+        } catch (\Exception $exception) {
+            $this->dispatch('alert', type: Alert::error, message: $exception->getMessage());
+        }
     }
 }
