@@ -21,6 +21,7 @@ class RoomType extends Model
     public function getImageAttribute($value)
     {
         if (!$value) return null;
+        if (str_contains($value, 'storage/' . self::$FILE_PATH)) return $value;
         return asset('storage/' . self::$FILE_PATH . '/' . $value);
     }
 

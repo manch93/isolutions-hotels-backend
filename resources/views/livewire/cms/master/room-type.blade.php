@@ -93,7 +93,7 @@
                     <label class="form-label">Image</label>
                     <x-acc-image-preview :$image :form_image="$form->image"  />
                     <input type="file" wire:model="image" class="form-control">
-                    <x-acc-input-error for="image" />
+                    <x-acc-input-error for="form.image" />
                 </div>
             </div>
         </x-acc-form>

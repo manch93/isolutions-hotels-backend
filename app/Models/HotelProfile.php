@@ -30,36 +30,42 @@ class HotelProfile extends Model
     public function getLogoColorAttribute($value)
     {
         if (!$value) return null;
+        if (str_contains($value, 'storage/' . self::$FILE_PATH)) return $value;
         return asset('storage/' . self::$FILE_PATH . '/' . $value);
     }
 
     public function getLogoWhiteAttribute($value)
     {
         if (!$value) return null;
+        if (str_contains($value, 'storage/' . self::$FILE_PATH)) return $value;
         return asset('storage/' . self::$FILE_PATH . '/' . $value);
     }
 
     public function getLogoBlackAttribute($value)
     {
         if (!$value) return null;
+        if (str_contains($value, 'storage/' . self::$FILE_PATH)) return $value;
         return asset('storage/' . self::$FILE_PATH . '/' . $value);
     }
 
     public function getMainPhotoAttribute($value)
     {
         if (!$value) return null;
+        if (str_contains($value, 'storage/' . self::$FILE_PATH)) return $value;
         return asset('storage/' . self::$FILE_PATH . '/' . $value);
     }
 
     public function getBackgroundPhotoAttribute($value)
     {
         if (!$value) return null;
+        if (str_contains($value, 'storage/' . self::$FILE_PATH)) return $value;
         return asset('storage/' . self::$FILE_PATH . '/' . $value);
     }
 
     public function getIntroVideoAttribute($value)
     {
         if (!$value) return null;
+        if (str_contains($value, 'storage/' . self::$FILE_PATH)) return $value;
         return asset('storage/' . self::$FILE_PATH . '/' . $value);
     }
 }

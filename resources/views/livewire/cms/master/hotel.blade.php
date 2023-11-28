@@ -30,9 +30,12 @@
                                 <td>{{ $d->website }}</td>
                                 <td>{{ $d->default_greeting }}</td>
                                 <td>
-                                    <a href="{{ route('cms.master.hotel') }}" class="btn btn-primary" wire:navigate>
+                                    <button
+                                        class="btn btn-primary"
+                                        wire:click="getProfile({{ $d->id }})"
+                                        @click="new bootstrap.Modal(document.getElementById('acc-profile')).show()">
                                         <i class="align-middle" data-feather="edit"></i> Profile
-                                    </a>
+                                    </button>
                                     <button
                                         class="btn btn-warning"
                                         wire:click="edit({{ $d->id }})"
@@ -65,7 +68,6 @@
         </div>
     </div>
 
-    {{-- Create / Update Modal --}}
     <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}">
         <x-acc-form submit="save">
             <div class="col-md-12">
@@ -103,6 +105,81 @@
                     <label class="form-label">Default Greeting</label>
                     <input type="text" wire:model="form.default_greeting" class="form-control" placeholder="Default Greeting">
                     <x-acc-input-error for="form.default_greeting" />
+                </div>
+            </div>
+        </x-acc-form>
+    </x-acc-modal>
+
+    <x-acc-modal title="Edit Profile" id="acc-profile">
+        <x-acc-form submit="saveProfile">
+            <input type="hidden" wire:model="formProfile.hotel_id">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Hotel</label>
+                    <input type="text" wire:model="formProfile.hotel" class="form-control" placeholder="Hotel">
+                    <x-acc-input-error for="formProfile.hotel" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Primary Color</label>
+                    <input type="text" wire:model="formProfile.primary_color" class="form-control" placeholder="Primary Color">
+                    <x-acc-input-error for="formProfile.primary_color" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <input type="text" wire:model="formProfile.description" class="form-control" placeholder="Description">
+                    <x-acc-input-error for="formProfile.description" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Logo Color</label>
+                    <x-acc-image-preview :image="$logo_color" :form_image="$formProfile->logo_color"  />
+                    <input type="file" wire:model="logo_color" class="form-control">
+                    <x-acc-input-error for="formProfile.logo_color" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Logo White</label>
+                    <x-acc-image-preview :image="$logo_white" :form_image="$formProfile->logo_white"  />
+                    <input type="file" wire:model="logo_white" class="form-control">
+                    <x-acc-input-error for="formProfile.logo_white" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Logo Black</label>
+                    <x-acc-image-preview :image="$logo_black" :form_image="$formProfile->logo_black"  />
+                    <input type="file" wire:model="logo_black" class="form-control">
+                    <x-acc-input-error for="formProfile.logo_black" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Main Photo</label>
+                    <x-acc-image-preview :image="$main_photo" :form_image="$formProfile->main_photo"  />
+                    <input type="file" wire:model="main_photo" class="form-control">
+                    <x-acc-input-error for="formProfile.main_photo" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Background Photo</label>
+                    <x-acc-image-preview :image="$background_photo" :form_image="$formProfile->background_photo"  />
+                    <input type="file" wire:model="background_photo" class="form-control">
+                    <x-acc-input-error for="formProfile.background_photo" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Intro Video</label>
+                    <x-acc-image-preview :image="$intro_video" :form_image="$formProfile->intro_video"  />
+                    <input type="file" wire:model="intro_video" class="form-control">
+                    <x-acc-input-error for="formProfile.intro_video" />
                 </div>
             </div>
         </x-acc-form>

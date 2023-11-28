@@ -2,13 +2,20 @@
 
 namespace App\Livewire\Cms\Master;
 
+use App\Enums\Alert;
 use App\Livewire\Forms\Cms\Master\FormHotel;
+use App\Livewire\Forms\Cms\Master\FormHotelProfile;
 use App\Models\Hotel as ModelsHotel;
+use Livewire\Attributes\Rule;
+use Livewire\WithFileUploads;
 use BaseComponent;
 
 class Hotel extends BaseComponent
 {
+    use WithFileUploads;
+
     public FormHotel $form;
+    public FormHotelProfile $formProfile;
     public $title = 'Hotel';
 
     public $searchBy = [
@@ -61,5 +68,46 @@ class Hotel extends BaseComponent
         }
 
         return view('livewire.cms.master.hotel', compact('get'))->title($this->title);
+    }
+
+    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    public $logo_color;
+
+    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    public $logo_white;
+
+    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    public $logo_black;
+
+    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    public $main_photo;
+
+    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    public $background_photo;
+
+    #[Rule('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv|max:20000000')]
+    public $intro_video;
+
+    public function getProfile($id) {
+        $this->formProfile->getDetail($id);
+    }
+
+    public function saveProfile() {
+        $this->formProfile->logo_color = $this->logo_color;
+        $this->formProfile->logo_white = $this->logo_white;
+        $this->formProfile->logo_black = $this->logo_black;
+        $this->formProfile->main_photo = $this->main_photo;
+        $this->formProfile->background_photo = $this->background_photo;
+        $this->formProfile->intro_video = $this->intro_video;
+        $this->logo_color = null;
+        $this->logo_white = null;
+        $this->logo_black = null;
+        $this->main_photo = null;
+        $this->background_photo = null;
+        $this->intro_video = null;
+        $this->formProfile->save();
+
+        $this->dispatch('closeModal', modal: 'acc-profile');
+        $this->dispatch('alert', type: Alert::success, message: 'Hotel Profile Updated');
     }
 }
