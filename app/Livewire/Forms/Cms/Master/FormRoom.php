@@ -3,27 +3,27 @@
 namespace App\Livewire\Forms\Cms\Master;
 
 use App\Models\Room;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormRoom extends Form
 {
-    #[Rule('nullable|numeric')]
+    #[Validate('nullable|numeric')]
     public $id = '';
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public $hotel_id;
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public $room_type_id;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $no = '';
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $greeting;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $device_name;
 
     // Get the data

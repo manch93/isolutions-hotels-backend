@@ -3,33 +3,33 @@
 namespace App\Livewire\Forms\Cms\Master;
 
 use App\Models\Hotel;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormHotel extends Form
 {
-    #[Rule('nullable|numeric')]
+    #[Validate('nullable|numeric')]
     public $id = '';
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $name = '';
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $branch;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $address;
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public $phone;
 
-    #[Rule('required|string|email')]
+    #[Validate('required|string|email')]
     public $email;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $website;
 
-    #[Rule('nullable|string')]
+    #[Validate('nullable|string')]
     public $default_greeting;
 
     // Get the data

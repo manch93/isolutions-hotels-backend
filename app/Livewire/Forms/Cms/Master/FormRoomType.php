@@ -4,26 +4,26 @@ namespace App\Livewire\Forms\Cms\Master;
 
 use App\Models\RoomType;
 use App\Traits\WithSaveFile;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormRoomType extends Form
 {
     use WithSaveFile;
 
-    #[Rule('nullable|numeric')]
+    #[Validate('nullable|numeric')]
     public $id = '';
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public $hotel_id;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $name = '';
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $description;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $image;
 
     // Get the data

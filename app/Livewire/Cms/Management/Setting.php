@@ -3,7 +3,7 @@
 namespace App\Livewire\Cms\Management;
 
 use App\Livewire\Forms\Cms\Management\FormSetting;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
 use BaseComponent;
 
@@ -14,13 +14,13 @@ class Setting extends BaseComponent
     public FormSetting $form;
     public $title = 'Setting';
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $logo;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $favicon;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $opengraph_image;
 
     public $isUpdate = true;

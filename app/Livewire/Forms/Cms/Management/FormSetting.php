@@ -3,7 +3,7 @@
 namespace App\Livewire\Forms\Cms\Management;
 
 use App\Models\Setting;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use App\Traits\WithSaveFile;
 use Livewire\Form;
 
@@ -11,49 +11,49 @@ class FormSetting extends Form
 {
     use WithSaveFile;
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $name = '';
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $logo;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $favicon;
 
-    #[Rule('required|email')]
+    #[Validate('required|email')]
     public $email = '';
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public $phone = '';
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $address = '';
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $about = '';
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $vision = '';
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $mission = '';
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $author = '';
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $description = '';
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $keywords = '';
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $opengraph = [];
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $dulbincore = [];
 
-    #[Rule('nullable')]
+    #[Validate('nullable')]
     public $google_analytics = '';
 
     public $old_data;

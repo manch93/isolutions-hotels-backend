@@ -3,21 +3,21 @@
 namespace App\Livewire\Forms\Cms\Management;
 
 use App\Models\User;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormUser extends Form
 {
-    #[Rule('nullable|numeric')]
+    #[Validate('nullable|numeric')]
     public $id = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $name = '';
 
-    #[Rule('required|email')]
+    #[Validate('required|email')]
     public $email = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $password = '';
 
     // Get the data

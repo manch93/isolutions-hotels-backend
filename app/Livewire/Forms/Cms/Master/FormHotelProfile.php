@@ -4,7 +4,7 @@ namespace App\Livewire\Forms\Cms\Master;
 
 use App\Models\HotelProfile;
 use App\Traits\WithSaveFile;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormHotelProfile extends Form
@@ -13,31 +13,31 @@ class FormHotelProfile extends Form
 
     public $hotel;
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public $hotel_id;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $logo_color;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $logo_white;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $logo_black;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $primary_color;
 
-    #[Rule('required|string')]
+    #[Validate('required|string')]
     public $description;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $main_photo;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $background_photo;
 
-    #[Rule('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv|max:20000000')]
+    #[Validate('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv|max:20000000')]
     public $intro_video;
 
     public function getDetail($id) {

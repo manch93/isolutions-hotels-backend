@@ -3,15 +3,15 @@
 namespace App\Livewire\Forms\Cms\Management;
 
 use Spatie\Permission\Models\Role;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormRole extends Form
 {
-    #[Rule('nullable|numeric')]
+    #[Validate('nullable|numeric')]
     public $id = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $name = '';
 
     // Get the data

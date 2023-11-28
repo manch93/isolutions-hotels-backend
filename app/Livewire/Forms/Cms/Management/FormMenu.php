@@ -3,30 +3,30 @@
 namespace App\Livewire\Forms\Cms\Management;
 
 use App\Models\Menu;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormMenu extends Form
 {
-    #[Rule('nullable|numeric')]
+    #[Validate('nullable|numeric')]
     public $id = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $name = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $on = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $type = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $icon = '';
 
-    #[Rule('required')]
+    #[Validate('required')]
     public $route = '';
 
-    #[Rule('required|numeric')]
+    #[Validate('required|numeric')]
     public $ordering = 0;
 
     // Get the data

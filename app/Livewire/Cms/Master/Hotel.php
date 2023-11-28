@@ -6,7 +6,7 @@ use App\Enums\Alert;
 use App\Livewire\Forms\Cms\Master\FormHotel;
 use App\Livewire\Forms\Cms\Master\FormHotelProfile;
 use App\Models\Hotel as ModelsHotel;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
 use BaseComponent;
 
@@ -70,22 +70,22 @@ class Hotel extends BaseComponent
         return view('livewire.cms.master.hotel', compact('get'))->title($this->title);
     }
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $logo_color;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $logo_white;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $logo_black;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $main_photo;
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $background_photo;
 
-    #[Rule('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv|max:20000000')]
+    #[Validate('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv|max:20000000')]
     public $intro_video;
 
     public function getProfile($id) {

@@ -5,7 +5,7 @@ namespace App\Livewire\Cms\Master;
 use App\Livewire\Forms\Cms\Master\FormRoomType;
 use App\Models\Hotel;
 use App\Models\RoomType as ModelsRoomType;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
 use BaseComponent;
 
@@ -16,7 +16,7 @@ class RoomType extends BaseComponent
     public FormRoomType $form;
     public $title = 'Room Type';
 
-    #[Rule('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $image;
 
     public $searchBy = [

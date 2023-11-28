@@ -3,12 +3,12 @@
 namespace App\Livewire\Forms\Cms\Management;
 
 use App\Models\Setting;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormTermOfService extends Form
 {
-    #[Rule('required')]
+    #[Validate('required')]
     public $term_of_service = '';
 
     public function getData() {

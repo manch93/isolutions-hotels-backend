@@ -3,12 +3,12 @@
 namespace App\Livewire\Forms\Cms\Management;
 
 use App\Models\Setting;
-use Livewire\Attributes\Rule;
+use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormPrivacyPolicy extends Form
 {
-    #[Rule('required')]
+    #[Validate('required')]
     public $privacy_policy = '';
 
     public function getData() {
