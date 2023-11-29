@@ -18,6 +18,7 @@ Route::group([
     // Hotel
     Route::get('/hotel/facility', App\Livewire\Cms\Hotel\Facility::class)->name('hotel.facility');
     Route::get('/hotel/around', App\Livewire\Cms\Hotel\Around::class)->name('hotel.around');
+    Route::get('/hotel/promo', App\Livewire\Cms\Hotel\Promo::class)->name('hotel.promo');
     Route::get('/hotel/policy', App\Livewire\Cms\Hotel\Policy::class)->name('hotel.policy');
 
     // Management

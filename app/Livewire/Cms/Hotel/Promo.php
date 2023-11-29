@@ -2,19 +2,19 @@
 
 namespace App\Livewire\Cms\Hotel;
 
-use App\Livewire\Forms\Cms\Hotel\FormAround;
-use App\Models\Around as ModelsAround;
+use App\Livewire\Forms\Cms\Hotel\FormPromo;
+use App\Models\Promo as ModelsPromo;
 use App\Models\Hotel;
 use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
 use BaseComponent;
 
-class Around extends BaseComponent
+class Promo extends BaseComponent
 {
     use WithFileUploads;
 
-    public FormAround $form;
-    public $title = 'Hotel Around';
+    public FormPromo $form;
+    public $title = 'Hotel Promo';
 
     #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $image;
@@ -26,22 +26,22 @@ class Around extends BaseComponent
             ],
             [
                 'name' => 'Name',
-                'field' => 'arounds.name',
+                'field' => 'promos.name',
             ],
             [
                 'name' => 'Description',
-                'field' => 'arounds.description',
+                'field' => 'promos.description',
             ],
             [
                 'name' => 'Image',
-                'field' => 'arounds.image',
+                'field' => 'promos.image',
                 'no_search' => true,
             ],
         ],
         $isUpdate = false,
         $search = '',
         $paginate = 10,
-        $orderBy = 'arounds.name',
+        $orderBy = 'promos.name',
         $order = 'asc';
 
     public $hotels = [];
@@ -52,8 +52,8 @@ class Around extends BaseComponent
 
     public function render()
     {
-        $model = ModelsAround::join('hotels', 'hotels.id', '=', 'arounds.hotel_id')
-            ->select('arounds.*', 'hotels.name as hotel');
+        $model = ModelsPromo::join('hotels', 'hotels.id', '=', 'promos.hotel_id')
+            ->select('promos.*', 'hotels.name as hotel');
 
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
@@ -66,7 +66,7 @@ class Around extends BaseComponent
             $this->resetPage();
         }
 
-        return view('livewire.cms.hotel.around', compact('get'))->title($this->title);
+        return view('livewire.cms.hotel.promo', compact('get'))->title($this->title);
     }
 
     public function saveWithUpload() {
