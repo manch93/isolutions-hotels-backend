@@ -15,6 +15,9 @@ Route::group([
     Route::get('/master/room-type', App\Livewire\Cms\Master\RoomType::class)->name('master.room-type');
     Route::get('/master/room', App\Livewire\Cms\Master\Room::class)->name('master.room');
 
+    // Hotel
+    Route::get('/hotel/facility', App\Livewire\Cms\Hotel\Facility::class)->name('hotel.facility');
+
     // Management
     Route::get('/management/menu', App\Livewire\Cms\Management\Menu::class)->name('management.menu');
     Route::get('/management/role', App\Livewire\Cms\Management\Role::class)->name('management.role');

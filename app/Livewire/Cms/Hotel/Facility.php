@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Livewire\Cms\Master;
+namespace App\Livewire\Cms\Hotel;
 
-use App\Livewire\Forms\Cms\Master\FormRoomType;
+use App\Livewire\Forms\Cms\Hotel\FormFacility;
 use App\Models\Hotel;
-use App\Models\RoomType as ModelsRoomType;
+use App\Models\HotelFacility;
 use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
 use BaseComponent;
 
-class RoomType extends BaseComponent
+class Facility extends BaseComponent
 {
     use WithFileUploads;
 
-    public FormRoomType $form;
-    public $title = 'Room Type';
+    public FormFacility $form;
+    public $title = 'Hotel Facility';
 
     #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $image;
@@ -26,25 +26,25 @@ class RoomType extends BaseComponent
             ],
             [
                 'name' => 'Name',
-                'field' => 'room_types.name',
+                'field' => 'hotel_facilities.name',
             ],
             [
                 'name' => 'Description',
-                'field' => 'room_types.description',
+                'field' => 'hotel_facilities.description',
             ],
             [
                 'name' => 'Image',
-                'field' => 'room_types.image',
+                'field' => 'hotel_facilities.image',
                 'no_search' => true,
             ],
         ],
         $isUpdate = false,
         $search = '',
         $paginate = 10,
-        $orderBy = 'room_types.name',
+        $orderBy = 'hotel_facilities.name',
         $order = 'asc';
 
-    public $hotels;
+    public $hotels = [];
 
     public function mount() {
         $this->hotels = Hotel::all();
@@ -52,8 +52,8 @@ class RoomType extends BaseComponent
 
     public function render()
     {
-        $model = ModelsRoomType::join('hotels', 'hotels.id', '=', 'room_types.hotel_id')
-            ->select('room_types.*', 'hotels.name as hotel');
+        $model = HotelFacility::join('hotels', 'hotels.id', '=', 'hotel_facilities.hotel_id')
+            ->select('hotel_facilities.*', 'hotels.name as hotel');
 
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
@@ -66,7 +66,7 @@ class RoomType extends BaseComponent
             $this->resetPage();
         }
 
-        return view('livewire.cms.master.room-type', compact('get'))->title($this->title);
+        return view('livewire.cms.hotel.facility', compact('get'))->title($this->title);
     }
 
     public function saveWithUpload() {
