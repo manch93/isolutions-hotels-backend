@@ -55,6 +55,47 @@ class MenuSeeder extends Seeder
                 'route' => 'cms.master.room',
                 'ordering' => '13',
             ],
+            // Hotel
+            [
+                'name' => 'Hotel',
+                'on' => 'cms',
+                'type' => 'header',
+                'icon' => '#',
+                'route' => '#',
+                'ordering' => '20',
+            ],
+            [
+                'name' => 'Facility',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'archive',
+                'route' => 'cms.hotel.facility',
+                'ordering' => '21',
+            ],
+            [
+                'name' => 'Around',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'globe',
+                'route' => 'cms.hotel.around',
+                'ordering' => '22',
+            ],
+            [
+                'name' => 'Promo',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'percent',
+                'route' => 'cms.hotel.promo',
+                'ordering' => '23',
+            ],
+            [
+                'name' => 'Food',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'book-open',
+                'route' => 'cms.hotel.food',
+                'ordering' => '24',
+            ],
             // Settings
             [
                 'name' => 'Settings',
