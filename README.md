@@ -15,7 +15,7 @@ php artisan serve
 .
 ├── app
 │   ├── Http
-|   │   └── Cms
+|   │   └── Api
 │   ├── Livewire
 │   │   └── Cms
 |   │   └── Form
