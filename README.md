@@ -13,23 +13,20 @@ php artisan serve
 
 ```
 .
-├── app
-│   ├── Http
-|   │   └── Api
-│   ├── Livewire
-│   │   └── Cms
-|   │   └── Form
-|   |
+├── app/
+│   ├── Http/
+│   │   └── Api
+│   ├── Livewire/
+│   │   ├── Cms
+│   │   └── Form
 │   ├── Models
-|   ├── Providers
-|   └── Traits
-│
+│   ├── Providers
+│   └── Traits
 ├── config
 ├── database
-├── resources
-|   └── views
-|       └── components
-|       └── livewire
+├── resources/
+│   └── views/
+│       ├── components
+│       └── livewire
 └── routes
-
 ```

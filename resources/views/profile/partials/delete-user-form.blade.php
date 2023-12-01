@@ -1,5 +1,5 @@
 <section class="space-y-6" x-data x-init="
-    if({{ $errors->userDeletion->isNotEmpty() }}) {
+    if({{ $errors->userDeletion->isNotEmpty() ? 'true' : 'false' }}) {
         new bootstrap.Modal(document.getElementById('acc-modal')).show()
     }
 ">
@@ -51,9 +51,7 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <button class="btn btn-secondary" type="button" @click="$dispatch('closeModal', {
-                    modal: 'acc-modal'
-                })">
+                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">
                     {{ __('Cancel') }}
                 </button>
 
