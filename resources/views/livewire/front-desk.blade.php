@@ -68,14 +68,14 @@
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">Room Type</label>
-                    <input type="text" wire:model="form.roomType" class="form-control" placeholder="Room Type">
-                    <x-acc-input-error for="form.roomType" />
+                    <input type="text" wire:model="form.room_type" class="form-control" placeholder="Room Type" readonly>
+                    <x-acc-input-error for="form.room_type" />
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">No</label>
-                    <input type="text" wire:model="form.no" class="form-control" placeholder="No">
+                    <input type="text" wire:model="form.no" class="form-control" placeholder="No" readonly>
                     <x-acc-input-error for="form.no" />
                 </div>
             </div>
