@@ -138,6 +138,14 @@ class MenuSeeder extends Seeder
                 'ordering' => '35',
             ],
             [
+                'name' => 'Access Control',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'key',
+                'route' => 'cms.management.access-control',
+                'ordering' => '36',
+            ],
+            [
                 'name' => 'Privacy Policies',
                 'on' => 'cms',
                 'type' => 'item',
