@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\Cache;
 class TvController extends Controller
 {
     public function get() {
-        $result = Cache::get('tv');
+        $key = 'tv';
+        $result = Cache::get($key);
 
         if(empty($result)) {
             $result = $this->getFromCableNet();
-            Cache::put('tv', $result, 3600);
+            Cache::put($key, $result, 3600);
         }
 
         return $this->respondWithSuccess($result);
