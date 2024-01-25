@@ -22,6 +22,14 @@ class MenuSeeder extends Seeder
                 'route' => 'cms.dashboard',
                 'ordering' => '1',
             ],
+            [
+                'name' => 'Front Desk',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'book-open',
+                'route' => 'cms.front-desk',
+                'ordering' => '2',
+            ],
             // Master Data
             [
                 'name' => 'Master',

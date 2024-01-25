@@ -29,6 +29,7 @@
                                 <td>{{ $d->email }}</td>
                                 <td>{{ $d->website }}</td>
                                 <td>{{ $d->default_greeting }}</td>
+                                <td>{{ $d->is_active }}</td>
                                 <td>
                                     <button
                                         class="btn btn-primary"
@@ -105,6 +106,15 @@
                     <label class="form-label">Default Greeting</label>
                     <input type="text" wire:model="form.default_greeting" class="form-control" placeholder="Default Greeting">
                     <x-acc-input-error for="form.default_greeting" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Is Active</label>
+                    <select wire:model="form.is_active" class="form-control">
+                        <option value="">--Is Active--</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                    <x-acc-input-error for="form.is_active" />
                 </div>
             </div>
         </x-acc-form>

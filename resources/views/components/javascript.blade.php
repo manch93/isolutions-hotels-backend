@@ -30,7 +30,7 @@
 
         Livewire.on('alert', params => {
             Toast.fire({
-                icon: params.type,
+                icon: params.type ?? 'success',
                 title: params.message
             })
         })

@@ -32,6 +32,9 @@ class FormHotel extends Form
     #[Validate('nullable|string')]
     public $default_greeting;
 
+    #[Validate('required|boolean')]
+    public $is_active;
+
     // Get the data
     public function getDetail($id) {
         $data = Hotel::find($id);
@@ -44,6 +47,7 @@ class FormHotel extends Form
         $this->email = $data->email;
         $this->website = $data->website;
         $this->default_greeting = $data->default_greeting;
+        $this->is_active = $data->is_active;
     }
 
     // Save the data
@@ -69,6 +73,7 @@ class FormHotel extends Form
             'email',
             'website',
             'default_greeting',
+            'is_active',
         ]));
     }
 

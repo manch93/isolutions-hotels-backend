@@ -78,7 +78,7 @@
             </div>
             <div class="col-md-12">
                 <div class="mb-3">
-                    <label class="form-label">Hotel</label>
+                    <label class="form-label">Room Type</label>
                     <select class="form-control" wire:model="form.room_type_id">
                         <option value="">--Select Room Type--</option>
                         @foreach ($roomTypes as $rt)

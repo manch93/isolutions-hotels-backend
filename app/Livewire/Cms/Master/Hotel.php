@@ -44,8 +44,12 @@ class Hotel extends BaseComponent
                 'field' => 'website',
             ],
             [
-                'name' => 'Default greeting',
+                'name' => 'Default Greeting',
                 'field' => 'default_greeting',
+            ],
+            [
+                'name' => 'Is Active',
+                'field' => 'is_active',
             ],
         ],
         $isUpdate = false,
