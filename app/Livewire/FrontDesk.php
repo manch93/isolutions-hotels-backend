@@ -65,7 +65,8 @@ class FrontDesk extends BaseComponent
     }
 
     #[On('checkOut')]
-    public function checkOut() {
+    public function checkOut($id) {
+        $this->form->id = $id;
         $this->form->checkOut();
 
         $this->dispatch('closeModal', modal: 'acc-modal');
