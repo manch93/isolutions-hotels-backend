@@ -22,9 +22,12 @@ class RoomController extends Controller
 
     public function detail($id) {
         // Search by room number
-        $result = Room::with('roomType')->where('no', $id)->first();
-
-        return $this->respondWithSuccess($result);
+        try {
+            $result = Room::with('roomType')->where('no', $id)->firstOrFail();
+            return $this->respondWithSuccess($result);
+        } catch (\Exception $e) {
+            return $this->respondNotFound('Room not found');
+        }
     }
 
     public function getRoomData() {
