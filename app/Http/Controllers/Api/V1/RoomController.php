@@ -21,22 +21,12 @@ class RoomController extends Controller
     }
 
     public function detail($id) {
-        $key = "room_detail_{$id}";
-        $result = Cache::get($key);
-
-        if(empty($result)) {
-            $result = $this->getRoomDetailData($id);
-            Cache::put($key, $result, 3600);
-        }
+        $result = Room::with('roomType')->find($id);
 
         return $this->respondWithSuccess($result);
     }
 
     public function getRoomData() {
         return Room::with('roomType')->get();
-    }
-
-    public function getRoomDetailData($id) {
-        return Room::with('roomType')->where('id', $id)->get();
     }
 }
