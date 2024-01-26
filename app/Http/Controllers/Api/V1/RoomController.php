@@ -21,7 +21,8 @@ class RoomController extends Controller
     }
 
     public function detail($id) {
-        $result = Room::with('roomType')->find($id);
+        // Search by room number
+        $result = Room::with('roomType')->where('no', $id)->first();
 
         return $this->respondWithSuccess($result);
     }
