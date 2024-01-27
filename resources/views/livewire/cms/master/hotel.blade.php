@@ -187,7 +187,7 @@
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">Intro Video</label>
-                    <x-acc-image-preview :image="$intro_video" :form_image="$formProfile->intro_video"  />
+                    <x-acc-video-preview :video="$intro_video" :form_video="$formProfile->intro_video"  />
                     <input type="file" wire:model="intro_video" class="form-control">
                     <x-acc-input-error for="formProfile.intro_video" />
                 </div>
