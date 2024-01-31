@@ -30,27 +30,14 @@
                                 <td>{{ $d->website }}</td>
                                 <td>{{ $d->default_greeting }}</td>
                                 <td>{{ $d->is_active }}</td>
-                                <td>
+                                <x-acc-update-delete :id="$d->id">
                                     <button
                                         class="btn btn-primary"
                                         wire:click="getProfile({{ $d->id }})"
                                         @click="new bootstrap.Modal(document.getElementById('acc-profile')).show()">
                                         <i class="align-middle" data-feather="edit"></i> Profile
                                     </button>
-                                    <button
-                                        class="btn btn-warning"
-                                        wire:click="edit({{ $d->id }})"
-                                        @click="new bootstrap.Modal(document.getElementById('acc-modal')).show()"
-                                    >
-                                        <i class="align-middle" data-feather="edit"></i>
-                                    </button>
-                                    <button
-                                        class="btn btn-danger"
-                                        wire:click="confirmDelete({{ $d->id }})"
-                                    >
-                                        <i class="align-middle" data-feather="trash"></i>
-                                    </button>
-                                </td>
+                                </x-acc-update-delete>
                             </tr>
                         @empty
                             <tr>

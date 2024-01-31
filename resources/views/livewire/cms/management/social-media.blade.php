@@ -33,21 +33,7 @@
                                 <td>{{ $d['name'] }}</td>
                                 <td>{{ $d['icon'] }}</td>
                                 <td>{{ $d['url'] }}</td>
-                                <td>
-                                    <button
-                                        class="btn btn-warning"
-                                        wire:click="edit({{ $key }})"
-                                        @click="new bootstrap.Modal(document.getElementById('acc-modal')).show()"
-                                    >
-                                        <i class="align-middle" data-feather="edit"></i>
-                                    </button>
-                                    <button
-                                        class="btn btn-danger"
-                                        wire:click="confirmDelete({{ $key }})"
-                                    >
-                                        <i class="align-middle" data-feather="trash"></i>
-                                    </button>
-                                </td>
+                                <x-acc-update-delete :id="$d->id" />
                             </tr>
                         @empty
                             <tr>

@@ -28,21 +28,7 @@
                                 <td>{!! $d->guest_name ?? '<span class="text-danger">Empty</span>' !!}</td>
                                 <td>{{ $d->greeting }}</td>
                                 <td>{{ $d->device_name }}</td>
-                                <td>
-                                    <button
-                                        class="btn btn-warning"
-                                        wire:click="edit({{ $d->id }})"
-                                        @click="new bootstrap.Modal(document.getElementById('acc-modal')).show()"
-                                    >
-                                        <i class="align-middle" data-feather="edit"></i>
-                                    </button>
-                                    <button
-                                        class="btn btn-danger"
-                                        wire:click="confirmDelete({{ $d->id }})"
-                                    >
-                                        <i class="align-middle" data-feather="trash"></i>
-                                    </button>
-                                </td>
+                                <x-acc-update-delete :id="$d->id" />
                             </tr>
                         @empty
                             <tr>
