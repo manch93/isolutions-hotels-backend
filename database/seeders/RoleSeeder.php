@@ -14,7 +14,8 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         // Hotel app
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'receptionist']);
+        Role::findOrCreate('admin', 'web');
+        Role::findOrCreate('receptionist', 'web');
+        Role::findOrCreate('admin_hotel', 'web');
     }
 }

@@ -12,7 +12,6 @@ class MenuSeeder extends Seeder
      */
     public function run(): void
     {
-        Menu::truncate();
         Menu::insert([
             [
                 'name' => 'Dashboard',

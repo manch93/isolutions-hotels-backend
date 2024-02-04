@@ -12,7 +12,6 @@ class SettingSeeder extends Seeder
      */
     public function run(): void
     {
-        Setting::truncate();
         Setting::create([
             'name' => 'Dulbin Core',
             'logo' => 'logo.png',
