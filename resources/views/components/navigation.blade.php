@@ -7,22 +7,24 @@
 
             <ul class="sidebar-nav">
                 @foreach($menus as $menu)
-                    <li class="sidebar-{{ $menu->type }}">
-                        @if($menu->type != 'header')
-                        <a class="sidebar-link" href="{{
-                            \Illuminate\Support\Facades\Route::has($menu->route)
-                            ? route($menu->route)
-                            : '#'
-                        }}" wire:navigate>
-                        @endif
-                            @if($menu->type != 'header')
-                                <i class="align-middle" data-feather="{{ $menu->icon }}"></i>
-                            @endif
-                            <span class="align-middle">{{ $menu->name }}</span>
-                        @if($menu->type != 'header')
-                        </a>
-                        @endif
-                    </li>
+                    @if($menu->type != 'header')
+                        @can('view.'.$menu->route)
+                            <li class="sidebar-{{ $menu->type }}">
+                                <a class="sidebar-link" href="{{
+                                    \Illuminate\Support\Facades\Route::has($menu->route)
+                                    ? route($menu->route)
+                                    : '#'
+                                }}" wire:navigate>
+                                    @if($menu->type != 'header')
+                                        <i class="align-middle" data-feather="{{ $menu->icon }}"></i>
+                                    @endif
+                                    <span class="align-middle">{{ $menu->name }}</span>
+                                </a>
+                            </li>
+                        @endcan
+                    @else
+                        <li class="sidebar-header">{{ $menu->name }}</li>
+                    @endif
                 @endforeach
             </ul>
         </div>

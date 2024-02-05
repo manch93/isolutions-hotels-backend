@@ -69,7 +69,10 @@ class RoleSeeder extends Seeder
                     $permission = $type . '.' . $route;
                     $permission = Permission::findOrCreate($permission, 'web');
 
-                    $admin->givePermissionTo($permission);
+                    // Give admin permission
+                    if(!$route == 'cms.front-desk') {
+                        $admin->givePermissionTo($permission);
+                    }
 
                     // Give admin hotel permission
                     if(in_array($route, $this->adminHotelPermission)) {
