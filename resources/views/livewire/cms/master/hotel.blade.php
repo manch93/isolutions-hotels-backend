@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <x-acc-header />
+                <x-acc-header :$originRoute />
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -30,7 +30,7 @@
                                 <td>{{ $d->website }}</td>
                                 <td>{{ $d->default_greeting }}</td>
                                 <td>{{ $d->is_active }}</td>
-                                <x-acc-update-delete :id="$d->id">
+                                <x-acc-update-delete :id="$d->id" :$originRoute>
                                     <button
                                         class="btn btn-primary"
                                         wire:click="getProfile({{ $d->id }})"

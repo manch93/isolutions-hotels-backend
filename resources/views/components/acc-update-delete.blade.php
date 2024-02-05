@@ -3,12 +3,13 @@
     'modal' => 'acc-modal',
     'edit' => true,
     'delete' => true,
+    'originRoute' => '',
 ])
 
 <td>
     {{ $slot ?? '' }}
     @if($edit)
-        @can('update.' . request()->route()->getName())
+        @can('update.' . $originRoute)
             <button
                 class="btn btn-warning"
                 wire:click="edit({{ $id }})"
@@ -19,7 +20,7 @@
         @endcan
     @endif
     @if($delete)
-        @can('delete.' . request()->route()->getName())
+        @can('delete.' . $originRoute)
             <button
                 class="btn btn-danger"
                 wire:click="confirmDelete({{ $id }})"

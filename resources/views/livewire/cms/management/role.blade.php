@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <x-acc-header />
+                <x-acc-header :$originRoute />
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -23,7 +23,7 @@
                         @forelse($get as $d)
                             <tr>
                                 <td>{{ $d->name }}</td>
-                                <x-acc-update-delete :id="$d->id">
+                                <x-acc-update-delete :id="$d->id" :$originRoute>
                                     <a
                                         href="{{ route('cms.management.role-permission', ['role' => $d->name]) }}"
                                         class="btn btn-primary"

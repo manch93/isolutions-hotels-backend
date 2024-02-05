@@ -19,4 +19,11 @@ class BaseComponent extends Component {
         WithEditAction,
         WithDeleteAction,
         WithSaveAction;
+
+    public $originRoute = '';
+
+    public function __construct()
+    {
+        $this->originRoute = request()->route()->getName();
+    }
 }

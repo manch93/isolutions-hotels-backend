@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <x-acc-header>
+                <x-acc-header :$originRoute>
                     <div class="col-md-6">
                         <div class="mt-3">
                             <label class="form-label fw-bold">Menu On</label>
@@ -35,10 +35,10 @@
                                 <td>{{ $d->name }}</td>
                                 <td>{{ $d->on }}</td>
                                 <td>{{ $d->type }}</td>
-                                <td>{{ $d->icon }}</td>
+                                <td>{{ $d->icon ?? '' }}</td>
                                 <td>{{ $d->route }}</td>
                                 <td>{{ $d->ordering }}</td>
-                                <x-acc-update-delete :id="$d->id" />
+                                <x-acc-update-delete :id="$d->id" :$originRoute />
                             </tr>
                         @empty
                             <tr>

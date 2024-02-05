@@ -1,5 +1,8 @@
+@props([
+    'route' => '',
+])
 <div x-data>
-    @can('create.' . request()->route()->getName())
+    @can('create.' . $route)
         <div class="float-end">
             <button
                 class="btn btn-success"

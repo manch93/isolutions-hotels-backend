@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <x-acc-header />
+                <x-acc-header :$originRoute />
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -26,7 +26,7 @@
                                 <td>{{ $d->name }}</td>
                                 <td>{{ $d->description }}</td>
                                 <td>{{ $d->image }}</td>
-                                <x-acc-update-delete :id="$d->id" />
+                                <x-acc-update-delete :id="$d->id" :$originRoute />
                             </tr>
                         @empty
                             <tr>
