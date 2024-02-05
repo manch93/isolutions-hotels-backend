@@ -39,13 +39,13 @@ class RolePermission extends BaseComponent
     public function mount($role = null) {
         $this->role = Role::findByName($role);
         $this->title = 'Role Permissions - ' . ucfirst($this->role->name);
+
+        $this->getPermission();
+        // dd($this->permissions);
     }
 
     public function render()
     {
-        $this->getPermission();
-        // dd($this->permissions);
-
         return view('livewire.cms.management.role-permission')->title($this->title);
     }
 
