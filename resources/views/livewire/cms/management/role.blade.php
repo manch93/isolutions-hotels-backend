@@ -23,7 +23,15 @@
                         @forelse($get as $d)
                             <tr>
                                 <td>{{ $d->name }}</td>
-                                <x-acc-update-delete :id="$d->id" />
+                                <x-acc-update-delete :id="$d->id">
+                                    <a
+                                        href="{{ route('cms.management.role-permission', ['role' => $d->name]) }}"
+                                        class="btn btn-primary"
+                                        wire:navigate
+                                    >
+                                        <i class="align-middle" data-feather="lock"></i> Permission
+                                    </a>
+                                </x-acc-update-delete>
                             </tr>
                         @empty
                             <tr>

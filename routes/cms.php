@@ -10,6 +10,9 @@ Route::group([
 
     Route::get('/', App\Livewire\Dashboard::class)->name('dashboard');
 
+    // Front Desk
+    Route::get('/front-desk', App\Livewire\FrontDesk::class)->name('front-desk');
+
     // Master Data
     Route::get('/master/hotel', App\Livewire\Cms\Master\Hotel::class)->name('master.hotel');
     Route::get('/master/room-type', App\Livewire\Cms\Master\RoomType::class)->name('master.room-type');
@@ -25,6 +28,7 @@ Route::group([
     // Management
     Route::get('/management/menu', App\Livewire\Cms\Management\Menu::class)->name('management.menu');
     Route::get('/management/role', App\Livewire\Cms\Management\Role::class)->name('management.role');
+    Route::get('/management/role-permission/{role?}', App\Livewire\Cms\Management\RolePermission::class)->name('management.role-permission');
     Route::get('/management/user', App\Livewire\Cms\Management\User::class)->name('management.user');
     Route::get('/management/website', App\Livewire\Cms\Management\Setting::class)->name('management.setting');
     Route::get('/management/access-control', App\Livewire\Cms\Management\AccessControl::class)->name('management.access-control');
