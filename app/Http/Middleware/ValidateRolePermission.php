@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
 
 class ValidateRolePermission
@@ -15,10 +16,16 @@ class ValidateRolePermission
         $permission = 'view.' . $route;
 
         if(!Auth::user()->can($permission)) {
-            throw new HttpResponseException(response()->json([
-                'code' => 403,
-                'message' => 'You do not have permission.'
-            ], 403));
+            if($request->is('api/*')) {
+                throw new HttpResponseException(response()->json([
+                    'code' => 403,
+                    'message' => 'You do not have permission.'
+                ], 403));
+            } else {
+                // redirect to dashboard
+                return redirect()->route('cms.dashboard');
+            }
+
         }
 
         return $next($request);
