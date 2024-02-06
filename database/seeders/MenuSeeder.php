@@ -72,12 +72,20 @@ class MenuSeeder extends Seeder
                 'ordering' => '20',
             ],
             [
+                'name' => 'Policy',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'book',
+                'route' => 'cms.hotel.policy',
+                'ordering' => '21',
+            ],
+            [
                 'name' => 'Facility',
                 'on' => 'cms',
                 'type' => 'item',
                 'icon' => 'archive',
                 'route' => 'cms.hotel.facility',
-                'ordering' => '21',
+                'ordering' => '22',
             ],
             [
                 'name' => 'Around',
@@ -85,7 +93,7 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'globe',
                 'route' => 'cms.hotel.around',
-                'ordering' => '22',
+                'ordering' => '23',
             ],
             [
                 'name' => 'Promo',
@@ -93,7 +101,7 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'percent',
                 'route' => 'cms.hotel.promo',
-                'ordering' => '23',
+                'ordering' => '24',
             ],
             [
                 'name' => 'Food',
@@ -101,7 +109,7 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'book-open',
                 'route' => 'cms.hotel.food',
-                'ordering' => '24',
+                'ordering' => '25',
             ],
             // Settings
             [

@@ -27,6 +27,8 @@ class AuthApiKey
 
         Auth::login($user);
 
+        $request->attributes->add(['user' => $user]);
+
         return $next($request);
     }
 
