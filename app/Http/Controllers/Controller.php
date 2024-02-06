@@ -5,10 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    public $hotel_id = 0;
+
+    public function __construct()
+    {
+        dd(Auth::user());
+        $this->hotel_id = auth()->user()?->userHotel?->hotel_id;
+    }
 
     public function respondWithSuccess($data = null, $message = 'Success', $code = 200)
     {

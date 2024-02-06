@@ -71,7 +71,7 @@ class RoleSeeder extends Seeder
                     $permission = Permission::findOrCreate($permission, 'web');
 
                     // Give admin permission
-                    if(!$route == 'cms.front-desk') {
+                    if($route != 'cms.front-desk') {
                         $admin->givePermissionTo($permission);
                     }
 
