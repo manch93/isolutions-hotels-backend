@@ -3,6 +3,8 @@
 namespace App\Livewire\Cms\Management;
 
 use App\Livewire\Forms\Cms\Management\FormUser;
+use Spatie\Permission\Models\Role;
+use App\Models\Hotel;
 use App\Models\User as UserModel;
 use BaseComponent;
 
@@ -24,6 +26,10 @@ class User extends BaseComponent
                 'name' => 'Role',
                 'field' => 'roles.name',
             ],
+            [
+                'name' => 'Hotel',
+                'field' => 'hotels.name',
+            ],
         ],
         $isUpdate = false,
         $search = '',
@@ -31,11 +37,21 @@ class User extends BaseComponent
         $orderBy = 'users.name',
         $order = 'asc';
 
+    public $roles = [];
+    public $hotels = [];
+
+    public function mount() {
+        $this->roles = Role::all();
+        $this->hotels = Hotel::all();
+    }
+
     public function render()
     {
         $model = UserModel::join('model_has_roles', 'model_has_roles.model_id', '=', 'users.id')
             ->join('roles', 'roles.id', '=', 'model_has_roles.role_id')
-            ->select('users.*', 'roles.name as role');
+            ->leftJoin('user_has_hotel', 'user_has_hotel.user_id', '=', 'users.id')
+            ->leftJoin('hotels', 'hotels.id', '=', 'user_has_hotel.hotel_id')
+            ->select('users.*', 'roles.name as role', 'hotels.name as hotel');
 
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,

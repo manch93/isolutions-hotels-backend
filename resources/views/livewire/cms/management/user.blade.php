@@ -25,6 +25,7 @@
                                 <td>{{ $d->name }}</td>
                                 <td>{{ $d->email }}</td>
                                 <td>{{ $d->role }}</td>
+                                <td>{{ $d->hotel ?? '-' }}</td>
                                 <x-acc-update-delete :id="$d->id" :$originRoute />
                             </tr>
                         @empty
@@ -47,6 +48,32 @@
     {{-- Create / Update Modal --}}
     <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}">
         <x-acc-form submit="save">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <select wire:model.live="form.role" class="form-control">
+                        <option value="">--Select Role--</option>
+                        @foreach($roles as $role)
+                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                    <x-acc-input-error for="form.name" />
+                </div>
+            </div>
+            @if($form->role == 'admin_hotel')
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Hotel</label>
+                    <select class="form-control" wire:model="form.hotel">
+                        <option value="">--Select Hotel--</option>
+                        @foreach ($hotels as $h)
+                            <option value="{{ $h->id }}">{{ $h->name }}</option>
+                        @endforeach
+                    </select>
+                    <x-acc-input-error for="form.hotel_id" />
+                </div>
+            </div>
+            @endif
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">Name</label>

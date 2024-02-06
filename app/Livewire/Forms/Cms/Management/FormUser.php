@@ -12,6 +12,9 @@ class FormUser extends Form
     public $id = '';
 
     #[Validate('required')]
+    public $role = '';
+
+    #[Validate('required')]
     public $name = '';
 
     #[Validate('required|email')]
@@ -20,13 +23,18 @@ class FormUser extends Form
     #[Validate('required')]
     public $password = '';
 
+    #[Validate('nullable|numeric')]
+    public $hotel = '';
+
     // Get the data
     public function getDetail($id) {
-        $data = User::find($id);
+        $data = User::with('userHotel')->find($id);
 
         $this->id = $id;
         $this->name = $data->name;
         $this->email = $data->email;
+        $this->role = $data->getRoleNames()[0];
+        $this->hotel = $data->userHotel?->hotel_id;
     }
 
     // Save the data
@@ -50,12 +58,36 @@ class FormUser extends Form
             'password',
         ]));
 
-        $user->assignRole('admin');
+        // Assign new role
+        $user->assignRole($this->role);
+        // Assign new hotel
+        $user->userHotel()->create([
+            'user_id' => $user->id,
+            'hotel_id' => $this->hotel,
+        ]);
     }
 
     // Update data
     public function update() {
-        User::find($this->id)->update($this->all());
+        $user = User::find($this->id);
+
+        // Remove all role
+        $user->syncRoles([]);
+
+        // Assign new role
+        $user->assignRole($this->role);
+
+        // Assign new hotel
+        $user->userHotel()->delete();
+        $user->userHotel()->create([
+            'user_id' => $user->id,
+            'hotel_id' => $this->hotel,
+        ]);
+        $user->update([
+            'name',
+            'email',
+            'password',
+        ]);
     }
 
     // Delete data

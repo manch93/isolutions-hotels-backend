@@ -30,7 +30,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function courses() {
-        return $this->hasManyThrough(Course::class, TeacherCourse::class);
+    public function userHotel() {
+        return $this->hasOne(UserHasHotel::class);
     }
 }
