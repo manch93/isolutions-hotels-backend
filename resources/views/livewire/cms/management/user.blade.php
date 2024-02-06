@@ -60,19 +60,19 @@
                     <x-acc-input-error for="form.name" />
                 </div>
             </div>
-            @if($form->role == 'admin_hotel')
-            <div class="col-md-12">
-                <div class="mb-3">
-                    <label class="form-label">Hotel</label>
-                    <select class="form-control" wire:model="form.hotel">
-                        <option value="">--Select Hotel--</option>
-                        @foreach ($hotels as $h)
-                            <option value="{{ $h->id }}">{{ $h->name }}</option>
-                        @endforeach
-                    </select>
-                    <x-acc-input-error for="form.hotel_id" />
+            @if($form->role == 'admin_hotel' || $form->role == 'receptionist')
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">Hotel</label>
+                        <select class="form-control" wire:model="form.hotel">
+                            <option value="">--Select Hotel--</option>
+                            @foreach ($hotels as $h)
+                                <option value="{{ $h->id }}">{{ $h->name }}</option>
+                            @endforeach
+                        </select>
+                        <x-acc-input-error for="form.hotel_id" />
+                    </div>
                 </div>
-            </div>
             @endif
             <div class="col-md-12">
                 <div class="mb-3">

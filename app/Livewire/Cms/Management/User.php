@@ -43,10 +43,11 @@ class User extends BaseComponent
     public function mount() {
         if(auth()->user()->hasRole('admin_hotel')) {
             $this->roles = Role::where('name', 'receptionist')->get();
+            $this->hotels = Hotel::where('id', $this->hotel_id)->get();
         } else {
             $this->roles = Role::all();
+            $this->hotels = Hotel::all();
         }
-        $this->hotels = Hotel::all();
     }
 
     public function render()
