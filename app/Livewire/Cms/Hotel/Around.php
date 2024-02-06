@@ -55,6 +55,11 @@ class Around extends BaseComponent
         $model = ModelsAround::join('hotels', 'hotels.id', '=', 'arounds.hotel_id')
             ->select('arounds.*', 'hotels.name as hotel');
 
+        // If user not admin
+        if(!auth()->user()->hasRole('admin')) {
+            $model = $model->where('arounds.hotel_id', $this->hotel_id);
+        }
+
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
             'order' => $this->order,

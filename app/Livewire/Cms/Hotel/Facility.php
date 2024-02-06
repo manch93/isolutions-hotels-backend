@@ -55,6 +55,11 @@ class Facility extends BaseComponent
         $model = HotelFacility::join('hotels', 'hotels.id', '=', 'hotel_facilities.hotel_id')
             ->select('hotel_facilities.*', 'hotels.name as hotel');
 
+        // If user not admin
+        if(!auth()->user()->hasRole('admin')) {
+            $model = $model->where('hotel_facilities.hotel_id', $this->hotel_id);
+        }
+
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
             'order' => $this->order,

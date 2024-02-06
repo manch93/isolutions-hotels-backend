@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         // If not admin redirect to
-        if(auth()->user()->roles->pluck('name')[0] !== 'admin') return redirect()->intended(RouteServiceProvider::DEFAULT);
+        // if(auth()->user()->roles->pluck('name')[0] !== 'admin') return redirect()->intended(RouteServiceProvider::DEFAULT);
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

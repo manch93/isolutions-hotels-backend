@@ -48,6 +48,7 @@ class RoleSeeder extends Seeder
         'cms.hotel.food',
         'cms.hotel.policy',
         'cms.management.user',
+        'cms.management.access-control',
     ];
 
     public function run(): void

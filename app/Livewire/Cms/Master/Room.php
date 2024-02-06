@@ -62,6 +62,11 @@ class Room extends BaseComponent
             ->join('room_types', 'room_types.id', '=', 'rooms.room_type_id')
             ->select('rooms.*', 'hotels.name as hotel', 'room_types.name as room_type');
 
+        // If user not admin
+        if(!auth()->user()->hasRole('admin')) {
+            $model = $model->where('rooms.hotel_id', $this->hotel_id);
+        }
+
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
             'order' => $this->order,

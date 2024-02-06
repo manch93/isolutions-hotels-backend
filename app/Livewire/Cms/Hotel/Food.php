@@ -59,6 +59,11 @@ class Food extends BaseComponent
         $model = ModelsFood::join('hotels', 'hotels.id', '=', 'foods.hotel_id')
             ->select('foods.*', 'hotels.name as hotel');
 
+        // If user not admin
+        if(!auth()->user()->hasRole('admin')) {
+            $model = $model->where('foods.hotel_id', $this->hotel_id);
+        }
+
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
             'order' => $this->order,

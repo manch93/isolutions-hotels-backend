@@ -37,6 +37,7 @@ class FrontDesk extends BaseComponent
         $model = Room::join('hotels', 'hotels.id', '=', 'rooms.hotel_id')
             ->join('room_types', 'room_types.id', '=', 'rooms.room_type_id')
             ->select('rooms.*', 'hotels.name as hotel', 'room_types.name as room_type')
+            ->where('hotels.id', $this->hotel_id)
             ->where('hotels.is_active', 1);
 
         $get = $this->getDataWithFilter($model, [

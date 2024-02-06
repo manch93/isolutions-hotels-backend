@@ -9,6 +9,7 @@ use App\Models\Menu;
 use App\Models\RoomType;
 use App\Models\Room;
 use App\Models\User;
+use App\Models\UserHasHotel;
 use Illuminate\Database\Seeder;
 
 class TruncateTable extends Seeder
@@ -19,6 +20,7 @@ class TruncateTable extends Seeder
     public function run(): void
     {
         Setting::truncate();
+        UserHasHotel::truncate();
         User::truncate();
         Menu::truncate();
         RoomType::truncate();

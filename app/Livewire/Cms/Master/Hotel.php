@@ -60,7 +60,14 @@ class Hotel extends BaseComponent
 
     public function render()
     {
-        $get = $this->getDataWithFilter(new ModelsHotel, [
+        $model = new ModelsHotel;
+
+        // If user not admin
+        if(!auth()->user()->hasRole('admin')) {
+            $model = $model->where('id', $this->hotel_id);
+        }
+
+        $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
             'order' => $this->order,
             'paginate' => $this->paginate,

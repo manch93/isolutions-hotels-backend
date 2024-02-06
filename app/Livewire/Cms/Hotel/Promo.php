@@ -55,6 +55,11 @@ class Promo extends BaseComponent
         $model = ModelsPromo::join('hotels', 'hotels.id', '=', 'promos.hotel_id')
             ->select('promos.*', 'hotels.name as hotel');
 
+        // If user not admin
+        if(!auth()->user()->hasRole('admin')) {
+            $model = $model->where('promos.hotel_id', $this->hotel_id);
+        }
+
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
             'order' => $this->order,

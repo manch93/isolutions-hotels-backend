@@ -43,6 +43,11 @@ class Policy extends BaseComponent
         $model = ModelsPolicy::join('hotels', 'hotels.id', '=', 'policies.hotel_id')
             ->select('policies.*', 'hotels.name as hotel');
 
+        // If user not admin
+        if(!auth()->user()->hasRole('admin')) {
+            $model = $model->where('policies.hotel_id', $this->hotel_id);
+        }
+
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
             'order' => $this->order,

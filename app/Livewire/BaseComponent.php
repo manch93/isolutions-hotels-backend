@@ -21,9 +21,11 @@ class BaseComponent extends Component {
         WithSaveAction;
 
     public $originRoute = '';
+    public $hotel_id = '';
 
     public function __construct()
     {
         $this->originRoute = request()->route()->getName();
+        $this->hotel_id = auth()->user()->userHotel->hotel_id;
     }
 }
