@@ -15,7 +15,6 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        dd(Auth::user());
         $this->hotel_id = auth()->user()?->userHotel?->hotel_id;
     }
 
