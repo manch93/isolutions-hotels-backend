@@ -22,7 +22,7 @@
                                 </a>
                             </li>
                         @endcan
-                    @else
+                    @elseif(!auth()->user()->hasRole('receptionist'))
                         <li class="sidebar-header">{{ $menu->name }}</li>
                     @endif
                 @endforeach

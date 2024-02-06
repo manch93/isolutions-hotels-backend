@@ -77,7 +77,14 @@ class RoleSeeder extends Seeder
 
                     // Give admin hotel permission
                     if(in_array($route, $this->adminHotelPermission)) {
-                        $adminHotel->givePermissionTo($permission);
+                        if($route == 'cms.master.hotel' ) {
+                            // Where menu hotel, give permission only to view and edit
+                            if($type == 'view' || $type == 'update') {
+                                $adminHotel->givePermissionTo($permission);
+                            }
+                        } else {
+                            $adminHotel->givePermissionTo($permission);
+                        }
                     }
 
                     // Give receptionist permission

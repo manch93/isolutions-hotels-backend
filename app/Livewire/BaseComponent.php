@@ -26,6 +26,6 @@ class BaseComponent extends Component {
     public function __construct()
     {
         $this->originRoute = request()->route()->getName();
-        $this->hotel_id = auth()->user()->userHotel->hotel_id;
+        $this->hotel_id = auth()->user()->userHotel?->hotel_id;
     }
 }
