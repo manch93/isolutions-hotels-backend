@@ -16,6 +16,10 @@ class RoomController extends Controller
         return $this->respondWithSuccess(RoomType::all());
     }
 
+    public function typeDetail($id) {
+        return $this->respondWithSuccess(RoomType::find($id));
+    }
+
     public function detail($id) {
         // Search by room number
         try {

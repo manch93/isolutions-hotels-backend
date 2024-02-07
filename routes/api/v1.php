@@ -15,5 +15,6 @@ Route::group([
     Route::get('/around', [App\Http\Controllers\Api\V1\AroundController::class, 'get'])->name('around');
     Route::get('/room', [App\Http\Controllers\Api\V1\RoomController::class, 'get'])->name('room');
     Route::get('/room-type', [App\Http\Controllers\Api\V1\RoomController::class, 'type'])->name('room.type');
+    Route::get('/room-type/{id}', [App\Http\Controllers\Api\V1\RoomController::class, 'typeDetail'])->name('room.type.detail');
     Route::get('/room/{id}', [App\Http\Controllers\Api\V1\RoomController::class, 'detail'])->name('room.detail');
 });
