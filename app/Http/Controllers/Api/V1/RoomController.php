@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Room;
+use App\Models\RoomType;
 use App\Http\Controllers\Controller;
 
 class RoomController extends Controller
 {
     public function get() {
         return $this->respondWithSuccess(Room::with('roomType')->where('hotel_id', $this->getHotel())->get());
+    }
+
+    public function type() {
+        return $this->respondWithSuccess(RoomType::all());
     }
 
     public function detail($id) {
