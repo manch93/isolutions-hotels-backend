@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class HotelController extends Controller
 {
     public function get() {
-        return $this->respondWithSuccess(Hotel::with('profile')->where('id', $this->getHotel())->get());
+        return $this->respondWithSuccess(Hotel::with('profile')->where('id', $this->getHotel())->first());
     }
 
     public function facility() {
