@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Hotel;
 use App\Models\HotelFacility;
+use App\Models\M3uChannel;
+use App\Models\M3uSource;
 use App\Models\Setting;
 use App\Models\Menu;
 use App\Models\RoomType;
@@ -27,5 +29,7 @@ class TruncateTable extends Seeder
         Room::truncate();
         HotelFacility::truncate();
         Hotel::truncate();
+        M3uSource::truncate();
+        M3uChannel::truncate();
     }
 }

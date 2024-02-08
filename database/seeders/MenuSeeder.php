@@ -126,6 +126,14 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'menu',
                 'route' => 'cms.management.menu',
+                'ordering' => '31',
+            ],
+            [
+                'name' => 'M3U Source',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'list',
+                'route' => 'cms.management.m3u-channel',
                 'ordering' => '32',
             ],
             [

@@ -27,6 +27,8 @@ Route::group([
 
     // Management
     Route::get('/management/menu', App\Livewire\Cms\Management\Menu::class)->name('management.menu');
+    Route::get('/management/m3u-channel', App\Livewire\Cms\Management\M3uSource::class)->name('management.m3u-channel');
+    Route::get('/management/m3u-channel/{source?}', App\Livewire\Cms\Management\M3uSourceChannel::class)->name('management.m3u-channel.detail');
     Route::get('/management/role', App\Livewire\Cms\Management\Role::class)->name('management.role');
     Route::get('/management/role-permission/{role?}', App\Livewire\Cms\Management\RolePermission::class)->name('management.role-permission');
     Route::get('/management/user', App\Livewire\Cms\Management\User::class)->name('management.user');

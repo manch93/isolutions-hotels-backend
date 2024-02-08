@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('url');
-            $table->string('type')->default('get');
+            $table->string('type')->default('GET');
             $table->text('headers')->nullable();
             $table->text('body')->nullable();
             $table->boolean('active')->default(true);
