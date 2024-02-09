@@ -24,7 +24,7 @@ class TruncateTable extends Seeder
         Setting::truncate();
         // UserHasHotel::truncate();
         // User::truncate();
-        // Menu::truncate();
+        Menu::truncate();
         // RoomType::truncate();
         // Room::truncate();
         // HotelFacility::truncate();
