@@ -22,13 +22,13 @@ class TruncateTable extends Seeder
     public function run(): void
     {
         Setting::truncate();
-        UserHasHotel::truncate();
-        User::truncate();
-        Menu::truncate();
-        RoomType::truncate();
-        Room::truncate();
-        HotelFacility::truncate();
-        Hotel::truncate();
+        // UserHasHotel::truncate();
+        // User::truncate();
+        // Menu::truncate();
+        // RoomType::truncate();
+        // Room::truncate();
+        // HotelFacility::truncate();
+        // Hotel::truncate();
         M3uSource::truncate();
         M3uChannel::truncate();
     }
