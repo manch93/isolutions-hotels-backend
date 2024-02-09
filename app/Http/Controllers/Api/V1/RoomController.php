@@ -13,7 +13,7 @@ class RoomController extends Controller
     }
 
     public function type() {
-        return $this->respondWithSuccess(RoomType::all());
+        return $this->respondWithSuccess(RoomType::where('hotel_id', $this->getHotel())->get());
     }
 
     public function typeDetail($id) {
