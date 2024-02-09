@@ -29,6 +29,7 @@
                                 <td>{{ $d->email }}</td>
                                 <td>{{ $d->website }}</td>
                                 <td>{{ $d->default_greeting }}</td>
+                                <td>{{ $d->password_setting }}</td>
                                 <td>{{ $d->is_active }}</td>
                                 <x-acc-update-delete :id="$d->id" :$originRoute>
                                     <button
@@ -93,6 +94,11 @@
                     <label class="form-label">Default Greeting</label>
                     <input type="text" wire:model="form.default_greeting" class="form-control" placeholder="Default Greeting">
                     <x-acc-input-error for="form.default_greeting" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password Setting</label>
+                    <input type="text" wire:model="form.password_setting" class="form-control" placeholder="Password Setting">
+                    <x-acc-input-error for="form.password_setting" />
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Is Active</label>

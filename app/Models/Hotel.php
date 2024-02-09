@@ -17,6 +17,7 @@ class Hotel extends Model
         'email',
         'website',
         'is_active',
+        'password_setting',
         'default_greeting',
     ];
 

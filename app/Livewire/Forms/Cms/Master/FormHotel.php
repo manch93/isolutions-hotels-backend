@@ -32,6 +32,9 @@ class FormHotel extends Form
     #[Validate('nullable|string')]
     public $default_greeting;
 
+    #[Validate('required|string')]
+    public $password_setting;
+
     #[Validate('required|boolean')]
     public $is_active;
 
@@ -47,6 +50,7 @@ class FormHotel extends Form
         $this->email = $data->email;
         $this->website = $data->website;
         $this->default_greeting = $data->default_greeting;
+        $this->password_setting = $data->password_setting;
         $this->is_active = $data->is_active;
     }
 
@@ -73,6 +77,7 @@ class FormHotel extends Form
             'email',
             'website',
             'default_greeting',
+            'password_setting',
             'is_active',
         ]));
     }

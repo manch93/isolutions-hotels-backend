@@ -48,6 +48,10 @@ class Hotel extends BaseComponent
                 'field' => 'default_greeting',
             ],
             [
+                'name' => 'Password Setting',
+                'field' => 'password_setting',
+            ],
+            [
                 'name' => 'Is Active',
                 'field' => 'is_active',
             ],
