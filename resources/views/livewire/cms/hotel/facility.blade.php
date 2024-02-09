@@ -48,18 +48,20 @@
     {{-- Create / Update Modal --}}
     <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}">
         <x-acc-form submit="saveWithUpload">
-            <div class="col-md-12">
-                <div class="mb-3">
-                    <label class="form-label">Hotel</label>
-                    <select class="form-control" wire:model="form.hotel_id">
-                        <option value="">--Select Hotel--</option>
-                        @foreach ($hotels as $h)
-                            <option value="{{ $h->id }}">{{ $h->name }}</option>
-                        @endforeach
-                    </select>
-                    <x-acc-input-error for="form.hotel_id" />
+            @if(auth()->user()->hasRole('admin'))
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">Hotel</label>
+                        <select class="form-control" wire:model="form.hotel_id">
+                            <option value="">--Select Hotel--</option>
+                            @foreach ($hotels as $h)
+                                <option value="{{ $h->id }}">{{ $h->name }}</option>
+                            @endforeach
+                        </select>
+                        <x-acc-input-error for="form.hotel_id" />
+                    </div>
                 </div>
-            </div>
+            @endif
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">Name</label>

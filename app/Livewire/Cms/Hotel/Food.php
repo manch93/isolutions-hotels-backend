@@ -79,6 +79,9 @@ class Food extends BaseComponent
     }
 
     public function saveWithUpload() {
+        if($this->hotel_id) {
+            $this->form->hotel_id = $this->hotel_id;
+        }
         $this->form->image = $this->image;
         $this->image = null;
         $this->save();

@@ -50,6 +50,10 @@ class Room extends BaseComponent
 
     public function mount() {
         $this->hotels = Hotel::all();
+
+        if($this->hotel_id) {
+            $this->roomTypes = RoomType::where('hotel_id', $this->hotel_id)->get();
+        }
     }
 
     public function getRoomType() {
@@ -79,5 +83,12 @@ class Room extends BaseComponent
         }
 
         return view('livewire.cms.master.room', compact('get'))->title($this->title);
+    }
+
+    public function customSave() {
+        if($this->hotel_id) {
+            $this->form->hotel_id = $this->hotel_id;
+        }
+        $this->save();
     }
 }

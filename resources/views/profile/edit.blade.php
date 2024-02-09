@@ -15,9 +15,9 @@
                     <div class="col-md-12">
                         @include('profile.partials.update-password-form')
                     </div>
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         @include('profile.partials.delete-user-form')
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

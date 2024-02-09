@@ -61,4 +61,11 @@ class Policy extends BaseComponent
 
         return view('livewire.cms.hotel.policy', compact('get'))->title($this->title);
     }
+
+    public function customSave() {
+        if($this->hotel_id) {
+            $this->form->hotel_id = $this->hotel_id;
+        }
+        $this->save();
+    }
 }
