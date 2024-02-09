@@ -110,9 +110,12 @@ class M3uSourceChannel extends BaseComponent
         $headers = $this->source->headers;
         if(!empty($headers)) {
             $headers = json_decode($headers, true);
+            $fix_headers = [];
             foreach ($headers as $key => $value) {
-                curl_setopt($ch, CURLOPT_HTTPHEADER, array($key . ': ' . $value));
+                $fix_headers[] = $key . ': ' . $value;
             }
+
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $fix_headers);
         }
 
         // Body
