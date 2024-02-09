@@ -1,16 +1,21 @@
 <script data-navigate-once="true">
-    document.addEventListener("livewire:navigated", function() {
+    function sideBarCollapse() {
         const sidebar = document.getElementById('sidebar')
         const toogleSideBar = document.getElementsByClassName('sidebar-toggle')[0]
 
         toogleSideBar.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed')
         })
+    }
+    document.addEventListener("livewire:navigated", function() {
+        sideBarCollapse()
 
         feather.replace()
     });
 
     document.addEventListener('livewire:initialized', () => {
+        sideBarCollapse()
+
         // Toast initialization
         const Toast = Swal.mixin({
             toast: true,
