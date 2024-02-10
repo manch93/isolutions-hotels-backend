@@ -77,11 +77,19 @@
                     <x-acc-input-error for="form.price" />
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="mb-3">
-                    <label class="form-label">Description</label>
-                    <textarea wire:model="form.description" class="form-control" placeholder="Description"></textarea>
+            <div class="col-md-12" x-data="{ preview: false }">
+                <div class="mb-3" x-show="preview === false">
+                    <label class="form-label">Description (Markdown)</label>
+                    <textarea wire:model.live="form.description" class="form-control" placeholder="Description"></textarea>
                     <x-acc-input-error for="form.description" />
+                </div>
+                <div class="mb-3" x-show="preview === true">
+                    <label class="form-label">Preview</label>
+                    <x-markdown>{{ $form->description }}</x-markdown>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Preview Description</label>
+                    <button class="btn btn-primary" @click.prevent="preview = !preview" x-text="preview ? 'Hide' : 'Show'"></button>
                 </div>
             </div>
             <div class="col-md-12">
