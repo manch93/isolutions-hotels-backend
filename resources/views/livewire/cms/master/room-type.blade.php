@@ -24,9 +24,9 @@
                             <tr>
                                 <td>{{ $d->hotel }}</td>
                                 <td>{{ $d->name }}</td>
-                                <td>{{ $d->description }}</td>
+                                <td>{!! $d->description !!}</td>
                                 <td>{{ $d->image }}</td>
-                                <x-acc-update-delete :id="$d->id" :$originRoute />
+                                <x-acc-update-delete editFunction="customEdit" :id="$d->id" :$originRoute />
                             </tr>
                         @empty
                             <tr>
@@ -69,19 +69,12 @@
                     <x-acc-input-error for="form.name" />
                 </div>
             </div>
-            <div class="col-md-12" x-data="{ preview: false }">
-                <div class="mb-3" x-show="preview === false">
-                    <label class="form-label">Description (Markdown)</label>
-                    <textarea wire:model.live="form.description" class="form-control" placeholder="Description"></textarea>
-                    <x-acc-input-error for="form.description" />
-                </div>
-                <div class="mb-3" x-show="preview === true">
-                    <label class="form-label">Preview</label>
-                    <x-markdown>{{ $form->description }}</x-markdown>
-                </div>
+            <div class="col-md-12">
                 <div class="mb-3">
-                    <label class="form-label">Preview Description</label>
-                    <button class="btn btn-primary" @click.prevent="preview = !preview" x-text="preview ? 'Hide' : 'Show'"></button>
+                    <label class="form-label">Description</label>
+                    <input id="id_trix_description" type="hidden" name="trix_description" value="{{ $trix_description }}">
+                    <trix-editor wire:ignore input="id_trix_description" class="trix-content"></trix-editor>
+                    <x-acc-input-error for="form.description" />
                 </div>
             </div>
             <div class="col-md-12">
@@ -94,4 +87,27 @@
             </div>
         </x-acc-form>
     </x-acc-modal>
+    <x-slot:scripts>
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+        <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+        <script>
+            const trixEditor = document.getElementById('id_trix_description')
+            const mimeTypes = ['image/png', 'image/jpeg', 'image/jpg']
+
+            addEventListener('trix-blur', ev => {
+                @this.set('trix_description', trixEditor.getAttribute('value'))
+            })
+
+            addEventListener('trix-file-accept', ev => {
+                if (!mimeTypes.includes(ev.file.type)) {
+                    // file type not allowed, prevent default upload
+                    return ev.preventDefault()
+                }
+            })
+
+            addEventListener('trix-attachment-add', ev => {
+                console.log('Gabisa bg')
+            })
+        </script>
+    </x-slot:scripts>
 </div>

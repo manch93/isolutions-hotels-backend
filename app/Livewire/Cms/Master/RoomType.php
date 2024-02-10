@@ -45,6 +45,7 @@ class RoomType extends BaseComponent
         $order = 'asc';
 
     public $hotels;
+    public $trix_description;
 
     public function mount() {
         $this->hotels = Hotel::all();
@@ -74,10 +75,16 @@ class RoomType extends BaseComponent
         return view('livewire.cms.master.room-type', compact('get'))->title($this->title);
     }
 
+    public function customEdit($id) {
+        $this->edit($id);
+        $this->trix_description = $this->form->description;
+    }
+
     public function saveWithUpload() {
         if($this->hotel_id) {
             $this->form->hotel_id = $this->hotel_id;
         }
+        $this->form->description = $this->trix_description;
         $this->form->image = $this->image;
         $this->image = null;
         $this->save();

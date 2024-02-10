@@ -3,6 +3,8 @@
     'modal' => 'acc-modal',
     'edit' => true,
     'delete' => true,
+    'editFunction' => 'edit',
+    'deleteFunction' => 'confirmDelete',
     'originRoute' => '',
 ])
 
@@ -12,7 +14,7 @@
         @can('update.' . $originRoute)
             <button
                 class="btn btn-warning"
-                wire:click="edit({{ $id }})"
+                wire:click="{{ $editFunction }}({{ $id }})"
                 @click="new bootstrap.Modal(document.getElementById('{{ $modal }}')).show()"
             >
                 <i class="align-middle" data-feather="edit"></i>
@@ -23,7 +25,7 @@
         @can('delete.' . $originRoute)
             <button
                 class="btn btn-danger"
-                wire:click="confirmDelete({{ $id }})"
+                wire:click="{{ $deleteFunction }}({{ $id }})"
             >
                 <i class="align-middle" data-feather="trash"></i>
             </button>

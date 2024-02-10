@@ -33,6 +33,7 @@ class Policy extends BaseComponent
         $order = 'asc';
 
     public $hotels = [];
+    public $trix_description;
 
     public function mount() {
         $this->hotels = Hotel::all();
@@ -62,10 +63,16 @@ class Policy extends BaseComponent
         return view('livewire.cms.hotel.policy', compact('get'))->title($this->title);
     }
 
+    public function customEdit($id) {
+        $this->edit($id);
+        $this->trix_description = $this->form->description;
+    }
+
     public function customSave() {
         if($this->hotel_id) {
             $this->form->hotel_id = $this->hotel_id;
         }
+        $this->form->description = $this->trix_description;
         $this->save();
     }
 }
