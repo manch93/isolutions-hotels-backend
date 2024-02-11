@@ -133,7 +133,8 @@
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <input type="text" wire:model="formProfile.description" class="form-control" placeholder="Description">
+                    <input id="id_trix_description" type="hidden" name="trix_description" value="{{ $trix_description }}">
+                    <trix-editor wire:ignore input="id_trix_description" class="trix-content"></trix-editor>
                     <x-acc-input-error for="formProfile.description" />
                 </div>
             </div>
@@ -187,4 +188,27 @@
             </div>
         </x-acc-form>
     </x-acc-modal>
+    <x-slot:scripts>
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+        <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+        <script>
+            const trixEditor = document.getElementById('id_trix_description')
+            const mimeTypes = ['image/png', 'image/jpeg', 'image/jpg']
+
+            addEventListener('trix-blur', ev => {
+                @this.set('trix_description', trixEditor.getAttribute('value'))
+            })
+
+            addEventListener('trix-file-accept', ev => {
+                if (!mimeTypes.includes(ev.file.type)) {
+                    // file type not allowed, prevent default upload
+                    return ev.preventDefault()
+                }
+            })
+
+            addEventListener('trix-attachment-add', ev => {
+                console.log('Gabisa bg')
+            })
+        </script>
+    </x-slot:scripts>
 </div>

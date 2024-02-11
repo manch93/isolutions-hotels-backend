@@ -103,8 +103,11 @@ class Hotel extends BaseComponent
     #[Validate('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv|max:20000000')]
     public $intro_video;
 
+    public $trix_description;
+
     public function getProfile($id) {
         $this->formProfile->getDetail($id);
+        $this->trix_description = $this->formProfile->description;
     }
 
     public function saveProfile() {
@@ -114,6 +117,7 @@ class Hotel extends BaseComponent
         $this->formProfile->main_photo = $this->main_photo;
         $this->formProfile->background_photo = $this->background_photo;
         $this->formProfile->intro_video = $this->intro_video;
+        $this->formProfile->description = $this->trix_description;
         $this->logo_color = null;
         $this->logo_white = null;
         $this->logo_black = null;
