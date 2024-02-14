@@ -23,7 +23,7 @@ class RoomController extends Controller
     public function detail($id) {
         // Search by room number
         try {
-            $result = Room::with('roomType')->where('no', $id)->firstOrFail();
+            $result = Room::with('roomType')->where('hotel_id', $this->getHotel())->where('no', $id)->firstOrFail();
             return $this->respondWithSuccess($result);
         } catch (\Exception $e) {
             return $this->respondNotFound('Room not found');
