@@ -44,6 +44,7 @@
                                 <td>{{ $d->room_type }}</td>
                                 <td>{{ $d->no }}</td>
                                 <td>{!! $d->guest_name ?? '<span class="text-danger">Empty</span>' !!}</td>
+                                <td>{!! $d->is_birthday == 1 ? '<span class="text-success">Yes</span>' : '<span class="text-danger">No</span>' !!}</td>
                             </tr>
                         @empty
                             <tr>
@@ -84,6 +85,15 @@
                     <label class="form-label">Guest Name</label>
                     <input type="text" wire:model="form.guest_name" class="form-control" placeholder="Guest Name">
                     <x-acc-input-error for="form.guest_name" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Is Birthday</label>
+                    <select class="form-control" wire:model="form.is_birthday">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
                 </div>
             </div>
         </x-acc-form>

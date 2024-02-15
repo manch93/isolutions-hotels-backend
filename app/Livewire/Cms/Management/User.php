@@ -60,7 +60,8 @@ class User extends BaseComponent
 
         // If user admin hotel
         if(auth()->user()->hasRole('admin_hotel')) {
-            $model = $model->where('model_has_roles.role_id', '=', Role::findByName('receptionist')->id);
+            $model = $model->where('model_has_roles.role_id', Role::findByName('receptionist')->id);
+            $model = $model->where('user_has_hotel.hotel_id', $this->hotel_id);
         }
 
         $get = $this->getDataWithFilter($model, [

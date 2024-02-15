@@ -25,6 +25,10 @@ class FrontDesk extends BaseComponent
                 'name' => 'Guest Name',
                 'field' => 'rooms.guest_name',
             ],
+            [
+                'name' => 'Is Birthday',
+                'field' => 'rooms.is_birthday',
+            ],
         ],
         $isUpdate = false,
         $search = '',

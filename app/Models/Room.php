@@ -16,6 +16,7 @@ class Room extends Model
         'guest_name',
         'greeting',
         'device_name',
+        'is_birthday',
     ];
 
     public function hotel()
