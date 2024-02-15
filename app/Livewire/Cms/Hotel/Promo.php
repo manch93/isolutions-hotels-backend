@@ -16,7 +16,7 @@ class Promo extends BaseComponent
     public FormPromo $form;
     public $title = 'Hotel Promo';
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
     public $searchBy = [

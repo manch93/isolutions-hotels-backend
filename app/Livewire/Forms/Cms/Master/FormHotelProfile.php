@@ -16,13 +16,13 @@ class FormHotelProfile extends Form
     #[Validate('required|numeric')]
     public $hotel_id;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $logo_color;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $logo_white;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $logo_black;
 
     #[Validate('required|string')]
@@ -31,13 +31,13 @@ class FormHotelProfile extends Form
     #[Validate('required|string')]
     public $description;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $main_photo;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $background_photo;
 
-    #[Validate('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv|max:20000000')]
+    #[Validate('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv')]
     public $intro_video;
 
     public function getDetail($id) {

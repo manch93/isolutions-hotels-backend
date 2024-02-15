@@ -16,7 +16,7 @@ class Around extends BaseComponent
     public FormAround $form;
     public $title = 'Hotel Around';
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
     public $searchBy = [

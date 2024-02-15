@@ -23,7 +23,7 @@ class FormAround extends Form
     #[Validate('required|string')]
     public $description;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
     // Get the data

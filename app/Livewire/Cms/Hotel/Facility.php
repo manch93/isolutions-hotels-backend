@@ -16,7 +16,7 @@ class Facility extends BaseComponent
     public FormFacility $form;
     public $title = 'Hotel Facility';
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
     public $searchBy = [

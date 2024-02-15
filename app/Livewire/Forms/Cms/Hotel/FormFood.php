@@ -26,7 +26,7 @@ class FormFood extends Form
     #[Validate('required|numeric')]
     public $price;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
     // Get the data

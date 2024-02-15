@@ -16,7 +16,7 @@ class RoomType extends BaseComponent
     public FormRoomType $form;
     public $title = 'Room Type';
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
     public $searchBy = [

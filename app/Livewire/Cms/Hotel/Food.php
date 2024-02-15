@@ -16,7 +16,7 @@ class Food extends BaseComponent
     public FormFood $form;
     public $title = 'Hotel Food';
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
     public $searchBy = [

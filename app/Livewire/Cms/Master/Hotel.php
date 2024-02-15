@@ -85,22 +85,22 @@ class Hotel extends BaseComponent
         return view('livewire.cms.master.hotel', compact('get'))->title($this->title);
     }
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $logo_color;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $logo_white;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $logo_black;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $main_photo;
 
-    #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
+    #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $background_photo;
 
-    #[Validate('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv|max:20000000')]
+    #[Validate('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv')]
     public $intro_video;
 
     public $trix_description;
