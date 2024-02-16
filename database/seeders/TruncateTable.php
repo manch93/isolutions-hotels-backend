@@ -21,7 +21,7 @@ class TruncateTable extends Seeder
      */
     public function run(): void
     {
-        Setting::truncate();
+        // Setting::truncate();
         // UserHasHotel::truncate();
         // User::truncate();
         Menu::truncate();

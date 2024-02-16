@@ -47,6 +47,7 @@ class RoleSeeder extends Seeder
         'cms.hotel.promo',
         'cms.hotel.food',
         'cms.hotel.policy',
+        'cms.hotel.event',
         'cms.management.user',
         'cms.management.access-control',
     ];

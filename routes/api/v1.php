@@ -13,6 +13,7 @@ Route::group([
     Route::get('/promo', [App\Http\Controllers\Api\V1\PromoController::class, 'get'])->name('promo');
     Route::get('/food', [App\Http\Controllers\Api\V1\FoodController::class, 'get'])->name('food');
     Route::get('/around', [App\Http\Controllers\Api\V1\AroundController::class, 'get'])->name('around');
+    Route::get('/event', [App\Http\Controllers\Api\V1\EventController::class, 'get'])->name('event');
     Route::get('/room', [App\Http\Controllers\Api\V1\RoomController::class, 'get'])->name('room');
     Route::get('/room-type', [App\Http\Controllers\Api\V1\RoomController::class, 'type'])->name('room.type');
     Route::get('/room-type/{id}', [App\Http\Controllers\Api\V1\RoomController::class, 'typeDetail'])->name('room.type.detail');

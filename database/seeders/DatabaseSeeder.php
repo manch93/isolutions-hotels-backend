@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             // HotelSeeder::class,
             // UserSeeder::class,
             MenuSeeder::class,
-            SettingSeeder::class,
+            // SettingSeeder::class,
             // RoomSeeder::class,
             M3USeeder::class,
         ]);

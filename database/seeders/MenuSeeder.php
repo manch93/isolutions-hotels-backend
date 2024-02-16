@@ -111,6 +111,14 @@ class MenuSeeder extends Seeder
                 'route' => 'cms.hotel.food',
                 'ordering' => '25',
             ],
+            [
+                'name' => 'Event',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'calendar',
+                'route' => 'cms.hotel.event',
+                'ordering' => '26',
+            ],
             // Settings
             [
                 'name' => 'Settings',
