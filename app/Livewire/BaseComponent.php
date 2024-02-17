@@ -23,6 +23,9 @@ class BaseComponent extends Component {
     public $originRoute = '';
     public $hotel_id = '';
 
+    // Image iterator for image set null after save
+    public $imageIttr = 1;
+
     public function __construct()
     {
         $this->originRoute = request()->route()->getName();

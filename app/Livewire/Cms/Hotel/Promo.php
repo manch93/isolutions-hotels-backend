@@ -87,6 +87,7 @@ class Promo extends BaseComponent
         $this->form->description = $this->trix_description;
         $this->form->image = $this->image;
         $this->image = null;
+        $this->trix_description = null;
         $this->save();
     }
 }

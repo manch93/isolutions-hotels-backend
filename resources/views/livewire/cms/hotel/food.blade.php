@@ -88,10 +88,8 @@
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">Image</label>
-                    <x-acc-image-preview :$image :form_image="$form->image"  />
-                    <x-acc-upload-progress>
-                        <input type="file" wire:model="image" class="form-control">
-                    </x-acc-upload-progress>
+                    <x-acc-image-preview :$image :form_image="$form->image" />
+                    <x-acc-input-file model="image" :$imageIttr />
                     <x-acc-input-error for="form.image" />
                 </div>
             </div>

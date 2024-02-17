@@ -124,6 +124,8 @@ class Hotel extends BaseComponent
         $this->main_photo = null;
         $this->background_photo = null;
         $this->intro_video = null;
+        $this->trix_description = null;
+        $this->imageIttr++;
         $this->formProfile->save();
 
         $this->dispatch('closeModal', modal: 'acc-profile');

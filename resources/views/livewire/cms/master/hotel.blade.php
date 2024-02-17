@@ -142,9 +142,7 @@
                 <div class="mb-3">
                     <label class="form-label">Logo Color</label>
                     <x-acc-image-preview :image="$logo_color" :form_image="$formProfile->logo_color"  />
-                    <x-acc-upload-progress>
-                        <input type="file" wire:model="logo_color" class="form-control">
-                    </x-acc-upload-progress>
+                    <x-acc-input-file model="logo_color" :$imageIttr />
                     <x-acc-input-error for="formProfile.logo_color" />
                 </div>
             </div>
@@ -152,9 +150,7 @@
                 <div class="mb-3">
                     <label class="form-label">Logo White</label>
                     <x-acc-image-preview :image="$logo_white" :form_image="$formProfile->logo_white"  />
-                    <x-acc-upload-progress>
-                        <input type="file" wire:model="logo_white" class="form-control">
-                    </x-acc-upload-progress>
+                    <x-acc-input-file model="logo_white" :$imageIttr />
                     <x-acc-input-error for="formProfile.logo_white" />
                 </div>
             </div>
@@ -162,9 +158,7 @@
                 <div class="mb-3">
                     <label class="form-label">Logo Black</label>
                     <x-acc-image-preview :image="$logo_black" :form_image="$formProfile->logo_black"  />
-                    <x-acc-upload-progress>
-                        <input type="file" wire:model="logo_black" class="form-control">
-                    </x-acc-upload-progress>
+                    <x-acc-input-file model="logo_black" :$imageIttr />
                     <x-acc-input-error for="formProfile.logo_black" />
                 </div>
             </div>
@@ -172,9 +166,7 @@
                 <div class="mb-3">
                     <label class="form-label">Main Photo</label>
                     <x-acc-image-preview :image="$main_photo" :form_image="$formProfile->main_photo"  />
-                    <x-acc-upload-progress>
-                        <input type="file" wire:model="main_photo" class="form-control">
-                    </x-acc-upload-progress>
+                    <x-acc-input-file model="main_photo" :$imageIttr />
                     <x-acc-input-error for="formProfile.main_photo" />
                 </div>
             </div>
@@ -182,9 +174,7 @@
                 <div class="mb-3">
                     <label class="form-label">Background Photo</label>
                     <x-acc-image-preview :image="$background_photo" :form_image="$formProfile->background_photo"  />
-                    <x-acc-upload-progress>
-                        <input type="file" wire:model="background_photo" class="form-control">
-                    </x-acc-upload-progress>
+                    <x-acc-input-file model="background_photo" :$imageIttr />
                     <x-acc-input-error for="formProfile.background_photo" />
                 </div>
             </div>
@@ -192,9 +182,7 @@
                 <div class="mb-3">
                     <label class="form-label">Intro Video</label>
                     <x-acc-video-preview :video="$intro_video" :form_video="$formProfile->intro_video"  />
-                    <x-acc-upload-progress>
-                        <input type="file" wire:model="intro_video" class="form-control">
-                    </x-acc-upload-progress>
+                    <x-acc-input-file model="intro_video" :$imageIttr />
                     <x-acc-input-error for="formProfile.intro_video" />
                 </div>
             </div>
