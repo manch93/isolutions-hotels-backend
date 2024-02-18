@@ -47,6 +47,7 @@ class Room extends BaseComponent
 
     public $hotels = [];
     public $roomTypes = [];
+    public $whereRoomType = null;
 
     public function mount() {
         $this->hotels = Hotel::all();
@@ -69,6 +70,11 @@ class Room extends BaseComponent
         // If user not admin
         if(!auth()->user()->hasRole('admin')) {
             $model = $model->where('rooms.hotel_id', $this->hotel_id);
+        }
+
+        // Where room type
+        if($this->whereRoomType) {
+            $model = $model->where('rooms.room_type_id', $this->whereRoomType);
         }
 
         $get = $this->getDataWithFilter($model, [
