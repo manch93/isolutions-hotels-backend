@@ -36,6 +36,15 @@ class FrontDesk extends BaseComponent
         $orderBy = 'rooms.no',
         $order = 'asc';
 
+    public $roomTypes = [];
+    public $whereRoomType = null;
+
+    public function mount() {
+        if($this->hotel_id) {
+            $this->roomTypes = RoomType::where('hotel_id', $this->hotel_id)->get();
+        }
+    }
+
     public function render()
     {
         $model = Room::join('hotels', 'hotels.id', '=', 'rooms.hotel_id')
@@ -43,6 +52,11 @@ class FrontDesk extends BaseComponent
             ->select('rooms.*', 'hotels.name as hotel', 'room_types.name as room_type')
             ->where('hotels.id', $this->hotel_id)
             ->where('hotels.is_active', 1);
+
+        // Where room type
+        if($this->whereRoomType) {
+            $model = $model->where('rooms.room_type_id', $this->whereRoomType);
+        }
 
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
