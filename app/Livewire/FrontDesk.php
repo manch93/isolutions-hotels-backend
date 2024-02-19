@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Livewire\Forms\FormFrontDesk;
 use Livewire\Attributes\On;
 use App\Models\Room;
+use App\Models\RoomType;
 use BaseComponent;
 
 class FrontDesk extends BaseComponent
