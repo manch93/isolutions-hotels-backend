@@ -32,7 +32,7 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         // Pas setting
-        Facades\View::composer(['components.navigation'], function(View $view) {
+        Facades\View::composer(['components.navigation', 'auth.login'], function(View $view) {
             $settings = Setting::first();
             $settings->opengraph = json_decode($settings->opengraph, true);
             $settings->dulbincore = json_decode($settings->dulbincore, true);
