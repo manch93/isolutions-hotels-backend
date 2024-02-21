@@ -125,6 +125,13 @@
             </div>
             <div class="col-md-12">
                 <div class="mb-3">
+                    <label class="form-label">Running Text</label>
+                    <input type="text" wire:model="formProfile.running_text" class="form-control" placeholder="Running Text">
+                    <x-acc-input-error for="formProfile.running_text" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
                     <label class="form-label">Primary Color</label>
                     <input type="text" wire:model="formProfile.primary_color" class="form-control" placeholder="Primary Color">
                     <x-acc-input-error for="formProfile.primary_color" />

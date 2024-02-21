@@ -20,6 +20,7 @@ class HotelProfile extends Model
         'main_photo',
         'background_photo',
         'intro_video',
+        'running_text',
     ];
 
     public function hotel()

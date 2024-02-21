@@ -40,6 +40,9 @@ class FormHotelProfile extends Form
     #[Validate('nullable|mimes:mp4,ogx,oga,ogv,ogg,webm,mkv')]
     public $intro_video;
 
+    #[Validate('nullable|string')]
+    public $running_text;
+
     public function getDetail($id) {
         $data = HotelProfile::where('hotel_id', $id)->first();
 
@@ -53,6 +56,7 @@ class FormHotelProfile extends Form
         $this->main_photo = $data->main_photo;
         $this->background_photo = $data->background_photo;
         $this->intro_video = $data->intro_video;
+        $this->running_text = $data->running_text;
     }
 
     public function save() {
@@ -107,6 +111,7 @@ class FormHotelProfile extends Form
             'main_photo',
             'background_photo',
             'intro_video',
+            'running_text',
         ]));
     }
 }
