@@ -32,12 +32,20 @@
                                 <td>{{ $d->password_setting }}</td>
                                 <td>{{ $d->is_active }}</td>
                                 <x-acc-update-delete :id="$d->id" :$originRoute>
-                                    <button
-                                        class="btn btn-primary"
+                                    <a href="{{ route('cms.hotel.enabled-channel', [
+                                        'id' => $d->id,
+                                    ]) }}" class="btn btn-secondary btn-sm mb-2">
+                                        <i class="align-middle" data-feather="eye"></i>
+                                        Enabled Channel
+                                    </a>
+                                    <div class="clearfix"></div>
+                                    <button class="btn btn-primary btn-sm mb-2"
                                         wire:click="getProfile({{ $d->id }})"
                                         @click="new bootstrap.Modal(document.getElementById('acc-profile')).show()">
-                                        <i class="align-middle" data-feather="edit"></i> Profile
+                                        <i class="align-middle" data-feather="edit"></i>
+                                        Profile
                                     </button>
+                                    <div class="clearfix"></div>
                                 </x-acc-update-delete>
                             </tr>
                         @empty

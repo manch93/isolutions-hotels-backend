@@ -1,4 +1,4 @@
-@props(['isCreate' => true, 'isSearch' => true, 'originRoute' => ''])
+@props(['isCreate' => true, 'isSearch' => true, 'originRoute' => '', 'createFunction' => 'create'])
 
 <div>
     <div class="row mb-3">
@@ -9,7 +9,7 @@
         @endif
         @if($isCreate)
             <div class="col-md-{{ $isSearch ? '6' : '12' }}">
-                <x-acc-create-btn :route="$originRoute ?? ''" />
+                <x-acc-create-btn :route="$originRoute ?? ''" :$createFunction />
             </div>
         @endif
         {{ $slot->isEmpty() ? '' : $slot }}
