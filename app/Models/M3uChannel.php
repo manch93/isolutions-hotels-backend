@@ -13,6 +13,7 @@ class M3uChannel extends Model
     protected $fillable = [
         'm3u_source_id',
         'name',
+        'secondary_name',
         'url',
         'icon',
         'active',

@@ -44,7 +44,7 @@
                     <tbody>
                         @forelse($get as $d)
                             <tr>
-                                <td>{{ $d->name }}</td>
+                                <td>{{ $d->secondary_name ? $d->secondary_name : $d->name }}</td>
                                 <td>{{ $d->url }}</td>
                                 <td>{{ $d->icon ?? '-' }}</td>
                                 <td>{!! $d->active ? '<span class="text-success">Active</span>' : '<span class="text-danger">Inactive</span>' !!}</td>
@@ -89,6 +89,11 @@
     <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}">
         <x-acc-form submit="customSave">
             <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" wire:model="form.secondary_name" class="form-control">
+                    <x-acc-input-error for="form.secondary_name" />
+                </div>
                 <div class="mb-3">
                     <label class="form-label">Icon</label>
                     <x-acc-image-preview :$image :form_image="$form->icon"  />

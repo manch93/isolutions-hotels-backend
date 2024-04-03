@@ -14,6 +14,9 @@ class FormM3uSourceChannel extends Form
     #[Validate('nullable|numeric')]
     public $id = '';
 
+    #[Validate('required')]
+    public $secondary_name = '';
+
     #[Validate('nullable|image:jpeg,png,jpg,svg|max:2048')]
     public $icon = '';
 
@@ -22,6 +25,7 @@ class FormM3uSourceChannel extends Form
         $data = M3uChannel::find($id);
 
         $this->id = $id;
+        $this->secondary_name = $data->secondary_name ? $data->secondary_name : $data->name;
         $this->icon = $data->icon;
     }
 
