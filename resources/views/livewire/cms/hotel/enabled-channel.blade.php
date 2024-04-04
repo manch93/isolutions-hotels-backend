@@ -92,7 +92,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Channel</label>
-                    <select class="form-control" wire:model="form.m3u_channel_id">
+                    <select class="form-control" wire:model="form.m3u_channel_id" id="channel">
                         <option value="">--Select Channel--</option>
                         @foreach($channel as $c)
                             <option value="{{ $c->id }}">{{ $c->name }}</option>
@@ -117,4 +117,15 @@
             </div>
         </x-acc-form>
     </x-acc-modal>
+    <x-slot:scripts>
+        <script>
+            document.addEventListener('livewire:initialized', function () {
+                Livewire.on('updated-channel', params => {
+                    setTimeout(() => {
+                        document.getElementById('channel').value = params.channel
+                    }, 500)
+                })
+            })
+        </script>
+    </x-slot:scripts>
 </div>

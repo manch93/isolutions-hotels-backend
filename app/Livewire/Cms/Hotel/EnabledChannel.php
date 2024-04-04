@@ -83,6 +83,7 @@ class EnabledChannel extends BaseComponent
         $channel = M3uChannel::find($this->form->m3u_channel_id);
         $this->source_id = $channel->m3u_source_id;
         $this->channel = M3uChannel::where('m3u_source_id', $this->source_id)->get();
+        $this->dispatch('updated-channel', channel: $this->form->m3u_channel_id);
     }
 
     public function getChannelFromSource() {
