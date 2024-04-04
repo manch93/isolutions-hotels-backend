@@ -67,6 +67,16 @@ class FormEnabledChannel extends Form
         HotelChannelEnabled::find($id)->delete();
     }
 
+    // Activate Channel
+    public function activateChannel($id) {
+        HotelChannelEnabled::find($id)->update(['active' => 1]);
+    }
+
+    // Deactivate Channel
+    public function deactivateChannel($id) {
+        HotelChannelEnabled::find($id)->update(['active' => 0]);
+    }
+
     // Activate All
     public function activateAll($hotel) {
         HotelChannelEnabled::where('hotel_id', $hotel)->update(['active' => 1]);

@@ -90,6 +90,14 @@ class EnabledChannel extends BaseComponent
         $this->channel = M3uChannel::where('m3u_source_id', $this->source_id)->get();
     }
 
+    public function activateChannel($id) {
+        $this->form->activateChannel($id);
+    }
+
+    public function deactivateChannel($id) {
+        $this->form->deactivateChannel($id);
+    }
+
     public function activateAll() {
         $this->form->activateAll($this->hotel->id);
     }
