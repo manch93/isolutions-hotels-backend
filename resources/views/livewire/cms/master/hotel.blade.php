@@ -32,13 +32,15 @@
                                 <td>{{ $d->password_setting }}</td>
                                 <td>{{ $d->is_active }}</td>
                                 <x-acc-update-delete :id="$d->id" :$originRoute>
-                                    <a href="{{ route('cms.hotel.enabled-channel', [
-                                        'id' => $d->id,
-                                    ]) }}" class="btn btn-secondary btn-sm mb-2">
-                                        <i class="align-middle" data-feather="eye"></i>
-                                        Enabled Channel
-                                    </a>
-                                    <div class="clearfix"></div>
+                                    @role('admin')
+                                        <a href="{{ route('cms.hotel.enabled-channel', [
+                                            'id' => $d->id,
+                                        ]) }}" class="btn btn-secondary btn-sm mb-2">
+                                            <i class="align-middle" data-feather="eye"></i>
+                                            Enabled Channel
+                                        </a>
+                                        <div class="clearfix"></div>
+                                    @endrole
                                     <button class="btn btn-primary btn-sm mb-2"
                                         wire:click="getProfile({{ $d->id }})"
                                         @click="new bootstrap.Modal(document.getElementById('acc-profile')).show()">
