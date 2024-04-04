@@ -56,7 +56,7 @@ class EnabledChannel extends BaseComponent
             ->join('m3u_channels', 'm3u_channels.id', '=', 'hotel_channel_enabled.m3u_channel_id')
             ->join('m3u_sources', 'm3u_sources.id', '=', 'm3u_channels.m3u_source_id')
             ->where('hotel_channel_enabled.hotel_id', $this->hotel->id)
-            ->select('hotel_channel_enabled.*', 'hotels.name as hotel', 'm3u_channels.name as channel', 'm3u_sources.name as source');
+            ->select('hotel_channel_enabled.*', 'hotels.name as hotel', 'm3u_channels.name as name', 'm3u_channels.secondary_name as secondary_name', 'm3u_sources.name as source');
 
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,

@@ -38,7 +38,15 @@
                             <tr>
                                 <td>{{ $d->hotel }}</td>
                                 <td>{{ $d->source }}</td>
-                                <td>{{ $d->channel }}</td>
+                                <td>
+                                    @if($d->alternative_name)
+                                        {{ $d->alternative_name }}
+                                    @elseif($d->secondary_name)
+                                        {{ $d->secondary_name }}
+                                    @else
+                                        {{ $d->name }}
+                                    @endif
+                                </td>
                                 <td>{!! $d->active ? '<span class="text-success">Active</span>' : '<span class="text-danger">Inactive</span>' !!}</td>
                                 <x-acc-update-delete :id="$d->id" :$originRoute editFunction="customEdit">
                                     @if($d->active)
@@ -95,7 +103,7 @@
                     <select class="form-control" wire:model="form.m3u_channel_id" id="channel">
                         <option value="">--Select Channel--</option>
                         @foreach($channel as $c)
-                            <option value="{{ $c->id }}">{{ $c->name }}</option>
+                            <option value="{{ $c->id }}">{{ $c->secondary_name ? $c->secondary_name : $c->name }}</option>
                         @endforeach
                     </select>
                     <x-acc-input-error for="form.m3u_channel_id" />
