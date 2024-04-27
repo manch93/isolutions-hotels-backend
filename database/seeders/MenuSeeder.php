@@ -104,12 +104,20 @@ class MenuSeeder extends Seeder
                 'ordering' => '24',
             ],
             [
+                'name' => 'Food Category',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'book-open',
+                'route' => 'cms.hotel.food-category',
+                'ordering' => '25',
+            ],
+            [
                 'name' => 'Food',
                 'on' => 'cms',
                 'type' => 'item',
                 'icon' => 'book-open',
                 'route' => 'cms.hotel.food',
-                'ordering' => '25',
+                'ordering' => '26',
             ],
             [
                 'name' => 'Event',
@@ -117,7 +125,7 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'calendar',
                 'route' => 'cms.hotel.event',
-                'ordering' => '26',
+                'ordering' => '27',
             ],
             // Settings
             [

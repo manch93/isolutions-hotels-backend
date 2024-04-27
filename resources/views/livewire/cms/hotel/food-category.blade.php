@@ -23,9 +23,7 @@
                         @forelse($get as $d)
                             <tr>
                                 <td>{{ $d->hotel }}</td>
-                                <td>{{ $d->food_category }}</td>
                                 <td>{{ $d->name }}</td>
-                                <td>{{ $d->price }}</td>
                                 <td>{!! $d->description !!}</td>
                                 <td>{{ $d->image }}</td>
                                 <x-acc-update-delete editFunction="customEdit" :id="$d->id" :$originRoute />
@@ -54,7 +52,7 @@
                 <div class="col-md-12">
                     <div class="mb-3">
                         <label class="form-label">Hotel</label>
-                        <select class="form-control" wire:model.live="form.hotel_id" wire:change="getFoodCategory">
+                        <select class="form-control" wire:model="form.hotel_id">
                             <option value="">--Select Hotel--</option>
                             @foreach ($hotels as $h)
                                 <option value="{{ $h->id }}">{{ $h->name }}</option>
@@ -66,28 +64,9 @@
             @endif
             <div class="col-md-12">
                 <div class="mb-3">
-                    <label class="form-label">Food Category</label>
-                    <select class="form-control" wire:model="form.food_category_id" id="food_category">
-                        <option value="">--Select Category--</option>
-                        @foreach ($foodCategories as $c)
-                            <option value="{{ $c->id }}">{{ $c->name }}</option>
-                        @endforeach
-                    </select>
-                    <x-acc-input-error for="form.food_category_id" />
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="mb-3">
                     <label class="form-label">Name</label>
                     <input type="text" wire:model="form.name" class="form-control" placeholder="Name">
                     <x-acc-input-error for="form.name" />
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="mb-3">
-                    <label class="form-label">Price</label>
-                    <input type="number" wire:model="form.price" class="form-control" placeholder="Price">
-                    <x-acc-input-error for="form.price" />
                 </div>
             </div>
             <div class="col-md-12">

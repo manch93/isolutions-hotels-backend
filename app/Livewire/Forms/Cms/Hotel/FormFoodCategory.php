@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Forms\Cms\Hotel;
 
-use App\Models\Food;
+use App\Models\FoodCategory;
 use App\Traits\WithSaveFile;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
-class FormFood extends Form
+class FormFoodCategory extends Form
 {
     use WithSaveFile;
 
@@ -17,31 +17,23 @@ class FormFood extends Form
     #[Validate('required|numeric')]
     public $hotel_id;
 
-    #[Validate('required|numeric')]
-    public $food_category_id;
-
     #[Validate('required|string')]
     public $name = '';
 
     #[Validate('required|string')]
     public $description;
 
-    #[Validate('required|numeric')]
-    public $price;
-
     #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
     // Get the data
     public function getDetail($id) {
-        $data = Food::find($id);
+        $data = FoodCategory::find($id);
 
         $this->id = $id;
         $this->hotel_id = $data->hotel_id;
-        $this->food_category_id = $data->food_category_id;
         $this->name = $data->name;
         $this->description = $data->description;
-        $this->price = $data->price;
         $this->image = $data->image;
     }
 
@@ -60,7 +52,7 @@ class FormFood extends Form
 
     // Store data
     public function store() {
-        $save_path = Food::$FILE_PATH;
+        $save_path = FoodCategory::$FILE_PATH;
 
         // Save image
         if($this->image) {
@@ -69,20 +61,18 @@ class FormFood extends Form
             $this->image = '';
         }
 
-        Food::create($this->only([
+        FoodCategory::create($this->only([
             'hotel_id',
-            'food_category_id',
             'name',
             'description',
             'image',
-            'price',
         ]));
     }
 
     // Update data
     public function update() {
-        $old = Food::find($this->id);
-        $save_path = Food::$FILE_PATH;
+        $old = FoodCategory::find($this->id);
+        $save_path = FoodCategory::$FILE_PATH;
 
         // Save image
         if($this->image) {
@@ -96,6 +86,6 @@ class FormFood extends Form
 
     // Delete data
     public function delete($id) {
-        Food::find($id)->delete();
+        FoodCategory::find($id)->delete();
     }
 }

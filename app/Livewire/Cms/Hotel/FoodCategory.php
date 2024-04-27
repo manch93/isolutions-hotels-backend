@@ -2,20 +2,19 @@
 
 namespace App\Livewire\Cms\Hotel;
 
-use App\Livewire\Forms\Cms\Hotel\FormFood;
-use App\Models\Food as ModelsFood;
-use App\Models\FoodCategory;
+use App\Livewire\Forms\Cms\Hotel\FormFoodCategory;
+use App\Models\FoodCategory as ModelsFoodCategory;
 use App\Models\Hotel;
 use Livewire\Attributes\Validate;
 use Livewire\WithFileUploads;
 use BaseComponent;
 
-class Food extends BaseComponent
+class FoodCategory extends BaseComponent
 {
     use WithFileUploads;
 
-    public FormFood $form;
-    public $title = 'Hotel Food';
+    public FormFoodCategory $form;
+    public $title = 'Hotel Food Category';
 
     #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
@@ -26,54 +25,40 @@ class Food extends BaseComponent
                 'field' => 'hotels.name',
             ],
             [
-                'name' => 'Category',
+                'name' => 'Name',
                 'field' => 'food_categories.name',
             ],
             [
-                'name' => 'Name',
-                'field' => 'foods.name',
-            ],
-            [
-                'name' => 'Price',
-                'field' => 'foods.price',
-            ],
-            [
                 'name' => 'Description',
-                'field' => 'foods.description',
+                'field' => 'food_categories.description',
             ],
             [
                 'name' => 'Image',
-                'field' => 'foods.image',
+                'field' => 'food_categories.image',
                 'no_search' => true,
             ],
         ],
         $isUpdate = false,
         $search = '',
         $paginate = 10,
-        $orderBy = 'foods.name',
+        $orderBy = 'food_categories.name',
         $order = 'asc';
 
     public $hotels = [];
-    public $foodCategories = [];
     public $trix_description;
 
     public function mount() {
         $this->hotels = Hotel::all();
-
-        if(!auth()->user()->hasRole('admin')) {
-            $this->foodCategories = FoodCategory::where('hotel_id', $this->hotel_id)->get();
-        }
     }
 
     public function render()
     {
-        $model = ModelsFood::join('hotels', 'hotels.id', '=', 'foods.hotel_id')
-            ->join('food_categories', 'food_categories.id', '=', 'foods.food_category_id')
-            ->select('foods.*', 'food_categories.name as food_category', 'hotels.name as hotel');
+        $model = ModelsFoodCategory::join('hotels', 'hotels.id', '=', 'food_categories.hotel_id')
+            ->select('food_categories.*', 'hotels.name as hotel');
 
         // If user not admin
         if(!auth()->user()->hasRole('admin')) {
-            $model = $model->where('foods.hotel_id', $this->hotel_id);
+            $model = $model->where('food_categories.hotel_id', $this->hotel_id);
         }
 
         $get = $this->getDataWithFilter($model, [
@@ -87,18 +72,12 @@ class Food extends BaseComponent
             $this->resetPage();
         }
 
-        return view('livewire.cms.hotel.food', compact('get'))->title($this->title);
+        return view('livewire.cms.hotel.food-category', compact('get'))->title($this->title);
     }
 
     public function customEdit($id) {
         $this->edit($id);
-        $this->getFoodCategory();
-        $this->dispatch('setValueById', id: 'food_category', value: $this->form->food_category_id);
         $this->trix_description = $this->form->description;
-    }
-
-    public function getFoodCategory() {
-        $this->foodCategories = FoodCategory::where('hotel_id', $this->form->hotel_id)->get();
     }
 
     public function saveWithUpload() {

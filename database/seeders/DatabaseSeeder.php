@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             // SettingSeeder::class,
             // RoomSeeder::class,
-            M3USeeder::class,
+            // M3USeeder::class,
         ]);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

@@ -29,7 +29,7 @@ class TruncateTable extends Seeder
         // Room::truncate();
         // HotelFacility::truncate();
         // Hotel::truncate();
-        M3uSource::truncate();
-        M3uChannel::truncate();
+        // M3uSource::truncate();
+        // M3uChannel::truncate();
     }
 }

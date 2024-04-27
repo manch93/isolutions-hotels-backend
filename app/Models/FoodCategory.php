@@ -5,19 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Food extends Model
+class FoodCategory extends Model
 {
     use HasFactory;
 
-    protected $table = 'foods';
-    public static $FILE_PATH = 'foods';
+    public static $FILE_PATH = 'food_category';
     protected $fillable = [
         'hotel_id',
-        'food_category_id',
         'name',
         'description',
         'image',
-        'price',
     ];
 
     // Set image url
@@ -28,11 +25,11 @@ class Food extends Model
         return asset('storage/' . self::$FILE_PATH . '/' . $value);
     }
 
-    public function hotel() {
-        return $this->belongsTo(Hotel::class);
+    public function foods() {
+        return $this->hasMany(Food::class);
     }
 
-    public function foodCategory() {
-        return $this->belongsTo(FoodCategory::class);
+    public function hotel() {
+        return $this->belongsTo(Hotel::class);
     }
 }
