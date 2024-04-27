@@ -11,6 +11,8 @@ Route::group([
     Route::get('/facility', [App\Http\Controllers\Api\V1\HotelController::class, 'facility'])->name('facility');
     Route::get('/policy', [App\Http\Controllers\Api\V1\PolicyController::class, 'get'])->name('policy');
     Route::get('/promo', [App\Http\Controllers\Api\V1\PromoController::class, 'get'])->name('promo');
+    Route::get('/food-category', [App\Http\Controllers\Api\V1\FoodController::class, 'category'])->name('food-category');
+    Route::get('/food/{category}', [App\Http\Controllers\Api\V1\FoodController::class, 'getFoodByCategory'])->name('food-by-category');
     Route::get('/food', [App\Http\Controllers\Api\V1\FoodController::class, 'get'])->name('food');
     Route::get('/around', [App\Http\Controllers\Api\V1\AroundController::class, 'get'])->name('around');
     Route::get('/event', [App\Http\Controllers\Api\V1\EventController::class, 'get'])->name('event');
