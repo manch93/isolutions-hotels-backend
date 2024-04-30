@@ -19,8 +19,22 @@ class TvController extends Controller
                 NULLIF(m3u_channels.secondary_name, ''),
                 m3u_channels.name
             ) as name"))
-            ->get();
+            ->get()
+            ->toArray();
 
-        return $this->respondWithSuccess($result);
+        $finalResult = [];
+
+        foreach($result as $key => $res) {
+            // Set image url
+            $finalResult[$key] = $res;
+
+            if($res['icon']) {
+                if(!str_contains($res['icon'], 'storage/' . M3uChannel::$FILE_PATH)) {
+                    $finalResult[$key]['icon'] = asset('storage/' . M3uChannel::$FILE_PATH . '/' . $res['icon']);
+                }
+            }
+        }
+
+        return $this->respondWithSuccess($finalResult);
     }
 }
