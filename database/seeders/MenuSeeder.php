@@ -127,6 +127,14 @@ class MenuSeeder extends Seeder
                 'route' => 'cms.hotel.event',
                 'ordering' => '27',
             ],
+            [
+                'name' => 'Wifi',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'wifi',
+                'route' => 'cms.hotel.wifi',
+                'ordering' => '28',
+            ],
             // Settings
             [
                 'name' => 'Settings',

@@ -26,6 +26,7 @@ Route::group([
     Route::get('/hotel/food-category', App\Livewire\Cms\Hotel\FoodCategory::class)->name('hotel.food-category');
     Route::get('/hotel/food', App\Livewire\Cms\Hotel\Food::class)->name('hotel.food');
     Route::get('/hotel/policy', App\Livewire\Cms\Hotel\Policy::class)->name('hotel.policy');
+    Route::get('/hotel/wifi', App\Livewire\Cms\Hotel\Wifi::class)->name('hotel.wifi');
 
     // Hotel Enabled channel
     Route::get('/hotel/{id}/enable-channel', App\Livewire\Cms\Hotel\EnabledChannel::class)->name('hotel.enabled-channel');
