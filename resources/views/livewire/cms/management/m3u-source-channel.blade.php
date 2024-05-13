@@ -96,7 +96,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Icon</label>
-                    <x-acc-image-preview :$image :form_image="$form->icon"  />
+                    <x-acc-image-preview :$image :form_image="$form->icon" id="{{ $imageIttr }}"  />
                     <x-acc-input-file model="image" :$imageIttr />
                     <x-acc-input-error for="image" />
                 </div>
