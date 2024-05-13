@@ -75,6 +75,7 @@ class M3uSourceChannel extends BaseComponent
 
     public function customSave() {
         $this->form->icon = $this->image;
+        $this->image = null;
         $this->save();
     }
 
