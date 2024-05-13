@@ -150,8 +150,15 @@
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">Description</label>
-                    <x-acc-trix-editor model_name="trix_description" :model="$trix_description" />
+                    <x-acc-trix-editor id="id_trix_description" model_name="trix_description" :model="$trix_description" />
                     <x-acc-input-error for="formProfile.description" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Welcome Text</label>
+                    <textarea class="form-control" wire:model="formProfile.welcome_text"></textarea>
+                    <x-acc-input-error for="formProfile.welcome_text" />
                 </div>
             </div>
             <div class="col-md-12">

@@ -21,6 +21,7 @@ class HotelProfile extends Model
         'background_photo',
         'intro_video',
         'running_text',
+        'welcome_text',
     ];
 
     public function hotel()

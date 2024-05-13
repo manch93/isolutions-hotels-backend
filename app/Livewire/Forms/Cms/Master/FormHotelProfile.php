@@ -43,6 +43,9 @@ class FormHotelProfile extends Form
     #[Validate('nullable|string')]
     public $running_text;
 
+    #[Validate('required|string')]
+    public $welcome_text;
+
     public function getDetail($id) {
         $data = HotelProfile::where('hotel_id', $id)->first();
 
@@ -57,6 +60,7 @@ class FormHotelProfile extends Form
         $this->background_photo = $data->background_photo;
         $this->intro_video = $data->intro_video;
         $this->running_text = $data->running_text;
+        $this->welcome_text = $data->welcome_text;
     }
 
     public function save() {
@@ -112,6 +116,7 @@ class FormHotelProfile extends Form
             'background_photo',
             'intro_video',
             'running_text',
+            'welcome_text',
         ]));
     }
 }
