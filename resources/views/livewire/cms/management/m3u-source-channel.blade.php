@@ -96,8 +96,8 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Icon</label>
-                    <x-acc-image-preview :$image :form_image="$form->icon"  />
-                    <input type="file" wire:model="image" class="form-control">
+                    <x-acc-image-preview :$image :form_image="$form->image"  />
+                    <x-acc-input-file model="image" :$imageIttr />
                     <x-acc-input-error for="image" />
                 </div>
             </div>
