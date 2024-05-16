@@ -15,6 +15,7 @@
                                 @if(auth()->user()->userHotel->hotel->type == 'hospital' && $menu->name == 'Hotel')
                                     {{-- Dont show hotel if user is admin hospital --}}
                                 @elseif(auth()->user()->userHotel->hotel->type == 'hotel' && in_array($menu->name, [
+                                    'Hospital',
                                     'Doctor Category',
                                     'Doctor',
                                 ]))
