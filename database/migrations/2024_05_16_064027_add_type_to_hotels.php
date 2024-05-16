@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('hotel_profiles', function (Blueprint $table) {
-            $table->longText('description')->nullable()->change();
+        Schema::table('hotels', function (Blueprint $table) {
+            $table->string('type')->default('hotel');
+            // Hotel, Hospital
         });
     }
 
@@ -21,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('hotel_profiles', function (Blueprint $table) {
+        Schema::table('hotels', function (Blueprint $table) {
             //
         });
     }

@@ -32,6 +32,20 @@ class RoleSeeder extends Seeder
         'password.update',
         'logout',
     ];
+    public $adminExcept = [
+        'cms.master.room-type',
+        'cms.master.room',
+        'cms.hotel.facility',
+        'cms.hotel.around',
+        'cms.hotel.promo',
+        'cms.hotel.food-category',
+        'cms.hotel.food',
+        'cms.hotel.policy',
+        'cms.hotel.event',
+        'cms.hotel.wifi',
+        'cms.hospital.doctor-category',
+        'cms.hospital.doctor',
+    ];
     public $receptionistPermission = [
         'cms.dashboard',
         'cms.front-desk',
@@ -39,6 +53,7 @@ class RoleSeeder extends Seeder
     public $adminHotelPermission = [
         'cms.dashboard',
         'cms.front-desk',
+        'cms.master.hospital',
         'cms.master.hotel',
         'cms.master.room-type',
         'cms.master.room',
@@ -52,6 +67,8 @@ class RoleSeeder extends Seeder
         'cms.hotel.wifi',
         'cms.management.user',
         'cms.management.access-control',
+        'cms.hospital.doctor-category',
+        'cms.hospital.doctor',
     ];
 
     public function run(): void
@@ -74,15 +91,7 @@ class RoleSeeder extends Seeder
                     $permission = Permission::findOrCreate($permission, 'web');
 
                     // Give admin permission
-                    if(!in_array($route, [
-                        'cms.master.room-type',
-                        'cms.master.room',
-                        'cms.hotel.facility',
-                        'cms.hotel.around',
-                        'cms.hotel.promo',
-                        'cms.hotel.food',
-                        'cms.hotel.policy',
-                    ])) {
+                    if(!in_array($route, $this->adminExcept)) {
                         $admin->givePermissionTo($permission);
                     }
 

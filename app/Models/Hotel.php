@@ -19,6 +19,7 @@ class Hotel extends Model
         'is_active',
         'password_setting',
         'default_greeting',
+        'type',
     ];
 
     public static function boot()

@@ -62,6 +62,18 @@ class Hotel extends BaseComponent
         $orderBy = 'name',
         $order = 'asc';
 
+    public $type;
+
+    public function mount() {
+        if($this->originRoute == 'cms.master.hotel') {
+            $this->type = 'hotel';
+            $this->title = 'Hotel';
+        } else {
+            $this->type = 'hospital';
+            $this->title = 'Hospital';
+        }
+    }
+
     public function render()
     {
         $model = new ModelsHotel;
@@ -70,6 +82,8 @@ class Hotel extends BaseComponent
         if(!auth()->user()->hasRole('admin')) {
             $model = $model->where('id', $this->hotel_id);
         }
+
+        $model = $model->where('type', $this->type);
 
         $get = $this->getDataWithFilter($model, [
             'orderBy' => $this->orderBy,
@@ -83,6 +97,11 @@ class Hotel extends BaseComponent
         }
 
         return view('livewire.cms.master.hotel', compact('get'))->title($this->title);
+    }
+
+    public function customSave() {
+        $this->form->type = $this->type;
+        $this->save();
     }
 
     #[Validate('nullable|image:jpeg,png,jpg,svg')]

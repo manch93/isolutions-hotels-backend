@@ -35,6 +35,9 @@ class FormHotel extends Form
     #[Validate('required|string')]
     public $password_setting;
 
+    #[Validate('required|in:hotel,hospital')]
+    public $type;
+
     #[Validate('required|boolean')]
     public $is_active;
 
@@ -78,6 +81,7 @@ class FormHotel extends Form
             'website',
             'default_greeting',
             'password_setting',
+            'type',
             'is_active',
         ]));
     }

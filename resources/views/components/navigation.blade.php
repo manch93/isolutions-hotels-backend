@@ -7,24 +7,58 @@
 
             <ul class="sidebar-nav">
                 @foreach($menus as $menu)
+
                     @if($menu->type != 'header')
                         @can('view.'.$menu->route)
-                            <li class="sidebar-{{ $menu->type }}">
-                                <a class="sidebar-link" href="{{
-                                    \Illuminate\Support\Facades\Route::has($menu->route)
-                                    ? route($menu->route)
-                                    : '#'
-                                }}">
-                                    @if($menu->type != 'header')
-                                        <i class="align-middle" data-feather="{{ $menu->icon }}"></i>
-                                    @endif
-                                    <span class="align-middle">{{ $menu->name }}</span>
-                                </a>
-                            </li>
+
+                            @if(auth()->user()->userHotel->hotel->type == 'hospital' && $menu->name == 'Hotel')
+                                {{-- Dont show hotel if user is admin hospital --}}
+                            @elseif(auth()->user()->userHotel->hotel->type == 'hotel' && in_array($menu->name, [
+                                'Doctor Category',
+                                'Doctor',
+                            ]))
+                                {{-- Dont show hospital if user is admin hotel --}}
+                            @else
+                                <li class="sidebar-{{ $menu->type }}">
+                                    <a class="sidebar-link" href="{{
+                                        \Illuminate\Support\Facades\Route::has($menu->route)
+                                        ? route($menu->route)
+                                        : '#'
+                                    }}">
+                                        @if($menu->type != 'header')
+                                            <i class="align-middle" data-feather="{{ $menu->icon }}"></i>
+                                        @endif
+                                        <span class="align-middle">{{ $menu->name }}</span>
+                                    </a>
+                                </li>
+                            @endif
+
                         @endcan
+
+                    {{-- if admin --}}
+                    @elseif(auth()->user()->hasRole('admin'))
+                        @if(in_array($menu->name, [
+                            'Settings',
+                            'Master',
+                        ]))
+                            <li class="sidebar-header">{{ $menu->name }}</li>
+                        @endif
+
+                    {{-- if admin hotel / hospital --}}
+                    @elseif(auth()->user()->hasRole('admin_hotel'))
+                        @if(auth()->user()->userHotel->hotel->type == 'hospital' && $menu->name == 'Hotel')
+                            {{-- Dont show hotel if user is admin hospital --}}
+                        @elseif(auth()->user()->userHotel->hotel->type == 'hotel' && $menu->name == 'Hospital')
+                            {{-- Dont show hospital if user is admin hotel --}}
+                        @else
+                            <li class="sidebar-header">{{ $menu->name }}</li>
+                        @endif
+
+                    {{-- if Receptionist --}}
                     @elseif(!auth()->user()->hasRole('receptionist'))
                         <li class="sidebar-header">{{ $menu->name }}</li>
                     @endif
+
                 @endforeach
             </ul>
         </div>

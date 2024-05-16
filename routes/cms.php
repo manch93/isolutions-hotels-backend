@@ -15,6 +15,7 @@ Route::group([
 
     // Master Data
     Route::get('/master/hotel', App\Livewire\Cms\Master\Hotel::class)->name('master.hotel');
+    Route::get('/master/hospital', App\Livewire\Cms\Master\Hotel::class)->name('master.hospital');
     Route::get('/master/room-type', App\Livewire\Cms\Master\RoomType::class)->name('master.room-type');
     Route::get('/master/room', App\Livewire\Cms\Master\Room::class)->name('master.room');
 
@@ -30,6 +31,11 @@ Route::group([
 
     // Hotel Enabled channel
     Route::get('/hotel/{id}/enable-channel', App\Livewire\Cms\Hotel\EnabledChannel::class)->name('hotel.enabled-channel');
+
+    // Hospital
+    Route::get('/doctor-category', App\Livewire\Cms\Hospital\DoctorCategory::class)->name('hospital.doctor-category');
+    Route::get('/doctor', App\Livewire\Cms\Hospital\Doctor::class)->name('hospital.doctor');
+
 
     // Management
     Route::get('/management/menu', App\Livewire\Cms\Management\Menu::class)->name('management.menu');

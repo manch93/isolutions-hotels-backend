@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('hotel_profiles', function (Blueprint $table) {
-            $table->longText('description')->nullable()->change();
+        Schema::create('doctor_categories', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('hotel_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('hotel_profiles', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('doctor_categories');
     }
 };
