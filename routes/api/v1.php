@@ -20,5 +20,7 @@ Route::group([
     Route::get('/room-type', [App\Http\Controllers\Api\V1\RoomController::class, 'type'])->name('room.type');
     Route::get('/room-type/{id}', [App\Http\Controllers\Api\V1\RoomController::class, 'typeDetail'])->name('room.type.detail');
     Route::get('/room/{id}', [App\Http\Controllers\Api\V1\RoomController::class, 'detail'])->name('room.detail');
+    Route::get('/doctor-category', [App\Http\Controllers\Api\V1\DoctorController::class, 'category'])->name('doctor-category');
+    Route::get('/doctor/{category}', [App\Http\Controllers\Api\V1\DoctorController::class, 'getDoctorByCategory'])->name('doctor');
     // Route::get('/wifi', [App\Http\Controllers\Api\V1\WifiController::class, 'get'])->name('wifi');
 });
