@@ -19,8 +19,23 @@
                                     'Doctor',
                                 ]))
                                     {{-- Dont show hospital if user is admin hotel --}}
+                                @else
+                                    <li class="sidebar-{{ $menu->type }}">
+                                        <a class="sidebar-link" href="{{
+                                            \Illuminate\Support\Facades\Route::has($menu->route)
+                                            ? route($menu->route)
+                                            : '#'
+                                        }}">
+                                            @if($menu->type != 'header')
+                                                <i class="align-middle" data-feather="{{ $menu->icon }}"></i>
+                                            @endif
+                                            <span class="align-middle">{{ $menu->name }}</span>
+                                        </a>
+                                    </li>
                                 @endif
+
                             @else
+
                                 <li class="sidebar-{{ $menu->type }}">
                                     <a class="sidebar-link" href="{{
                                         \Illuminate\Support\Facades\Route::has($menu->route)
