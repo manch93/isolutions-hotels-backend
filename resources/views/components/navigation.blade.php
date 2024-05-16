@@ -11,13 +11,15 @@
                     @if($menu->type != 'header')
                         @can('view.'.$menu->route)
 
-                            @if(auth()->user()->userHotel->hotel->type == 'hospital' && $menu->name == 'Hotel')
-                                {{-- Dont show hotel if user is admin hospital --}}
-                            @elseif(auth()->user()->userHotel->hotel->type == 'hotel' && in_array($menu->name, [
-                                'Doctor Category',
-                                'Doctor',
-                            ]))
-                                {{-- Dont show hospital if user is admin hotel --}}
+                            @if(!auth()->user()->hasRole('admin'))
+                                @if(auth()->user()->userHotel->hotel->type == 'hospital' && $menu->name == 'Hotel')
+                                    {{-- Dont show hotel if user is admin hospital --}}
+                                @elseif(auth()->user()->userHotel->hotel->type == 'hotel' && in_array($menu->name, [
+                                    'Doctor Category',
+                                    'Doctor',
+                                ]))
+                                    {{-- Dont show hospital if user is admin hotel --}}
+                                @endif
                             @else
                                 <li class="sidebar-{{ $menu->type }}">
                                     <a class="sidebar-link" href="{{
