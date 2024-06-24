@@ -13,6 +13,10 @@ Route::group([
     // Front Desk
     Route::get('/front-desk', App\Livewire\FrontDesk::class)->name('front-desk');
 
+    // Documentation
+    Route::get('/docs', App\Livewire\Cms\Doc\Index::class)->name('docs');
+    Route::get('/docs/create-update/{id?}', App\Livewire\Cms\Doc\CreateUpdate::class)->name('docs.create-update');
+
     // Master Data
     Route::get('/master/hotel', App\Livewire\Cms\Master\Hotel::class)->name('master.hotel');
     Route::get('/master/hospital', App\Livewire\Cms\Master\Hotel::class)->name('master.hospital');

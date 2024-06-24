@@ -103,8 +103,8 @@ class Doctor extends BaseComponent
         }
         $this->form->description = $this->trix_description;
         $this->form->image = $this->image;
+        $this->save();
         $this->image = null;
         $this->trix_description = null;
-        $this->save();
     }
 }

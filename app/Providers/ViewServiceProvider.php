@@ -31,8 +31,12 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('menus', Menu::orderBy('ordering', 'asc')->where('on', 'web')->get());
         });
 
+        Facades\View::composer('components.layouts.docs', function(View $view) {
+            $view->with('menus', Menu::orderBy('ordering', 'asc')->where('on', 'docs')->get());
+        });
+
         // Pas setting
-        Facades\View::composer(['components.navigation', 'auth.login'], function(View $view) {
+        Facades\View::composer(['*'], function(View $view) {
             $settings = Setting::first();
             $settings->opengraph = json_decode($settings->opengraph, true);
             $settings->dulbincore = json_decode($settings->dulbincore, true);

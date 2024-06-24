@@ -73,7 +73,7 @@ class DoctorCategory extends BaseComponent
             $this->form->hotel_id = $this->hotel_id;
         }
         $this->form->description = $this->trix_description;
-        $this->trix_description = null;
         $this->save();
+        $this->trix_description = null;
     }
 }

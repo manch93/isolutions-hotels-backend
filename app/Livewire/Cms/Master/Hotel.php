@@ -137,6 +137,8 @@ class Hotel extends BaseComponent
         $this->formProfile->background_photo = $this->background_photo;
         $this->formProfile->intro_video = $this->intro_video;
         $this->formProfile->description = $this->trix_description;
+        $this->imageIttr++;
+        $this->formProfile->save();
         $this->logo_color = null;
         $this->logo_white = null;
         $this->logo_black = null;
@@ -144,8 +146,6 @@ class Hotel extends BaseComponent
         $this->background_photo = null;
         $this->intro_video = null;
         $this->trix_description = null;
-        $this->imageIttr++;
-        $this->formProfile->save();
 
         $this->dispatch('closeModal', modal: 'acc-profile');
         $this->dispatch('alert', type: Alert::success, message: 'Hotel Profile Updated');

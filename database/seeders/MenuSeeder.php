@@ -29,6 +29,14 @@ class MenuSeeder extends Seeder
                 'route' => 'cms.front-desk',
                 'ordering' => '2',
             ],
+            [
+                'name' => 'Documentation',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'file-text',
+                'route' => 'cms.docs',
+                'ordering' => '3',
+            ],
             // Master Data
             [
                 'name' => 'Master',

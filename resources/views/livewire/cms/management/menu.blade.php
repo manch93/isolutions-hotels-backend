@@ -16,9 +16,18 @@
                             <select wire:model.live="on" class="form-control">
                                 <option value="cms">CMS</option>
                                 <option value="web">Web</option>
+                                <option value="docs">Docs</option>
                             </select>
                         </div>
                     </div>
+                    @if($on == 'docs')
+                        <div class="col-md-6">
+                            <br>
+                            <a class="btn btn-primary mt-4" href="{{ route('cms.docs') }}">
+                                List Documentation
+                            </a>
+                        </div>
+                    @endif
                 </x-acc-header>
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
@@ -74,6 +83,7 @@
                         <option value="">--Select Type--</option>
                         <option value="cms">Cms</option>
                         <option value="web">Web</option>
+                        <option value="docs">Docs</option>
                     </select>
                     <x-acc-input-error for="form.on" />
                 </div>
