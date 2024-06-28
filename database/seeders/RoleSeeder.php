@@ -33,6 +33,7 @@ class RoleSeeder extends Seeder
         'logout',
     ];
     public $adminExcept = [
+        'cms.front-desk',
         'cms.master.room-type',
         'cms.master.room',
         'cms.hotel.facility',
