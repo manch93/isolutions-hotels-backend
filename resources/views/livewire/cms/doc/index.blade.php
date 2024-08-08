@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <x-acc-header :$originRoute createFunction="customCreate">
+                <x-acc-header :$originRoute createClick="customCreate">
                     <div class="col-md-6">
                         <a class="btn btn-primary mt-4" href="{{ route('cms.management.menu') }}?on=docs">
                             List Menu Documentation

@@ -1,5 +1,6 @@
 <div>
-    <h1 class="h3 mb-3">
+    <x-acc-back route="cms.docs" />
+    <h1 class="h3 mb-3 mt-3">
         {{ $title ?? '' }}
     </h1>
 
