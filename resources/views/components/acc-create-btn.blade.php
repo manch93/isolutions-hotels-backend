@@ -1,18 +1,15 @@
 @props([
     'route' => '',
-    'createFunction',
+    'createClick' => 'create',
 ])
-<div x-data>
+<div>
     @can('create.' . $route)
         <div class="float-end">
             <button
                 class="btn btn-success"
-                wire:loading.attr="disabled"
-                wire:target="{{ $createFunction }}"
-                wire:click="{{ $createFunction }}"
-                @click="new bootstrap.Modal(document.getElementById('acc-modal')).show()"
+                wire:click="{{ $createClick }}"
             >
-                <i class="align-middle" data-feather="plus-circle"></i>
+                <i class="fa fa-plus-circle"></i>
                 Create
             </button>
         </div>

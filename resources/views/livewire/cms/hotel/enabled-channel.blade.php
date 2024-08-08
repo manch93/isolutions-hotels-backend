@@ -1,4 +1,4 @@
-<div>
+<x-acc-with-alert>
     <h1 class="h3 mb-3">
         {{ $title ?? '' }}
     </h1>
@@ -86,7 +86,7 @@
     </div>
 
     {{-- Create / Update Modal --}}
-    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}">
+    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :$isModalOpen>
         <x-acc-form submit="customSave">
             <div class="col-md-12">
                 <div class="mb-3">
@@ -125,15 +125,4 @@
             </div>
         </x-acc-form>
     </x-acc-modal>
-    <x-slot:scripts>
-        <script>
-            document.addEventListener('livewire:initialized', function () {
-                Livewire.on('updated-channel', params => {
-                    setTimeout(() => {
-                        document.getElementById('channel').value = params.channel
-                    }, 500)
-                })
-            })
-        </script>
-    </x-slot:scripts>
-</div>
+</x-acc-with-alert>

@@ -3,19 +3,25 @@
 namespace App\Traits;
 
 use App\Enums\Alert;
+use Spatie\Permission\Exceptions\UnauthorizedException;
 
 trait WithSaveAction {
     public function save() {
-        // try {
-        $this->form->save();
+        try {
+            // Check permission
+            $permission = $this->isUpdate ? 'update.' : 'create.';
 
-        // Image iteration to prevent duplicate image
-        $this->imageIttr++;
+            // Check permission
+            if(!auth()->user()->can($permission . $this->originRoute)) throw new UnauthorizedException(403, 'You do not have permission.');
 
-        $this->dispatch('closeModal', modal: 'acc-modal');
-        $this->dispatch('alert', type: Alert::success, message: $this->isUpdate ? 'Data Updated' : 'Data Created');
-        // } catch (\Exception $exception) {
-        //     $this->dispatch('alert', type: Alert::error, message: $exception->getMessage());
-        // }
+            $this->form->save();
+
+            session()->flash(Alert::success->value, $this->isUpdate ? 'Data Updated' : 'Data Created');
+
+            // Redirect
+            $this->closeModal();
+        } catch (UnauthorizedException $exception) {
+            $this->dispatch('alert', type: Alert::error->value, message: $exception->getMessage());
+        }
     }
 }

@@ -1,4 +1,4 @@
-<div>
+<x-acc-with-alert>
     <h1 class="h3 mb-3">
         {{ $title ?? '' }}
     </h1>
@@ -86,7 +86,7 @@
     </div>
 
     {{-- Create / Update Modal --}}
-    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}">
+    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :$isModalOpen>
         <x-acc-form submit="customSave">
             <div class="col-md-12">
                 <div class="mb-3">
@@ -103,4 +103,4 @@
             </div>
         </x-acc-form>
     </x-acc-modal>
-</div>
+</x-acc-with-alert>

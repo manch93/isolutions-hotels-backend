@@ -3,7 +3,7 @@
     'isSearch' => true,
     'isPaginate' => true,
     'originRoute' => '',
-    'createFunction' => 'create'
+    'createClick' => 'create',
 ])
 
 <div>
@@ -13,7 +13,7 @@
                 @if($isCreate)
                     <x-acc-create-btn
                         :route="$originRoute"
-                        :createFunction="$createFunction"
+                        :$createClick
                     />
                 @endif
             </div>
@@ -22,7 +22,7 @@
     <div class="row">
         @if($isPaginate)
             <div class="col-md-{{ $isSearch ? '6' : '12' }}">
-                <select class="form-control" wire:model.live="paginate">
+                <select class="form-control" wire:model.live.debounce.750="paginate">
                     <option value="10">10 Records Per Page</option>
                     <option value="25">25 Records Per Page</option>
                     <option value="50">50 Records Per Page</option>

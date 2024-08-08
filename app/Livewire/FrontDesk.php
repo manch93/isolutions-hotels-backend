@@ -76,7 +76,7 @@ class FrontDesk extends BaseComponent
     public function checkIn() {
         $this->form->checkIn();
 
-        $this->dispatch('closeModal', modal: 'acc-modal');
+        $this->closeModal();
         $this->dispatch('alert', message: 'Check In Success');
     }
 
@@ -89,7 +89,7 @@ class FrontDesk extends BaseComponent
         $this->form->id = $id;
         $this->form->checkOut();
 
-        $this->dispatch('closeModal', modal: 'acc-modal');
+        $this->closeModal();
         $this->dispatch('alert', message: 'Check Out Success');
     }
 }

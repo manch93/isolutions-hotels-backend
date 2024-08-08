@@ -1,7 +1,9 @@
-<div>
+<x-acc-with-alert>
     <h1 class="h3 mb-3">
         {{ $title ?? '' }}
     </h1>
+
+    <x-acc-load-fix-trix />
 
     <div class="card">
         <div class="card-header">
@@ -47,7 +49,7 @@
     </div>
 
     {{-- Create / Update Modal --}}
-    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}">
+    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :$isModalOpen>
         <x-acc-form submit="saveWithUpload">
             @if(auth()->user()->hasRole('admin'))
                 <div class="col-md-12">
@@ -99,4 +101,4 @@
             </div>
         </x-acc-form>
     </x-acc-modal>
-</div>
+</x-acc-with-alert>

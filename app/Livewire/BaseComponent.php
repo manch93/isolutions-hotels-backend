@@ -10,6 +10,8 @@ use App\Traits\WithCreateAction;
 use App\Traits\WithDeleteAction;
 use App\Traits\WithEditAction;
 use App\Traits\WithSaveAction;
+use App\Traits\InteractWithModal;
+use App\Traits\WithResetAction;
 
 class BaseComponent extends Component {
     use WithPagination,
@@ -18,13 +20,18 @@ class BaseComponent extends Component {
         WithCreateAction,
         WithEditAction,
         WithDeleteAction,
-        WithSaveAction;
+        WithSaveAction,
+        WithResetAction,
+        InteractWithModal;
 
     public $originRoute = '';
     public $hotel_id = '';
 
     // Image iterator for image set null after save
     public $imageIttr = 1;
+
+     // Modal
+    public $isModalOpen = false;
 
     public function __construct()
     {

@@ -86,7 +86,6 @@ class EnabledChannel extends BaseComponent
         // get channel from source
         $whereNot = HotelChannelEnabled::where('hotel_id', $this->hotel->id)->whereNot('m3u_channel_id', $this->form->m3u_channel_id)->pluck('m3u_channel_id')->toArray();
         $this->channel = M3uChannel::where('m3u_source_id', $this->source_id)->whereNotIn('id', $whereNot)->get();
-        $this->dispatch('updated-channel', channel: $this->form->m3u_channel_id);
     }
 
     public function getChannelFromSource() {
@@ -114,5 +113,6 @@ class EnabledChannel extends BaseComponent
         $this->form->hotel_id = $this->hotel->id;
 
         $this->save();
+        $this->getChannelFromSource();
     }
 }

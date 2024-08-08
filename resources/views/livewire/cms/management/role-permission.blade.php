@@ -1,5 +1,6 @@
 <div>
-    <h1 class="h3 mb-3">
+    <x-acc-back route="cms.management.role" />
+    <h1 class="h3 mb-3 mt-3">
         {{ $title ?? '' }}
     </h1>
 
@@ -11,19 +12,14 @@
             <div class="row mb-3">
                 <div class="col-md-12">
                     <div class="float-start">
-                        <button class="btn btn-primary" wire:click="checkAll">
-                            <i class="align-middle" data-feather="check"></i>
+                        <button class="btn btn-primary" wire:click="checkAll" wire:loading.attr="disabled">
+                            <i class="fa fa-check"></i>
                             Check All
                         </button>
-                        <button class="btn btn-danger" wire:click="uncheckAll" >
-                            <i class="align-middle" data-feather="x"></i>
+                        <button class="btn btn-danger" wire:click="uncheckAll" wire:loading.attr="disabled">
+                            <i class="fa fa-x"></i>
                             Uncheck All
                         </button>
-                    </div>
-                    <div class="col-md-12 mt-2" wire:loading>
-                        <div class="spinner-border" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -38,24 +34,17 @@
                                 @php
                                     $label = explode('.', $name);
                                     $label = $label[0];
-
-                                    // Button class
-                                    $class = 'btn-danger';
-                                    $icon = 'x';
-                                    $wire = 'check';
-                                    if ($value) {
-                                        $class = 'btn-success';
-                                        $icon = 'check';
-                                        $wire = 'uncheck';
-                                    }
                                 @endphp
                                 <div class="col-md-3 mb-2">
-                                    <div class="form-check">
-                                        <button class="btn {{ $class }}" wire:click="{{ $wire }}('{{ $name }}', '{{ $route }}')">
-                                            <i class="align-middle" data-feather="{{ $icon }}"></i>
-                                        </button>
-                                        <label class="form-check-label">{{ ucfirst($label) }}</label>
-                                    </div>
+                                    <div class="form-check form-switch" x-data="{ check: {{ $value ? 'true' : 'false' }} }" x-init="$watch('check', value => {
+                                        $wire.{{ $value ? 'uncheck' : 'check' }}('{{ $name }}', '{{ $route }}');
+                                    });">
+										<input class="form-check-input"
+                                            type="checkbox"
+                                            x-model="check"
+                                            wire:loading.attr="disabled" />
+										<label class="form-check-label">{{ ucfirst($label) }}</label>
+									</div>
                                 </div>
                             @endforeach
                             </div>

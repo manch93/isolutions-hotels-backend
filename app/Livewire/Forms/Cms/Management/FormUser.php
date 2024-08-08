@@ -60,11 +60,14 @@ class FormUser extends Form
 
         // Assign new role
         $user->assignRole($this->role);
-        // Assign new hotel
-        $user->userHotel()->create([
-            'user_id' => $user->id,
-            'hotel_id' => $this->hotel,
-        ]);
+
+        if($this->role !== 'admin') {
+            // Assign new hotel
+            $user->userHotel()->create([
+                'user_id' => $user->id,
+                'hotel_id' => $this->hotel,
+            ]);
+        }
     }
 
     // Update data
@@ -77,12 +80,15 @@ class FormUser extends Form
         // Assign new role
         $user->assignRole($this->role);
 
-        // Assign new hotel
-        $user->userHotel()->delete();
-        $user->userHotel()->create([
-            'user_id' => $user->id,
-            'hotel_id' => $this->hotel,
-        ]);
+        if($this->role !== 'admin') {
+            // Assign new hotel
+            $user->userHotel()->delete();
+            $user->userHotel()->create([
+                'user_id' => $user->id,
+                'hotel_id' => $this->hotel,
+            ]);
+        }
+
         $user->update([
             'name',
             'email',

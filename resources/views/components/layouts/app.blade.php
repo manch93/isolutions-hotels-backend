@@ -13,14 +13,13 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="{{ asset('admin') }}/js/app.js" data-navigate-once="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{ $styles ?? '' }}
 </head>
 
 <body>
     <div class="wrapper">
-        @persist('nav')
-            <x-navigation />
-        @endpersist
+        <x-navigation />
 
 		<div class="main">
             <x-header />

@@ -1,4 +1,4 @@
-<div>
+<x-acc-with-alert>
     <h1 class="h3 mb-3">
         {{ $title ?? '' }}
     </h1>
@@ -26,4 +26,4 @@
             </x-acc-form>
         </div>
     </div>
-</div>
+</x-acc-with-alert>

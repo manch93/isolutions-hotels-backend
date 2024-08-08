@@ -1,4 +1,4 @@
-<div>
+<x-acc-with-alert>
     <h1 class="h3 mb-3">
         {{ $title ?? '' }}
     </h1>
@@ -26,9 +26,7 @@
                                 <x-acc-update-delete :id="$d->id" :$originRoute>
                                     <a
                                         href="{{ route('cms.management.role-permission', ['role' => $d->name]) }}"
-                                        class="btn btn-primary"
-                                        wire:navigate
-                                    >
+                                        class="btn btn-primary">
                                         <i class="align-middle" data-feather="lock"></i> Permission
                                     </a>
                                 </x-acc-update-delete>
@@ -51,7 +49,7 @@
     </div>
 
     {{-- Create / Update Modal --}}
-    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}">
+    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :$isModalOpen>
         <x-acc-form submit="save">
             <div class="col-md-12">
                 <div class="mb-3">
@@ -62,4 +60,4 @@
             </div>
         </x-acc-form>
     </x-acc-modal>
-</div>
+</x-acc-with-alert>

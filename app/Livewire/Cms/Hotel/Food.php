@@ -58,6 +58,7 @@ class Food extends BaseComponent
     public $trix_description;
 
     public function mount() {
+        $this->isModalOpen = true;
         $this->hotels = Hotel::all();
 
         if(!auth()->user()->hasRole('admin')) {

@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <x-acc-header :$originRoute>
+                <x-acc-header :$originRoute :isCreate="false">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mt-3">
@@ -41,7 +41,6 @@
                                             disabled
                                         @endif
                                         wire:click="edit({{ $d->id }})"
-                                        @click="new bootstrap.Modal(document.getElementById('acc-modal')).show()"
                                     >
                                         <i class="align-middle" data-feather="log-in"></i> Check In
                                     </button>
@@ -78,7 +77,7 @@
     </div>
 
     {{-- Check In --}}
-    <x-acc-modal title="Check In">
+    <x-acc-modal title="Check In" :$isModalOpen>
         <x-acc-form submit="checkIn">
             <div class="col-md-12">
                 <div class="mb-3">

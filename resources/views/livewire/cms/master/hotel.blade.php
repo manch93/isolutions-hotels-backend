@@ -1,7 +1,9 @@
-<div>
+<x-acc-with-alert>
     <h1 class="h3 mb-3">
         {{ $title ?? '' }}
     </h1>
+
+    <x-acc-load-fix-trix actionCallback="closeModalProfile" />
 
     <div class="card">
         <div class="card-header">
@@ -42,8 +44,7 @@
                                         <div class="clearfix"></div>
                                     @endrole
                                     <button class="btn btn-primary btn-sm mb-2"
-                                        wire:click="getProfile({{ $d->id }})"
-                                        @click="new bootstrap.Modal(document.getElementById('acc-profile')).show()">
+                                        wire:click="getProfile({{ $d->id }})">
                                         <i class="align-middle" data-feather="edit"></i>
                                         Profile
                                     </button>
@@ -67,7 +68,7 @@
         </div>
     </div>
 
-    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}">
+    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :$isModalOpen>
         <x-acc-form submit="customSave">
             <div class="col-md-12">
                 <div class="mb-3">
@@ -123,13 +124,13 @@
         </x-acc-form>
     </x-acc-modal>
 
-    <x-acc-modal title="Edit Profile" id="acc-profile">
+    <x-acc-modal title="Edit Profile" id="acc-profile" :isModalOpen="$isModalProfileOpen" closeModalFunction="closeModalProfile">
         <x-acc-form submit="saveProfile">
             <input type="hidden" wire:model="formProfile.hotel_id">
             <div class="col-md-12">
                 <div class="mb-3">
                     <label class="form-label">Hotel</label>
-                    <input type="text" wire:model="formProfile.hotel" class="form-control" placeholder="Hotel">
+                    <input type="text" wire:model="formProfile.hotel" class="form-control" placeholder="Hotel" readonly>
                     <x-acc-input-error for="formProfile.hotel" />
                 </div>
             </div>
@@ -211,4 +212,4 @@
             </div>
         </x-acc-form>
     </x-acc-modal>
-</div>
+</x-acc-with-alert>

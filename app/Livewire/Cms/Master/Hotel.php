@@ -124,9 +124,16 @@ class Hotel extends BaseComponent
 
     public $trix_description;
 
+    public $isModalProfileOpen = true;
+
     public function getProfile($id) {
         $this->formProfile->getDetail($id);
         $this->trix_description = $this->formProfile->description;
+        $this->isModalProfileOpen = true;
+    }
+
+    public function closeModalProfile() {
+        $this->isModalProfileOpen = false;
     }
 
     public function saveProfile() {
@@ -147,7 +154,7 @@ class Hotel extends BaseComponent
         $this->intro_video = null;
         $this->trix_description = null;
 
-        $this->dispatch('closeModal', modal: 'acc-profile');
+        $this->isModalProfileOpen = false;
         $this->dispatch('alert', type: Alert::success, message: 'Hotel Profile Updated');
     }
 }
