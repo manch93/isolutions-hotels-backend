@@ -13,7 +13,9 @@ class AccessControl extends Component
     public function render()
     {
         $user = Auth::guard('web')->user()->toArray();
-        $user['roles'] = Auth::guard('web')->user()->getRoleNames()[0];
+
+        unset($user['permissions']);
+        unset($user['roles']);
 
         $apikey = Crypt::encrypt($user);
 

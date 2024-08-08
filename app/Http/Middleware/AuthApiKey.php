@@ -14,22 +14,28 @@ class AuthApiKey
 {
     public function handle(Request $request, Closure $next): Response
     {
-        // Check if has header
-        if(!$request->headers->has('X-API-KEY')) return $this->checkAuth($request, $next);
-        $user = Crypt::decrypt($request->header('X-API-KEY'));
+        try {
+            // Check if has header
+            if(!$request->headers->has('X-API-KEY')) $this->checkAuth($request, $next);
+            $user = Crypt::decrypt($request->header('X-API-KEY'));
 
-        // Check if has id
-        if(!array_key_exists('id', $user)) return $this->checkAuth($request, $next);
-        $user = User::find($user['id']);
+            unset($user['permissions']);
+            unset($user['roles']);
 
-        // Check if user exists
-        if(!$user) return $this->checkAuth($request, $next);
+            // Check data
+            $user = User::where($user)->first();
 
-        Auth::login($user);
+            // Check if user exists
+            if(!$user) return $this->checkAuth($request, $next);
 
-        $request->attributes->add(['user' => $user]);
+            Auth::login($user);
 
-        return $next($request);
+            $request->attributes->add(['user' => $user]);
+
+            return $next($request);
+        } catch (\Throwable $th) {
+            return $this->checkAuth($request, $next);
+        }
     }
 
     public function checkAuth(Request $request, Closure $next) {
