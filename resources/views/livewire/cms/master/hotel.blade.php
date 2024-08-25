@@ -3,8 +3,6 @@
         {{ $title ?? '' }}
     </h1>
 
-    <x-acc-load-fix-trix actionCallback="closeModalProfile" />
-
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">{{ $title ?? '' }} Data</h5>
@@ -68,7 +66,7 @@
         </div>
     </div>
 
-    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :$isModalOpen>
+    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :isModaOpen="$modals['defaultModal']">
         <x-acc-form submit="customSave">
             <div class="col-md-12">
                 <div class="mb-3">
@@ -124,7 +122,7 @@
         </x-acc-form>
     </x-acc-modal>
 
-    <x-acc-modal title="Edit Profile" id="acc-profile" :isModalOpen="$isModalProfileOpen" closeModalFunction="closeModalProfile">
+    <x-acc-modal title="Edit Profile" id="acc-profile" :isModaOpen="$modals['modalProfile']" closeModalFunction="closeModalProfile">
         <x-acc-form submit="saveProfile">
             <input type="hidden" wire:model="formProfile.hotel_id">
             <div class="col-md-12">

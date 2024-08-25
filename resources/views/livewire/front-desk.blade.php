@@ -77,7 +77,7 @@
     </div>
 
     {{-- Check In --}}
-    <x-acc-modal title="Check In" :$isModalOpen>
+    <x-acc-modal title="Check In" :isModaOpen="$modals['defaultModal']">
         <x-acc-form submit="checkIn">
             <div class="col-md-12">
                 <div class="mb-3">

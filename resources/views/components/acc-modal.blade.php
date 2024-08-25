@@ -5,7 +5,14 @@
     'closeModalFunction' => 'closeModal',
 ])
 
-@if($isModalOpen)
+@props([
+    'id' => 'acc-modal',
+    'title' => 'Title',
+    'isModaOpen' => false,
+    'closeModalFunction' => 'closeModal',
+])
+
+<div class="{{ $isModaOpen ? 'd-block' : 'd-none' }}">
     <div class="modal fade show" id="{{ $id }}" tabindex="-1" aria-labelledby="{{ $id }}-label" aria-hidden="true" wire:ignore.self style="display: block">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -31,4 +38,5 @@
         </div>
     </div>
     <div class="modal-backdrop fade show"></div>
-@endif
+</div>
+

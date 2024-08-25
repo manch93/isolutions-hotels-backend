@@ -3,8 +3,6 @@
         {{ $title ?? '' }}
     </h1>
 
-    <x-acc-load-fix-trix />
-
     <div class="card">
         <div class="card-header">
             <h5 class="card-title">{{ $title ?? '' }} Data</h5>
@@ -48,7 +46,7 @@
     </div>
 
     {{-- Create / Update Modal --}}
-    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :$isModalOpen>
+    <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :isModaOpen="$modals['defaultModal']">
         <x-acc-form submit="saveWithUpload">
             @if(auth()->user()->hasRole('admin'))
                 <div class="col-md-12">

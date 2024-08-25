@@ -65,6 +65,9 @@ class Hotel extends BaseComponent
     public $type;
 
     public function mount() {
+        // Add new modal
+        $this->addModal('modalProfile');
+
         if($this->originRoute == 'cms.master.hotel') {
             $this->type = 'hotel';
             $this->title = 'Hotel';
@@ -124,16 +127,14 @@ class Hotel extends BaseComponent
 
     public $trix_description;
 
-    public $isModalProfileOpen = true;
-
     public function getProfile($id) {
         $this->formProfile->getDetail($id);
         $this->trix_description = $this->formProfile->description;
-        $this->isModalProfileOpen = true;
+        $this->openModal('modalProfile');
     }
 
     public function closeModalProfile() {
-        $this->isModalProfileOpen = false;
+        $this->closeModal('modalProfile');
     }
 
     public function saveProfile() {
@@ -154,7 +155,7 @@ class Hotel extends BaseComponent
         $this->intro_video = null;
         $this->trix_description = null;
 
-        $this->isModalProfileOpen = false;
+        $this->closeModalProfile();
         $this->dispatch('alert', type: Alert::success, message: 'Hotel Profile Updated');
     }
 }
