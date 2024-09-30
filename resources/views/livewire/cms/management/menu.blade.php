@@ -8,27 +8,27 @@
             <h5 class="card-title">{{ $title ?? '' }} Data</h5>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <x-acc-header :$originRoute>
-                    <div class="col-md-6">
-                        <div class="mt-3">
-                            <label class="form-label fw-bold">Menu On</label>
-                            <select wire:model.live="on" class="form-control">
-                                <option value="cms">CMS</option>
-                                <option value="web">Web</option>
-                                <option value="docs">Docs</option>
-                            </select>
-                        </div>
+            <x-acc-header :$originRoute>
+                <div class="col-md-6">
+                    <div class="mt-3">
+                        <label class="form-label fw-bold">Menu On</label>
+                        <select wire:model.live="on" class="form-control">
+                            <option value="cms">CMS</option>
+                            <option value="web">Web</option>
+                            <option value="docs">Docs</option>
+                        </select>
                     </div>
-                    @if($on == 'docs')
-                        <div class="col-md-6">
-                            <br>
-                            <a class="btn btn-primary mt-4" href="{{ route('cms.docs') }}">
-                                List Documentation
-                            </a>
-                        </div>
-                    @endif
-                </x-acc-header>
+                </div>
+                @if($on == 'docs')
+                    <div class="col-md-6">
+                        <br>
+                        <a class="btn btn-primary mt-4" href="{{ route('cms.docs') }}">
+                            List Documentation
+                        </a>
+                    </div>
+                @endif
+            </x-acc-header>
+            <div class="table-responsive">
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -58,10 +58,9 @@
                         @endforelse
                     </tbody>
                 </table>
-
-                <div class="float-end">
-                    {{ $get->links() }}
-                </div>
+            </div>
+            <div class="float-end">
+                {{ $get->links() }}
             </div>
         </div>
     </div>

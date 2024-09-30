@@ -22,8 +22,8 @@
                     </div>
                 </div>
             </div>
+            <x-acc-header :$originRoute createFunction="customCreate" />
             <div class="table-responsive">
-                <x-acc-header :$originRoute createFunction="customCreate" />
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -77,10 +77,9 @@
                         @endforelse
                     </tbody>
                 </table>
-
-                <div class="float-end">
-                    {{ $get->links() }}
-                </div>
+            </div>
+            <div class="float-end">
+                {{ $get->links() }}
             </div>
         </div>
     </div>

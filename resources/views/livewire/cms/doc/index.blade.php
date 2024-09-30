@@ -8,14 +8,14 @@
             <h5 class="card-title">{{ $title ?? '' }} Data</h5>
         </div>
         <div class="card-body">
+            <x-acc-header :$originRoute createClick="customCreate">
+                <div class="col-md-6">
+                    <a class="btn btn-primary mt-4" href="{{ route('cms.management.menu') }}?on=docs">
+                        List Menu Documentation
+                    </a>
+                </div>
+            </x-acc-header>
             <div class="table-responsive">
-                <x-acc-header :$originRoute createClick="customCreate">
-                    <div class="col-md-6">
-                        <a class="btn btn-primary mt-4" href="{{ route('cms.management.menu') }}?on=docs">
-                            List Menu Documentation
-                        </a>
-                    </div>
-                </x-acc-header>
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -43,10 +43,9 @@
                         @endforelse
                     </tbody>
                 </table>
-
-                <div class="float-end">
-                    {{ $get->links() }}
-                </div>
+            </div>
+            <div class="float-end">
+                {{ $get->links() }}
             </div>
         </div>
     </div>

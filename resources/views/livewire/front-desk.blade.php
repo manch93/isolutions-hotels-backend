@@ -8,22 +8,22 @@
             <h5 class="card-title">{{ $title ?? '' }} Data</h5>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                <x-acc-header :$originRoute :isCreate="false">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="mt-3">
-                                <label class="form-label fw-bold">Room Type</label>
-                                <select class="form-control" wire:model.live="whereRoomType">
-                                    <option value="">--Select Room Type--</option>
-                                    @foreach ($roomTypes as $rt)
-                                        <option value="{{ $rt->id }}">{{ $rt->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+            <x-acc-header :$originRoute :isCreate="false">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mt-3">
+                            <label class="form-label fw-bold">Room Type</label>
+                            <select class="form-control" wire:model.live="whereRoomType">
+                                <option value="">--Select Room Type--</option>
+                                @foreach ($roomTypes as $rt)
+                                    <option value="{{ $rt->id }}">{{ $rt->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                </x-acc-header>
+                </div>
+            </x-acc-header>
+            <div class="table-responsive">
                 <table class="table table-hover table-striped" style="width:100%">
                     <thead>
                         <tr>
@@ -68,10 +68,9 @@
                         @endforelse
                     </tbody>
                 </table>
-
-                <div class="float-end">
-                    {{ $get->links() }}
-                </div>
+            </div>
+            <div class="float-end">
+                {{ $get->links() }}
             </div>
         </div>
     </div>
