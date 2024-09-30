@@ -3,27 +3,20 @@
 namespace App\Livewire\Forms\Cms\Management;
 
 use App\Models\User;
-use Livewire\Attributes\Validate;
 use Livewire\Form;
 
 class FormUser extends Form
 {
-    #[Validate('nullable|numeric')]
     public $id = '';
 
-    #[Validate('required')]
     public $role = '';
 
-    #[Validate('required')]
     public $name = '';
 
-    #[Validate('required|email')]
     public $email = '';
 
-    #[Validate('required')]
     public $password = '';
 
-    #[Validate('nullable|numeric')]
     public $hotel = '';
 
     // Get the data
@@ -39,8 +32,6 @@ class FormUser extends Form
 
     // Save the data
     public function save() {
-        $this->validate();
-
         if ($this->id) {
             $this->update();
         } else {
@@ -52,6 +43,21 @@ class FormUser extends Form
 
     // Store data
     public function store() {
+        $rules = [
+            'id' => 'nullable|numeric',
+            'role' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'hotel' => 'required|numeric',
+        ];
+
+        if(in_array($this->role, ['admin', 'admin_reseller'])) {
+            $rules['hotel'] = 'nullable|numeric';
+        }
+
+        $this->validate($rules);
+
         $user = User::create($this->only([
             'name',
             'email',
@@ -61,7 +67,7 @@ class FormUser extends Form
         // Assign new role
         $user->assignRole($this->role);
 
-        if($this->role !== 'admin') {
+        if(!in_array($this->role, ['admin', 'admin_reseller'])) {
             // Assign new hotel
             $user->userHotel()->create([
                 'user_id' => $user->id,
@@ -72,6 +78,21 @@ class FormUser extends Form
 
     // Update data
     public function update() {
+        $rules = [
+            'id' => 'nullable|numeric',
+            'role' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'hotel' => 'required|numeric',
+        ];
+
+        if(in_array($this->role, ['admin', 'admin_reseller'])) {
+            $rules['hotel'] = 'nullable|numeric';
+        }
+
+        $this->validate($rules);
+
         $user = User::find($this->id);
 
         // Remove all role
@@ -80,7 +101,7 @@ class FormUser extends Form
         // Assign new role
         $user->assignRole($this->role);
 
-        if($this->role !== 'admin') {
+        if(!in_array($this->role, ['admin', 'admin_reseller'])) {
             // Assign new hotel
             $user->userHotel()->delete();
             $user->userHotel()->create([

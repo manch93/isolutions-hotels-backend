@@ -70,7 +70,7 @@
                                 <option value="{{ $h->id }}">{{ $h->name }}</option>
                             @endforeach
                         </select>
-                        <x-acc-input-error for="form.hotel_id" />
+                        <x-acc-input-error for="form.hotel" />
                     </div>
                 </div>
             @endif

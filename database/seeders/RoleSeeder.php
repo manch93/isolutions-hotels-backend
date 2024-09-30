@@ -78,6 +78,7 @@ class RoleSeeder extends Seeder
         $admin = Role::findOrCreate('admin', 'web');
         $receptionist = Role::findOrCreate('receptionist', 'web');
         $adminHotel = Role::findOrCreate('admin_hotel', 'web');
+        $adminReseller = Role::findOrCreate('admin_reseller', 'web');
 
         // Generate Permission
         // Get all route names
@@ -94,6 +95,7 @@ class RoleSeeder extends Seeder
                     // Give admin permission
                     if(!in_array($route, $this->adminExcept)) {
                         $admin->givePermissionTo($permission);
+                        $adminReseller->givePermissionTo($permission);
                     }
 
                     // Give admin hotel permission
