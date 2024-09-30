@@ -56,7 +56,7 @@ class Doctor extends BaseComponent
     public function mount() {
         $this->hotels = Hotel::all();
 
-        if(!auth()->user()->hasRole('admin')) {
+        if(!auth()->user()->hasRole(['admin', 'admin_reseller'])) {
             $this->doctorCategories = DoctorCategory::where('hotel_id', $this->hotel_id)->get();
         }
     }
@@ -68,7 +68,7 @@ class Doctor extends BaseComponent
             ->select('doctors.*', 'doctor_categories.name as doctor_category', 'hotels.name as hotel');
 
         // If user not admin
-        if(!auth()->user()->hasRole('admin')) {
+        if(!auth()->user()->hasRole(['admin', 'admin_reseller'])) {
             $model = $model->where('doctors.hotel_id', $this->hotel_id);
         }
 

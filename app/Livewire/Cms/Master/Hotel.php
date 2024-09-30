@@ -82,8 +82,13 @@ class Hotel extends BaseComponent
         $model = new ModelsHotel;
 
         // If user not admin
-        if(!auth()->user()->hasRole('admin')) {
+        if(!auth()->user()->hasRole(['admin', 'admin_reseller'])) {
             $model = $model->where('id', $this->hotel_id);
+        }
+
+        // If user admin reseller
+        if(auth()->user()->hasRole('admin_reseller')) {
+            $model = $model->where('user_id', auth()->user()->id);
         }
 
         $model = $model->where('type', $this->type);

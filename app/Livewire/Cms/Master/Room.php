@@ -68,7 +68,7 @@ class Room extends BaseComponent
             ->select('rooms.*', 'hotels.name as hotel', 'room_types.name as room_type');
 
         // If user not admin
-        if(!auth()->user()->hasRole('admin')) {
+        if(!auth()->user()->hasRole(['admin', 'admin_reseller'])) {
             $model = $model->where('rooms.hotel_id', $this->hotel_id);
         }
 

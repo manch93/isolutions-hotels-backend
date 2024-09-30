@@ -21,10 +21,19 @@ class Dashboard extends Component
     public function render()
     {
         // If admin
-        if(auth()->user()->hasRole('admin')) {
-            $hotel = Hotel::count();
-            $user = User::count();
-            $channel = M3uChannel::count();
+        if(auth()->user()->hasRole(['admin', 'admin_reseller'])) {
+            $hotel = new Hotel;
+            $user = new User;
+            $channel = new M3uChannel;
+            // If admin reseller
+            if(auth()->user()->hasRole('admin_reseller')) {
+                $hotel = $hotel->where('user_id', auth()->user()->id);
+                $user = $user->where('created_by', auth()->user()->id);
+            }
+
+            $hotel = $hotel->count();
+            $user = $user->count();
+            $channel = $channel->count();
 
             return view('livewire.dashboard-admin', compact(
                 'hotel',

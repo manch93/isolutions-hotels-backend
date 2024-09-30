@@ -16,7 +16,7 @@
                 @if($menu->type != 'header')
                     @can('view.'.$menu->route)
 
-                        @if(!auth()->user()->hasRole('admin'))
+                        @if(!auth()->user()->hasRole(['admin', 'admin_reseller']))
                             @if(auth()->user()->userHotel->hotel->type == 'hospital' && $menu->name == 'Hotel')
                                 {{-- Dont show hotel if user is admin hospital --}}
                             @elseif(auth()->user()->userHotel->hotel->type == 'hotel' && in_array($menu->name, [
@@ -59,7 +59,7 @@
                     @endcan
 
                 {{-- if admin --}}
-                @elseif(auth()->user()->hasRole('admin'))
+                @elseif(auth()->user()->hasRole(['admin', 'admin_reseller']))
                     @if(in_array($menu->name, [
                         'Settings',
                         'Master',

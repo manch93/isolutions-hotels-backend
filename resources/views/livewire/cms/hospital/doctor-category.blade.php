@@ -46,7 +46,7 @@
     {{-- Create / Update Modal --}}
     <x-acc-modal title="{{ $isUpdate ? 'Update' : 'Create' }} {{ $title }}" :isModaOpen="$modals['defaultModal']">
         <x-acc-form submit="customSave">
-            @if(auth()->user()->hasRole('admin'))
+            @if(auth()->user()->hasRole(['admin', 'admin_reseller']))
                 <div class="col-md-12">
                     <div class="mb-3">
                         <label class="form-label">Hotel</label>

@@ -45,7 +45,7 @@ class Policy extends BaseComponent
             ->select('policies.*', 'hotels.name as hotel');
 
         // If user not admin
-        if(!auth()->user()->hasRole('admin')) {
+        if(!auth()->user()->hasRole(['admin', 'admin_reseller'])) {
             $model = $model->where('policies.hotel_id', $this->hotel_id);
         }
 

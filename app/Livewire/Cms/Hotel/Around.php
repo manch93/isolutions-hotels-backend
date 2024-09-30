@@ -57,7 +57,7 @@ class Around extends BaseComponent
             ->select('arounds.*', 'hotels.name as hotel');
 
         // If user not admin
-        if(!auth()->user()->hasRole('admin')) {
+        if(!auth()->user()->hasRole(['admin', 'admin_reseller'])) {
             $model = $model->where('arounds.hotel_id', $this->hotel_id);
         }
 

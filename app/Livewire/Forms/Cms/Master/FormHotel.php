@@ -9,10 +9,13 @@ use Livewire\Form;
 class FormHotel extends Form
 {
     #[Validate('nullable|numeric')]
-    public $id = '';
+    public $id;
+
+    #[Validate('nullable|numeric')]
+    public $user_id;
 
     #[Validate('required|string')]
-    public $name = '';
+    public $name;
 
     #[Validate('required|string')]
     public $branch;
@@ -46,6 +49,7 @@ class FormHotel extends Form
         $data = Hotel::find($id);
 
         $this->id = $id;
+        $this->user_id = $data->user_id;
         $this->name = $data->name;
         $this->branch = $data->branch;
         $this->address = $data->address;
@@ -72,7 +76,9 @@ class FormHotel extends Form
 
     // Store data
     public function store() {
+        $this->user_id = auth()->user()->id;
         Hotel::create($this->only([
+            'user_id',
             'name',
             'branch',
             'address',

@@ -47,6 +47,32 @@ class RoleSeeder extends Seeder
         'cms.hospital.doctor-category',
         'cms.hospital.doctor',
     ];
+    public $adminResellerExcept = [
+        'cms.front-desk',
+        'cms.docs',
+        'cms.docs.create-update',
+        'cms.master.room-type',
+        'cms.master.room',
+        'cms.hotel.facility',
+        'cms.hotel.around',
+        'cms.hotel.promo',
+        'cms.hotel.food-category',
+        'cms.hotel.food',
+        'cms.hotel.policy',
+        'cms.hotel.event',
+        'cms.hotel.wifi',
+        'cms.hospital.doctor-category',
+        'cms.hospital.doctor',
+        'cms.management.menu',
+        'cms.management.m3u-channel',
+        'cms.management.m3u-channel.detail',
+        'cms.management.role',
+        'cms.management.role-permission',
+        'cms.management.setting',
+        'cms.management.access-control',
+        'cms.management.privacy-policy',
+        'cms.management.term-of-service',
+    ];
     public $receptionistPermission = [
         'cms.dashboard',
         'cms.front-desk',
@@ -95,6 +121,10 @@ class RoleSeeder extends Seeder
                     // Give admin permission
                     if(!in_array($route, $this->adminExcept)) {
                         $admin->givePermissionTo($permission);
+                    }
+
+                    // Give admin reseller permission
+                    if(!in_array($route, $this->adminResellerExcept)) {
                         $adminReseller->givePermissionTo($permission);
                     }
 

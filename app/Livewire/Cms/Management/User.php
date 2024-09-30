@@ -44,6 +44,9 @@ class User extends BaseComponent
         if(auth()->user()->hasRole('admin_hotel')) {
             $this->roles = Role::where('name', 'receptionist')->get();
             $this->hotels = Hotel::where('id', $this->hotel_id)->get();
+        } else if(auth()->user()->hasRole('admin_reseller')) {
+            $this->roles = Role::whereNot('name', 'admin')->whereNot('name', 'admin_reseller')->get();
+            $this->hotels = Hotel::where('user_id', auth()->user()->id)->get();
         } else {
             $this->roles = Role::all();
             $this->hotels = Hotel::all();
@@ -62,6 +65,11 @@ class User extends BaseComponent
         if(auth()->user()->hasRole('admin_hotel')) {
             $model = $model->where('model_has_roles.role_id', Role::findByName('receptionist')->id);
             $model = $model->where('user_has_hotel.hotel_id', $this->hotel_id);
+        }
+
+        // If user admin reseller
+        if(auth()->user()->hasRole('admin_reseller')) {
+            $model = $model->where('created_by', auth()->user()->id);
         }
 
         $get = $this->getDataWithFilter($model, [

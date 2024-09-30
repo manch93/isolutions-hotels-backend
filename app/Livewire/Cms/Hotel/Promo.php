@@ -57,7 +57,7 @@ class Promo extends BaseComponent
             ->select('promos.*', 'hotels.name as hotel');
 
         // If user not admin
-        if(!auth()->user()->hasRole('admin')) {
+        if(!auth()->user()->hasRole(['admin', 'admin_reseller'])) {
             $model = $model->where('promos.hotel_id', $this->hotel_id);
         }
 

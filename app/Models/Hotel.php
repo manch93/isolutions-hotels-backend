@@ -10,6 +10,7 @@ class Hotel extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'name',
         'branch',
         'address',

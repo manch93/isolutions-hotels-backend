@@ -32,7 +32,7 @@
                                 <td>{{ $d->password_setting }}</td>
                                 <td>{{ $d->is_active }}</td>
                                 <x-acc-update-delete :id="$d->id" :$originRoute>
-                                    @role('admin')
+                                    @role('admin|admin_reseller')
                                         <a href="{{ route('cms.hotel.enabled-channel', [
                                             'id' => $d->id,
                                         ]) }}" class="btn btn-secondary btn-sm mb-2">

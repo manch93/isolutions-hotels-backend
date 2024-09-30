@@ -7,23 +7,26 @@ use Livewire\Form;
 
 class FormUser extends Form
 {
-    public $id = '';
+    public $id;
 
-    public $role = '';
+    public $created_by;
 
-    public $name = '';
+    public $role;
 
-    public $email = '';
+    public $name;
 
-    public $password = '';
+    public $email;
 
-    public $hotel = '';
+    public $password;
+
+    public $hotel;
 
     // Get the data
     public function getDetail($id) {
         $data = User::with('userHotel')->find($id);
 
         $this->id = $id;
+        $this->created_by = $data->created_by;
         $this->name = $data->name;
         $this->email = $data->email;
         $this->role = $data->getRoleNames()[0];
@@ -45,6 +48,7 @@ class FormUser extends Form
     public function store() {
         $rules = [
             'id' => 'nullable|numeric',
+            'created_by' => 'nullable|numeric',
             'role' => 'required',
             'name' => 'required',
             'email' => 'required|email',
@@ -56,9 +60,12 @@ class FormUser extends Form
             $rules['hotel'] = 'nullable|numeric';
         }
 
+        $this->created_by = auth()->user()->id;
+
         $this->validate($rules);
 
         $user = User::create($this->only([
+            'created_by',
             'name',
             'email',
             'password',
@@ -80,6 +87,7 @@ class FormUser extends Form
     public function update() {
         $rules = [
             'id' => 'nullable|numeric',
+            'created_by' => 'nullable|numeric',
             'role' => 'required',
             'name' => 'required',
             'email' => 'required|email',
