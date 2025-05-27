@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
         $hotel->assignRole('admin_hotel');
         $hotel->userHotel()->create([
             'user_id' => $hotel->id,
-            'hotel_id' => Hotel::first()->id,
+            'hotel_id' => null,
         ]);
     }
 }

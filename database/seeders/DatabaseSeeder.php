@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
             TruncateTable::class,
             RoleSeeder::class,
             // HotelSeeder::class,
-            // UserSeeder::class,
+            UserSeeder::class,
             MenuSeeder::class,
-            // SettingSeeder::class,
+            SettingSeeder::class,
             // RoomSeeder::class,
             // M3USeeder::class,
         ]);
