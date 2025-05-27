@@ -83,6 +83,7 @@ class RoleSeeder extends Seeder
         'cms.master.hospital',
         'cms.master.hotel',
         'cms.master.room-type',
+        'cms.master.feature',
         'cms.master.room',
         'cms.hotel.facility',
         'cms.hotel.around',
