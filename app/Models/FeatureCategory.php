@@ -11,7 +11,7 @@ class FeatureCategory extends Model
 
     protected $fillable = [
         'name',
-        'user_id',
+        'hotel_id',
         'is_active',
     ];
 }

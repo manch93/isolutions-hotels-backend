@@ -47,12 +47,20 @@ class MenuSeeder extends Seeder
                 'ordering' => '10',
             ],
             [
+                'name' => 'Feature',
+                'on' => 'cms',
+                'type' => 'item',
+                'icon' => 'briefcase',
+                'route' => 'cms.master.feature',
+                'ordering' => '11',
+            ],
+            [
                 'name' => 'Hotel',
                 'on' => 'cms',
                 'type' => 'item',
                 'icon' => 'briefcase',
                 'route' => 'cms.master.hotel',
-                'ordering' => '11',
+                'ordering' => '12',
             ],
             [
                 'name' => 'Hospital',
@@ -60,7 +68,7 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'heart',
                 'route' => 'cms.master.hospital',
-                'ordering' => '12',
+                'ordering' => '13',
             ],
             [
                 'name' => 'Room Type',
@@ -68,7 +76,7 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'tag',
                 'route' => 'cms.master.room-type',
-                'ordering' => '13',
+                'ordering' => '14',
             ],
             [
                 'name' => 'Room',
@@ -76,7 +84,7 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'save',
                 'route' => 'cms.master.room',
-                'ordering' => '14',
+                'ordering' => '15',
             ],
             // Hospital
             [
@@ -85,7 +93,7 @@ class MenuSeeder extends Seeder
                 'type' => 'header',
                 'icon' => '#',
                 'route' => '#',
-                'ordering' => '15',
+                'ordering' => '17',
             ],
             [
                 'name' => 'Doctor Category',
@@ -93,7 +101,7 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'book-open',
                 'route' => 'cms.hospital.doctor-category',
-                'ordering' => '16',
+                'ordering' => '18',
             ],
             [
                 'name' => 'Doctor',
@@ -101,7 +109,7 @@ class MenuSeeder extends Seeder
                 'type' => 'item',
                 'icon' => 'users',
                 'route' => 'cms.hospital.doctor',
-                'ordering' => '17',
+                'ordering' => '19',
             ],
             // Hotel
             [
