@@ -27,4 +27,5 @@ Route::group([
 
     // Features
     Route::get('/features', [App\Http\Controllers\Api\V1\FeatureController::class, 'get'])->name('features');
+    Route::get('/feature-item/{id}', [App\Http\Controllers\Api\V1\FeatureController::class, 'getFeatureItems'])->name('feature-item');
 });
