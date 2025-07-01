@@ -43,6 +43,6 @@ class Controller extends BaseController
     }
 
     public function getHotel() {
-        return request()->get('user')->userHotel?->hotel_id ?? 0;;
+        return request()->get('user')->userHotel?->hotel_id ?? 0;
     }
 }

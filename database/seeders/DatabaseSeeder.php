@@ -18,10 +18,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             TruncateTable::class,
             RoleSeeder::class,
-            // HotelSeeder::class,
-            // UserSeeder::class,
+             HotelSeeder::class,
+            UserSeeder::class,
             MenuSeeder::class,
-            // SettingSeeder::class,
+            SettingSeeder::class,
+            FeatureSeeder::class,
             // RoomSeeder::class,
             // M3USeeder::class,
         ]);

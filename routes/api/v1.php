@@ -22,5 +22,10 @@ Route::group([
     Route::get('/room/{id}', [App\Http\Controllers\Api\V1\RoomController::class, 'detail'])->name('room.detail');
     Route::get('/doctor-category', [App\Http\Controllers\Api\V1\DoctorController::class, 'category'])->name('doctor-category');
     Route::get('/doctor/{category}', [App\Http\Controllers\Api\V1\DoctorController::class, 'getDoctorByCategory'])->name('doctor');
+    Route::get('/doctor/{category}', [App\Http\Controllers\Api\V1\DoctorController::class, 'getDoctorByCategory'])->name('doctor');
     // Route::get('/wifi', [App\Http\Controllers\Api\V1\WifiController::class, 'get'])->name('wifi');
+
+    // Features
+    Route::get('/features', [App\Http\Controllers\Api\V1\FeatureController::class, 'get'])->name('features');
+    Route::get('/feature-item/{id}', [App\Http\Controllers\Api\V1\FeatureController::class, 'getFeatureItems'])->name('feature-item');
 });

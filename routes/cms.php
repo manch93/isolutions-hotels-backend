@@ -22,7 +22,7 @@ Route::group([
     Route::get('/master/hospital', App\Livewire\Cms\Master\Hotel::class)->name('master.hospital');
     Route::get('/master/room-type', App\Livewire\Cms\Master\RoomType::class)->name('master.room-type');
     Route::get('/master/room', App\Livewire\Cms\Master\Room::class)->name('master.room');
-
+    Route::get('/master/feature', App\Livewire\Feature::class)->name('master.feature');
     // Hotel
     Route::get('/hotel/facility', App\Livewire\Cms\Hotel\Facility::class)->name('hotel.facility');
     Route::get('/hotel/around', App\Livewire\Cms\Hotel\Around::class)->name('hotel.around');
@@ -52,4 +52,5 @@ Route::group([
     Route::get('/management/access-control', App\Livewire\Cms\Management\AccessControl::class)->name('management.access-control');
     Route::get('/management/privacy-policy', App\Livewire\Cms\Management\PrivacyPolicy::class)->name('management.privacy-policy');
     Route::get('/management/terms-of-service', App\Livewire\Cms\Management\TermOfService::class)->name('management.term-of-service');
+
 });
