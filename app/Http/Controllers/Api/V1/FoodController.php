@@ -12,7 +12,19 @@ class FoodController extends Controller
 {
     use WithGetFilterDataApi;
     public function category() {
-        return $this->respondWithSuccess(FoodCategory::where('hotel_id', $this->getHotel())->get());
+        $data = $this->getDataWithFilter(
+            model: new FoodCategory,
+            searchBy: [
+                'name',
+                'description',
+            ],
+            orderBy: $request?->orderBy ?? 'id',
+            order: $request?->order ?? 'asc',
+            paginate: $request?->paginate ?? 10,
+            searchBySpecific: $request?->searchBySpecific ?? '',
+            s: $request?->search ?? '',
+        );
+        return $this->respondWithSuccess($data);
     }
 
     public function getFoodByCategory($category) {
@@ -20,8 +32,9 @@ class FoodController extends Controller
     }
 
     public function get(Request $request) {
+        
         $data = $this->getDataWithFilter(
-            model: new Food,
+            model: Food::where('hotel_id', $this->getHotel()),
             searchBy: [
                 'name',
                 'description',
