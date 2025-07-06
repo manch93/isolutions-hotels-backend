@@ -28,6 +28,7 @@ trait WithGetFilterDataApi {
         });
 
         $model = $model->orderBy($orderBy, $order);
+        $model = $model->where('hotel_id', $this->getHotel());
 
         // $model = $model->latest();
 
