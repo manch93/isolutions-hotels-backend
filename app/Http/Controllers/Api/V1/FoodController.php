@@ -11,9 +11,9 @@ use App\Traits\WithGetFilterDataApi;
 class FoodController extends Controller
 {
     use WithGetFilterDataApi;
-    public function category() {
+    public function category(Request $request) {
         $data = $this->getDataWithFilter(
-            model: new FoodCategory,
+            model: FoodCategory::where('hotel_id', $this->getHotel()),
             searchBy: [
                 'name',
                 'description',
