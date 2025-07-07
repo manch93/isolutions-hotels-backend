@@ -54,7 +54,8 @@ class FoodCategory extends BaseComponent
     public function render()
     {
         $model = ModelsFoodCategory::join('hotels', 'hotels.id', '=', 'food_categories.hotel_id')
-            ->select('food_categories.*', 'hotels.name as hotel');
+            ->select('food_categories.*', 'hotels.name as hotel')
+            ->where('is_deleted', false);
 
         // If user not admin
         if(!auth()->user()->hasRole(['admin', 'admin_reseller'])) {
