@@ -13,7 +13,8 @@ class FoodController extends Controller
     use WithGetFilterDataApi;
     public function category(Request $request) {
         $data = $this->getDataWithFilter(
-            model: FoodCategory::where('hotel_id', $this->getHotel()),
+            model: FoodCategory::where('hotel_id', $this->getHotel())
+                    ->where('version', '>', $request->after ?? 0),
             searchBy: [
                 'name',
                 'description',
