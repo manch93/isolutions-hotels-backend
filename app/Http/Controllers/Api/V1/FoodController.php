@@ -51,6 +51,10 @@ class FoodController extends Controller
             searchBySpecific: $request?->searchBySpecific ?? '',
             s: $request?->search ?? '',
         );
-        return $this->respondWithSuccess($data);
+        $maxVersion = Food::where('hotel_id', $this->getHotel())
+                    ->max('version') ?? 0;
+        $responseArray = $data->toArray();
+        $responseArray['latest_version'] = $maxVersion;
+        return $this->respondWithSuccess($responseArray);
     }
 }

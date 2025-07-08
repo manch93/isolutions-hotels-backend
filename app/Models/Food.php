@@ -18,6 +18,8 @@ class Food extends Model
         'description',
         'image',
         'price',
+        'version',
+        'is_deleted'
     ];
 
     // Set image url
@@ -36,6 +38,6 @@ class Food extends Model
         return $this->belongsTo(FoodCategory::class);
     }
     public function version() {
-        return $this->max('version');
+        return static::max('version');
     }
 }

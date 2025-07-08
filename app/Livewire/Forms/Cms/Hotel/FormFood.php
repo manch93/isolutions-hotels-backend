@@ -32,6 +32,11 @@ class FormFood extends Form
     #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
+    #[Validate('nullable|numeric')]
+    public $version = 1;
+
+    #[Validate('nullable|boolean')]
+    public $is_deleted = false;
     // Get the data
     public function getDetail($id) {
         $data = Food::find($id);
@@ -68,6 +73,8 @@ class FormFood extends Form
         } else {
             $this->image = '';
         }
+        $this->version = Food::version() + 1;
+        $this->is_deleted = false;
 
         Food::create($this->only([
             'hotel_id',
@@ -76,6 +83,8 @@ class FormFood extends Form
             'description',
             'image',
             'price',
+            'version',
+            'is_deleted'
         ]));
     }
 
@@ -91,11 +100,19 @@ class FormFood extends Form
             $this->image = $old->image;
         }
 
+        // Increment version
+        $this->version = $old->version() + 1;
+        $this->is_deleted = false;
+
         $old->update($this->all());
     }
 
     // Delete data
     public function delete($id) {
-        Food::find($id)->delete();
+        $item = Food::find($id);
+        $item->update([
+            'version' => $item->version() + 1,
+            'is_deleted' => true
+        ]);
     }
 }

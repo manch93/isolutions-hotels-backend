@@ -77,6 +77,8 @@ class FormFoodCategory extends Form
             'name',
             'description',
             'image',
+            'version',
+            'is_deleted'
         ]));
     }
 
