@@ -25,6 +25,9 @@ Route::group([
     Route::get('/doctor/{category}', [App\Http\Controllers\Api\V1\DoctorController::class, 'getDoctorByCategory'])->name('doctor');
     // Route::get('/wifi', [App\Http\Controllers\Api\V1\WifiController::class, 'get'])->name('wifi');
 
+    //change list
+    Route::get('/changelist/food-category', [App\Http\Controllers\Api\V1\FoodController::class, 'getFoodCategoryChangeList'])->name('changelist.food-category');
+
     // Features
     Route::get('/features', [App\Http\Controllers\Api\V1\FeatureController::class, 'get'])->name('features');
     Route::get('/feature-item/{id}', [App\Http\Controllers\Api\V1\FeatureController::class, 'getFeatureItems'])->name('feature-item');

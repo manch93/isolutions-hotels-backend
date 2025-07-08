@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Traits\WithGetFilterDataApi;
 
+use function Laravel\Prompts\select;
+
 class FoodController extends Controller
 {
     use WithGetFilterDataApi;
@@ -56,5 +58,23 @@ class FoodController extends Controller
         $responseArray = $data->toArray();
         $responseArray['latest_version'] = $maxVersion;
         return $this->respondWithSuccess($responseArray);
+    }
+
+    public function getFoodCategoryChangeList(Request $request) {
+        $data = $this->getDataWithFilter(
+            model: FoodCategory::where('hotel_id', $this->getHotel())
+                    ->where('version', '>', $request->after ?? 0)
+                    ->select('id', 'is_deleted', 'version'),
+            searchBy: [
+                'name',
+                'description',
+            ],
+            orderBy: $request?->orderBy ?? 'id',
+            order: $request?->order ?? 'asc',
+            paginate: $request?->paginate ?? 10,
+            searchBySpecific: $request?->searchBySpecific ?? '',
+            s: $request?->search ?? '',
+        );
+        return $this->respondWithSuccess($data);
     }
 }
