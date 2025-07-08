@@ -27,6 +27,7 @@ Route::group([
 
     //change list
     Route::get('/changelist/food-category', [App\Http\Controllers\Api\V1\FoodController::class, 'getFoodCategoryChangeList'])->name('changelist.food-category');
+    Route::get('/changelist/food', [App\Http\Controllers\Api\V1\FoodController::class, 'getFoodChangeList'])->name('changelist.food');
 
     // Features
     Route::get('/features', [App\Http\Controllers\Api\V1\FeatureController::class, 'get'])->name('features');

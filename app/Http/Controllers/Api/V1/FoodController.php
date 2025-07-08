@@ -77,4 +77,22 @@ class FoodController extends Controller
         );
         return $this->respondWithSuccess($data);
     }
+
+    public function getFoodChangeList(Request $request) {
+        $data = $this->getDataWithFilter(
+            model: Food::where('hotel_id', $this->getHotel())
+                    ->where('version', '>', $request->after ?? 0)
+                    ->select('id', 'is_deleted', 'version'),
+            searchBy: [
+                'name',
+                'description',
+            ],
+            orderBy: $request?->orderBy ?? 'id',
+            order: $request?->order ?? 'asc',
+            paginate: $request?->paginate ?? 10,
+            searchBySpecific: $request?->searchBySpecific ?? '',
+            s: $request?->search ?? '',
+        );
+        return $this->respondWithSuccess($data);
+    }
 }
