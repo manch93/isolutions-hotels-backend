@@ -35,7 +35,7 @@ class FoodCategory extends Model
         return $this->belongsTo(Hotel::class);
     }
 
-    public function version() {
+    public static function version() {
         return static::max('version');
     }
 }

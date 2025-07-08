@@ -37,7 +37,7 @@ class Food extends Model
     public function foodCategory() {
         return $this->belongsTo(FoodCategory::class);
     }
-    public function version() {
+    public static function version() {
         return static::max('version');
     }
 }
