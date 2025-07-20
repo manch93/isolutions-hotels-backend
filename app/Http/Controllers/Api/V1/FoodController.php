@@ -40,9 +40,27 @@ class FoodController extends Controller
     }
 
     public function get(Request $request) {
+        $query = Food::where('hotel_id', $this->getHotel());
+    
+        if ($request->has('after')) {
+            $query->where('version', '>', $request->after ?? 0);
+        }
         
+        if ($request->has('id') && !empty($request->id)) {
+
+            $ids = is_string($request->id) 
+                ? explode(',', $request->id) 
+                : (array) $request->id;
+            
+            
+            $ids = array_filter(array_map('intval', $ids));
+            
+            if (!empty($ids)) {
+                $query->whereIn('id', $ids);
+            }
+        }
         $data = $this->getDataWithFilter(
-            model: Food::where('hotel_id', $this->getHotel()),
+            model: $query,
             searchBy: [
                 'name',
                 'description',
@@ -53,11 +71,7 @@ class FoodController extends Controller
             searchBySpecific: $request?->searchBySpecific ?? '',
             s: $request?->search ?? '',
         );
-        $maxVersion = Food::where('hotel_id', $this->getHotel())
-                    ->max('version') ?? 0;
-        $responseArray = $data->toArray();
-        $responseArray['latest_version'] = $maxVersion;
-        return $this->respondWithSuccess($responseArray);
+        return $this->respondWithSuccess($data);
     }
 
     public function getFoodCategoryChangeList(Request $request) {
