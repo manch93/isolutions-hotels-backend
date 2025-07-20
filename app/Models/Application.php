@@ -12,6 +12,12 @@ class Application extends Model
         'hotel_id',
         'name',
         'image',
-        'package_name'
+        'package_name',
+        'is_deleted',
+        'version'
+    ];
+
+    protected $casts = [
+        'is_deleted' => 'boolean'
     ];
 }

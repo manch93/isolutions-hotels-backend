@@ -95,8 +95,7 @@ class FoodController extends Controller
     public function getFoodChangeList(Request $request) {
         $data = $this->getDataWithFilter(
             model: Food::where('hotel_id', $this->getHotel())
-                    ->where('version', '>', $request->after ?? 0)
-                    ->select('id', 'is_deleted', 'version'),
+                    ->where('version', '>', $request->after ?? 0),
             searchBy: [
                 'name',
                 'description',
