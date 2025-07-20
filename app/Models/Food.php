@@ -22,6 +22,11 @@ class Food extends Model
         'is_deleted'
     ];
 
+    protected $casts = [
+        'is_deleted' => 'boolean',
+        'version' => 'integer',
+    ];
+
     // Set image url
     public function getImageAttribute($value)
     {
