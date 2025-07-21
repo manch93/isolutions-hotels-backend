@@ -18,6 +18,8 @@ class FeatureItem extends Model
         'image',
         'feature_category_id',
         'is_active',
+        'is_deleted',
+        'version',
     ];
 
     protected $casts = [
