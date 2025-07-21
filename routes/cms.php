@@ -23,6 +23,7 @@ Route::group([
     Route::get('/master/room-type', App\Livewire\Cms\Master\RoomType::class)->name('master.room-type');
     Route::get('/master/room', App\Livewire\Cms\Master\Room::class)->name('master.room');
     Route::get('/master/feature', App\Livewire\Feature::class)->name('master.feature');
+    Route::get('/master/application', App\Livewire\Cms\Master\Application::class)->name('master.application');
     // Hotel
     Route::get('/hotel/facility', App\Livewire\Cms\Hotel\Facility::class)->name('hotel.facility');
     Route::get('/hotel/around', App\Livewire\Cms\Hotel\Around::class)->name('hotel.around');
