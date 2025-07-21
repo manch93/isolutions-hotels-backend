@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Livewire\Feature;
 use App\Models\FeatureCategory;
 use App\Models\FeatureItem;
 use Illuminate\Http\Request;
