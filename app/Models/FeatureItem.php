@@ -20,6 +20,10 @@ class FeatureItem extends Model
         'is_active',
     ];
 
+    protected $casts = [
+        'is_deleted' => 'boolean'
+    ];
+
     public function featureCategory()
     {
         return $this->belongsTo(FeatureCategory::class);

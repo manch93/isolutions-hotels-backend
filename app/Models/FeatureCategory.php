@@ -14,4 +14,8 @@ class FeatureCategory extends Model
         'hotel_id',
         'is_active',
     ];
+
+    protected $casts = [
+        'is_deleted' => 'boolean'
+    ];
 }
