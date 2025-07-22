@@ -11,6 +11,7 @@ class FeatureCategory extends Model
 
     protected $fillable = [
         'name',
+        'image',
         'hotel_id',
         'is_active',
         'is_deleted',
