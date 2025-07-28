@@ -25,9 +25,16 @@ Route::group([
     Route::get('/doctor/{category}', [App\Http\Controllers\Api\V1\DoctorController::class, 'getDoctorByCategory'])->name('doctor');
     // Route::get('/wifi', [App\Http\Controllers\Api\V1\WifiController::class, 'get'])->name('wifi');
 
+    //change list
+    Route::get('/changelist/food-category', [App\Http\Controllers\Api\V1\FoodController::class, 'getFoodCategoryChangeList'])->name('changelist.food-category');
+    Route::get('/changelist/food', [App\Http\Controllers\Api\V1\FoodController::class, 'getFoodChangeList'])->name('changelist.food');
+    Route::get('/changelist/applications', [App\Http\Controllers\Api\V1\ApplicationController::class, 'changelist'])->name('changelist.applications');
+    Route::get('/changelist/features', [App\Http\Controllers\Api\V1\FeatureController::class, 'featureChangeList'])->name('changelist.features');
+    Route::get('/changelist/feature-items', [App\Http\Controllers\Api\V1\FeatureController::class, 'featureItemChangeList'])->name('changelist.feature-items');
+    
     // Features
-    Route::get('/features', [App\Http\Controllers\Api\V1\FeatureController::class, 'get'])->name('features');
-    Route::get('/feature-item/{id}', [App\Http\Controllers\Api\V1\FeatureController::class, 'getFeatureItems'])->name('feature-item');
+    Route::get('/features', [App\Http\Controllers\Api\V1\FeatureController::class, 'features'])->name('features');
+    Route::get('/feature-items', [App\Http\Controllers\Api\V1\FeatureController::class, 'featureItems'])->name('feature-items');
 
     //Application
     Route::get('/applications', [App\Http\Controllers\Api\V1\ApplicationController::class, 'get'])->name('applications');

@@ -1,33 +1,25 @@
 <?php
 
-namespace App\Livewire\Forms\Cms\Hotel;
+namespace App\Livewire\Forms\Cms\Master;
 
-use App\Models\Food;
-use App\Traits\WithSaveFile;
+use App\Models\Application;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
+use App\Traits\WithSaveFile;
 
-class FormFood extends Form
+class FormApplication extends Form
 {
     use WithSaveFile;
-
     #[Validate('nullable|numeric')]
     public $id = '';
 
     #[Validate('required|numeric')]
     public $hotel_id;
-
-    #[Validate('required|numeric')]
-    public $food_category_id;
-
     #[Validate('required|string')]
     public $name = '';
 
     #[Validate('required|string')]
-    public $description;
-
-    #[Validate('required|numeric')]
-    public $price;
+    public $package_name = '';
 
     #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
@@ -37,16 +29,13 @@ class FormFood extends Form
 
     #[Validate('nullable|boolean')]
     public $is_deleted = false;
-    // Get the data
     public function getDetail($id) {
-        $data = Food::find($id);
+        $data = Application::find($id);
 
         $this->id = $id;
         $this->hotel_id = $data->hotel_id;
-        $this->food_category_id = $data->food_category_id;
         $this->name = $data->name;
-        $this->description = $data->description;
-        $this->price = $data->price;
+        $this->package_name = $data->package_name;
         $this->image = $data->image;
     }
 
@@ -65,7 +54,7 @@ class FormFood extends Form
 
     // Store data
     public function store() {
-        $save_path = Food::$FILE_PATH;
+        $save_path = Application::$FILE_PATH;
 
         // Save image
         if($this->image) {
@@ -73,16 +62,14 @@ class FormFood extends Form
         } else {
             $this->image = '';
         }
-        $this->version = Food::version() + 1;
+        $this->version = Application::version() + 1;
         $this->is_deleted = false;
 
-        Food::create($this->only([
+        Application::create($this->only([
             'hotel_id',
-            'food_category_id',
             'name',
-            'description',
+            'package_name',
             'image',
-            'price',
             'version',
             'is_deleted'
         ]));
@@ -90,8 +77,8 @@ class FormFood extends Form
 
     // Update data
     public function update() {
-        $old = Food::find($this->id);
-        $save_path = Food::$FILE_PATH;
+        $old = Application::find($this->id);
+        $save_path = Application::$FILE_PATH;
 
         // Save image
         if($this->image) {
@@ -109,7 +96,7 @@ class FormFood extends Form
 
     // Delete data
     public function delete($id) {
-        $item = Food::find($id);
+        $item = Application::find($id);
         $item->update([
             'version' => $item->version() + 1,
             'is_deleted' => true

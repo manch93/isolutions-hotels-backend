@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\FeatureCategory;
+use App\Models\Hotel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class FeatureItem extends Model
 {
@@ -15,10 +18,21 @@ class FeatureItem extends Model
         'image',
         'feature_category_id',
         'is_active',
+        'is_deleted',
+        'version',
+    ];
+
+    protected $casts = [
+        'is_deleted' => 'boolean'
     ];
 
     public function featureCategory()
     {
         return $this->belongsTo(FeatureCategory::class);
+    }
+
+    public function hotel(): BelongsTo
+    {
+        return $this->belongsTo(Hotel::class);
     }
 }

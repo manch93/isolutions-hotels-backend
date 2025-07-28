@@ -69,7 +69,8 @@ class Food extends BaseComponent
     {
         $model = ModelsFood::join('hotels', 'hotels.id', '=', 'foods.hotel_id')
             ->join('food_categories', 'food_categories.id', '=', 'foods.food_category_id')
-            ->select('foods.*', 'food_categories.name as food_category', 'hotels.name as hotel');
+            ->select('foods.*', 'food_categories.name as food_category', 'hotels.name as hotel')
+            ->where('foods.is_deleted', false);
 
         // If user not admin
         if(!auth()->user()->hasRole(['admin', 'admin_reseller'])) {

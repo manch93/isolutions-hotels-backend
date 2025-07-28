@@ -18,6 +18,13 @@ class Food extends Model
         'description',
         'image',
         'price',
+        'version',
+        'is_deleted'
+    ];
+
+    protected $casts = [
+        'is_deleted' => 'boolean',
+        'version' => 'integer',
     ];
 
     // Set image url
@@ -34,5 +41,8 @@ class Food extends Model
 
     public function foodCategory() {
         return $this->belongsTo(FoodCategory::class);
+    }
+    public static function version() {
+        return static::max('version');
     }
 }

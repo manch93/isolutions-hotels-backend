@@ -26,6 +26,12 @@ class FormFoodCategory extends Form
     #[Validate('nullable|image:jpeg,png,jpg,svg')]
     public $image;
 
+    #[Validate('nullable|numeric')]
+    public $version = 1;
+
+    #[Validate('nullable|boolean')]
+    public $is_deleted = false;
+
     // Get the data
     public function getDetail($id) {
         $data = FoodCategory::find($id);
@@ -35,6 +41,8 @@ class FormFoodCategory extends Form
         $this->name = $data->name;
         $this->description = $data->description;
         $this->image = $data->image;
+        $this->version = $data->version;
+        $this->is_deleted = $data->is_deleted;
     }
 
     // Save the data
@@ -61,11 +69,16 @@ class FormFoodCategory extends Form
             $this->image = '';
         }
 
+        $this->version = FoodCategory::version() + 1;
+        $this->is_deleted = false;
+
         FoodCategory::create($this->only([
             'hotel_id',
             'name',
             'description',
             'image',
+            'version',
+            'is_deleted'
         ]));
     }
 
@@ -81,11 +94,19 @@ class FormFoodCategory extends Form
             $this->image = $old->image;
         }
 
+        // Increment version
+        $this->version = $old->version() + 1;
+        $this->is_deleted = false;
+
         $old->update($this->all());
     }
 
     // Delete data
     public function delete($id) {
-        FoodCategory::find($id)->delete();
+        $item = FoodCategory::find($id);
+        $item->update([
+            'version' => $item->version() + 1,
+            'is_deleted' => true
+        ]);
     }
 }

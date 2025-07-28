@@ -15,6 +15,13 @@ class FoodCategory extends Model
         'name',
         'description',
         'image',
+        'version',
+        'is_deleted'
+    ];
+
+    protected $casts = [
+        'is_deleted' => 'boolean',
+        'version' => 'integer',
     ];
 
     // Set image url
@@ -31,5 +38,9 @@ class FoodCategory extends Model
 
     public function hotel() {
         return $this->belongsTo(Hotel::class);
+    }
+
+    public static function version() {
+        return static::max('version');
     }
 }
