@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class FeatureItem extends Model
+class ContentItem extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,7 @@ class FeatureItem extends Model
         'name',
         'description',
         'image',
-        'feature_category_id',
+        'content_id',
         'is_active',
         'is_deleted',
         'version',
@@ -26,9 +26,9 @@ class FeatureItem extends Model
         'is_deleted' => 'boolean'
     ];
 
-    public function featureCategory()
+    public function content()
     {
-        return $this->belongsTo(FeatureCategory::class);
+        return $this->belongsTo(Content::class);
     }
 
     public function hotel(): BelongsTo

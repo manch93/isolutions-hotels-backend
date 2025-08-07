@@ -2,17 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\Content;
+use App\Models\ContentItem;
 use App\Models\FeatureCategory;
 use App\Models\FeatureItem;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class FeatureSeeder extends Seeder
+class ContentSeeder extends Seeder
 {
 
     public function run(): void
     {
-        $categories = [
+        $contents = [
             [
                 'name' => 'Entertainment',
                 'hotel_id' => 1,
@@ -51,21 +53,21 @@ class FeatureSeeder extends Seeder
             ],
         ];
 
-        foreach ($categories as $category) {
-            $items = $category['items'];
-            unset($category['items']);
+        foreach ($contents as $content) {
+            $items = $content['items'];
+            unset($content['items']);
 
             // Create or update the category
-            $featureCategory = FeatureCategory::updateOrCreate(
-                ['name' => $category['name'], 'hotel_id' => $category['hotel_id']],
-                $category
+            $contentCategory = Content::updateOrCreate(
+                ['name' => $content['name'], 'hotel_id' => $content['hotel_id']],
+                $content
             );
 
             // Create items for this category
             foreach ($items as $item) {
-                FeatureItem::updateOrCreate(
-                    ['name' => $item['name'], 'feature_category_id' => $featureCategory->id],
-                    array_merge($item, ['feature_category_id' => $featureCategory->id])
+                ContentItem::updateOrCreate(
+                    ['name' => $item['name'], 'content_id' => $contentCategory->id],
+                    array_merge($item, ['content_id' => $contentCategory->id])
                 );
             }
         }

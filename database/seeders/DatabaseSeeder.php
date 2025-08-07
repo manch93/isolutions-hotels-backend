@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             MenuSeeder::class,
             SettingSeeder::class,
-            FeatureSeeder::class,
+            ContentSeeder::class,
             // RoomSeeder::class,
             // M3USeeder::class,
         ]);
