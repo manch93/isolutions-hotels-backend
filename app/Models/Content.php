@@ -9,6 +9,8 @@ class Content extends Model
 {
     use HasFactory;
 
+    public static $FILE_PATH = 'contents';
+
     protected $fillable = [
         'name',
         'image',
@@ -19,6 +21,26 @@ class Content extends Model
     ];
 
     protected $casts = [
-        'is_deleted' => 'boolean'
+        'is_deleted' => 'boolean',
+        'is_active' => 'boolean',
     ];
+
+    // Relationship
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+
+    // Get version count
+    public function version()
+    {
+        return $this->version ?? 1;
+    }
+
+    public function getImageAttribute($value)
+    {
+        if (!$value) return null;
+        if (str_contains($value, 'storage/' . self::$FILE_PATH)) return $value;
+        return asset('storage/' . self::$FILE_PATH . '/' . $value);
+    }
 }
