@@ -31,6 +31,11 @@ class Content extends Model
         return $this->belongsTo(Hotel::class);
     }
 
+    public function contentItems()
+    {
+        return $this->hasMany(ContentItem::class);
+    }
+
     // Get version count
     public function version()
     {
