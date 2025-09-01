@@ -46,6 +46,12 @@ class FormHotelProfile extends Form
     #[Validate('required|string')]
     public $welcome_text;
 
+    #[Validate('nullable|string|max:255')]
+    public $instagram_username;
+
+    #[Validate('nullable|string|max:255')]
+    public $facebook_username;
+
     public function getDetail($id) {
         $data = HotelProfile::where('hotel_id', $id)->first();
 
@@ -61,6 +67,8 @@ class FormHotelProfile extends Form
         $this->intro_video = $data->intro_video;
         $this->running_text = $data->running_text;
         $this->welcome_text = $data->welcome_text;
+        $this->instagram_username = $data->instagram_username;
+        $this->facebook_username = $data->facebook_username;
     }
 
     public function save() {
@@ -117,6 +125,8 @@ class FormHotelProfile extends Form
             'intro_video',
             'running_text',
             'welcome_text',
+            'instagram_username',
+            'facebook_username',
         ]));
     }
 }

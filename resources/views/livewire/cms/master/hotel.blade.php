@@ -161,6 +161,22 @@
             </div>
             <div class="col-md-12">
                 <div class="mb-3">
+                    <label class="form-label">Instagram Username</label>
+                    <input type="text" wire:model="formProfile.instagram_username" class="form-control" placeholder="Instagram Username (without @)">
+                    <small class="text-muted">Enter username only, without @ symbol</small>
+                    <x-acc-input-error for="formProfile.instagram_username" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label class="form-label">Facebook Username</label>
+                    <input type="text" wire:model="formProfile.facebook_username" class="form-control" placeholder="Facebook Username">
+                    <small class="text-muted">Enter Facebook page or profile username</small>
+                    <x-acc-input-error for="formProfile.facebook_username" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-3">
                     <label class="form-label">Logo Color</label>
                     <x-acc-image-preview :image="$logo_color" :form_image="$formProfile->logo_color"  />
                     <x-acc-input-file model="logo_color" :$imageIttr />

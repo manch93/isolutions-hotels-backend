@@ -22,6 +22,8 @@ class HotelProfile extends Model
         'intro_video',
         'running_text',
         'welcome_text',
+        'instagram_username',
+        'facebook_username',
     ];
 
     public function hotel()
@@ -69,5 +71,16 @@ class HotelProfile extends Model
         if (!$value) return null;
         if (str_contains($value, 'storage/' . self::$FILE_PATH)) return $value;
         return asset('storage/' . self::$FILE_PATH . '/' . $value);
+    }
+
+    // Helper methods for social media URLs
+    public function getInstagramUrlAttribute()
+    {
+        return $this->instagram_username ? 'https://instagram.com/' . $this->instagram_username : null;
+    }
+
+    public function getFacebookUrlAttribute()
+    {
+        return $this->facebook_username ? 'https://facebook.com/' . $this->facebook_username : null;
     }
 }
