@@ -32,3 +32,28 @@ Postman : [https://lively-comet-123963.postman.co/workspace/Net~b7ddf97e-3e6c-4f
 │       └── livewire
 └── routes
 ```
+## Setup 
+
+# Run this once on your server
+php artisan storage:link
+
+
+## Diagnostic
+
+List all rooms for the current hotel
+curl -X GET \
+  http://backend-url/api/v1/room \
+  -H "X-API-KEY: <your_encrypted_token>" \
+  -H "Accept: application/json"
+
+Check your user–hotel mapping
+  curl -X GET \
+  http://backend-url/api/v1/hotel \
+  -H "X-API-KEY: <your_encrypted_token>" \
+  -H "Accept: application/json"
+
+Verify room types (optional)
+curl -X GET \
+  http://backend-url/api/v1/room/type \
+  -H "X-API-KEY: <your_encrypted_token>" \
+  -H "Accept: application/json"

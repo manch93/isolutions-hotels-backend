@@ -7,6 +7,7 @@ use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use App\Models\Application as ModelsApplication;
 use App\Livewire\Forms\Cms\Master\FormApplication;
+use App\Models\Hotel;
 
 class Application extends BaseComponent
 {
@@ -37,6 +38,17 @@ class Application extends BaseComponent
         $paginate = 10,
         $orderBy = 'applications.name',
         $order = 'asc';
+    public $hotels = [];
+
+    public function mount()
+    {
+        // load all hotels when component mounts
+        $this->hotels = Hotel::all();
+    }
+    public function getFoodCategory()
+    {
+    // No-op. You could refresh $hotels here or perform other logic if needed.
+    }
 
     public function render()
     {

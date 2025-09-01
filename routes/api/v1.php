@@ -8,6 +8,7 @@ Route::group([
 ], function () {
     Route::get('/tv', [App\Http\Controllers\Api\V1\TvController::class, 'get'])->name('tv');
     Route::get('/hotel', [App\Http\Controllers\Api\V1\HotelController::class, 'get'])->name('hotel');
+    
     Route::get('/facility', [App\Http\Controllers\Api\V1\HotelController::class, 'facility'])->name('facility');
     Route::get('/policy', [App\Http\Controllers\Api\V1\PolicyController::class, 'get'])->name('policy');
     Route::get('/promo', [App\Http\Controllers\Api\V1\PromoController::class, 'get'])->name('promo');
@@ -24,7 +25,8 @@ Route::group([
     Route::get('/doctor/{category}', [App\Http\Controllers\Api\V1\DoctorController::class, 'getDoctorByCategory'])->name('doctor');
     Route::get('/doctor/{category}', [App\Http\Controllers\Api\V1\DoctorController::class, 'getDoctorByCategory'])->name('doctor');
     // Route::get('/wifi', [App\Http\Controllers\Api\V1\WifiController::class, 'get'])->name('wifi');
-
+    Route::get('/wifi', [App\Http\Controllers\Api\V1\HotelController::class, 'wifi'])->name('wifi');
+    // Hotel Profile
     //change list
     Route::get('/changelist/food-category', [App\Http\Controllers\Api\V1\FoodController::class, 'getFoodCategoryChangeList'])->name('changelist.food-category');
     Route::get('/changelist/food', [App\Http\Controllers\Api\V1\FoodController::class, 'getFoodChangeList'])->name('changelist.food');
